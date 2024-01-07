@@ -1,0 +1,10 @@
+2023-09-23 23:57:29,511 INFO [DISTRO-INIT] waiting distro data storage register...
+
+2023-09-23 23:57:30,514 INFO [DISTRO-INIT] waiting distro data storage register...
+
+2023-09-23 23:57:31,522 INFO [DISTRO-INIT] load snapshot com.alibaba.nacos.naming.iplist. from 192.168.0.189:8848
+
+2023-09-23 23:57:31,976 INFO [DISTRO-INIT] load snapshot com.alibaba.nacos.naming.iplist. from 192.168.0.189:8848 result: true
+
+2023-09-23 23:57:31,977 INFO [DISTRO-INIT] load snapshot data success
+

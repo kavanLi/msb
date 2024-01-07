@@ -1,0 +1,120 @@
+2023-09-23 23:57:07,048 INFO SPI service [com.alipay.sofa.jraft.JRaftServiceFactory - com.alipay.sofa.jraft.core.DefaultJRaftServiceFactory] loading.
+
+2023-09-23 23:57:07,318 INFO SPI service [com.alipay.sofa.jraft.rpc.RaftRpcFactory - com.alipay.sofa.jraft.rpc.impl.GrpcRaftRpcFactory] loading.
+
+2023-09-23 23:57:10,025 INFO SPI service [com.alipay.sofa.jraft.util.timer.RaftTimerFactory - com.alipay.sofa.jraft.util.timer.DefaultRaftTimerFactory] loading.
+
+2023-09-23 23:57:10,037 INFO The number of active nodes increment to 1.
+
+2023-09-23 23:57:10,913 INFO Starts FSMCaller successfully.
+
+2023-09-23 23:57:10,930 WARN No data for snapshot reader C:\workspace\mashibing\spring_cloud_alibaba\nacos-8848\data\protocol\raft\naming_persistent_service\snapshot.
+
+2023-09-23 23:57:10,965 INFO Node <naming_persistent_service/192.168.0.189:7848> init, term=0, lastLogId=LogId [index=0, term=0], conf=192.168.0.189:7848,192.168.0.189:7868,192.168.0.189:7888, oldConf=.
+
+2023-09-23 23:57:10,968 WARN RPC server is not started in RaftGroupService.
+
+2023-09-23 23:57:10,969 INFO Start the RaftGroupService successfully.
+
+2023-09-23 23:57:11,175 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7848.
+
+2023-09-23 23:57:11,175 WARN Channel in SHUTDOWN state: 192.168.0.189:7848.
+
+2023-09-23 23:57:11,908 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7868.
+
+2023-09-23 23:57:11,908 WARN Channel in SHUTDOWN state: 192.168.0.189:7868.
+
+2023-09-23 23:57:12,922 ERROR Fail to connect 192.168.0.189:7868, remoting exception: java.util.concurrent.TimeoutException.
+
+2023-09-23 23:57:12,923 ERROR Fail to connect peer 192.168.0.189:7868 to get leader for group naming_persistent_service.
+
+2023-09-23 23:57:12,943 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7888.
+
+2023-09-23 23:57:12,943 WARN Channel in SHUTDOWN state: 192.168.0.189:7888.
+
+2023-09-23 23:57:13,957 ERROR Fail to connect 192.168.0.189:7888, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 999528800ns. [buffered_nanos=1012245700, waiting_for_connection].
+
+2023-09-23 23:57:13,958 ERROR Fail to connect peer 192.168.0.189:7888 to get leader for group naming_persistent_service.
+
+2023-09-23 23:57:16,215 INFO Node <naming_persistent_service/192.168.0.189:7848> term 0 start preVote.
+
+2023-09-23 23:57:16,238 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7888.
+
+2023-09-23 23:57:16,238 WARN Channel in SHUTDOWN state: 192.168.0.189:7888.
+
+2023-09-23 23:57:16,239 INFO Peer 192.168.0.189:7888 is connected.
+
+2023-09-23 23:57:17,241 ERROR Fail to connect 192.168.0.189:7888, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 999386400ns. [buffered_nanos=1001326400, waiting_for_connection].
+
+2023-09-23 23:57:17,242 WARN Node <naming_persistent_service/192.168.0.189:7848> channel init failed, address=192.168.0.189:7888.
+
+2023-09-23 23:57:17,260 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7868.
+
+2023-09-23 23:57:17,260 WARN Channel in SHUTDOWN state: 192.168.0.189:7868.
+
+2023-09-23 23:57:17,260 INFO Peer 192.168.0.189:7868 is connected.
+
+2023-09-23 23:57:18,271 ERROR Fail to connect 192.168.0.189:7868, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: DEADLINE_EXCEEDED: deadline exceeded after 999621400ns. [buffered_nanos=1009382500, waiting_for_connection].
+
+2023-09-23 23:57:18,272 WARN Node <naming_persistent_service/192.168.0.189:7848> channel init failed, address=192.168.0.189:7868.
+
+2023-09-23 23:57:18,280 ERROR Fail to connect 192.168.0.189:7868, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:23,470 INFO Node <naming_persistent_service/192.168.0.189:7848> term 0 start preVote.
+
+2023-09-23 23:57:23,474 ERROR Fail to connect 192.168.0.189:7868, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:23,474 WARN Node <naming_persistent_service/192.168.0.189:7848> channel init failed, address=192.168.0.189:7868.
+
+2023-09-23 23:57:25,243 ERROR Fail to connect 192.168.0.189:7868, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:25,244 ERROR Fail to connect 192.168.0.189:7888, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:25,282 WARN Node <naming_persistent_service/192.168.0.189:7848> PreVote to 192.168.0.189:7888 error: Status[EINTERNAL<1004>: RPC exception:UNAVAILABLE: io exception].
+
+2023-09-23 23:57:29,241 INFO Node <naming_persistent_service/192.168.0.189:7848> term 0 start preVote.
+
+2023-09-23 23:57:29,242 ERROR Fail to connect 192.168.0.189:7888, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:29,242 WARN Node <naming_persistent_service/192.168.0.189:7848> channel init failed, address=192.168.0.189:7888.
+
+2023-09-23 23:57:29,931 INFO Node <naming_persistent_service/192.168.0.189:7848> received PreVoteResponse from 192.168.0.189:7868, term=0, granted=true.
+
+2023-09-23 23:57:29,931 INFO Node <naming_persistent_service/192.168.0.189:7848> start vote and grant vote self, term=0.
+
+2023-09-23 23:57:29,932 ERROR Fail to connect 192.168.0.189:7888, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:29,933 WARN Node <naming_persistent_service/192.168.0.189:7848> channel init failed, address=192.168.0.189:7888.
+
+2023-09-23 23:57:29,953 WARN Unable to fsync directory C:\workspace\mashibing\spring_cloud_alibaba\nacos-8848\data\protocol\raft\naming_persistent_service\meta-data on windows.
+
+2023-09-23 23:57:29,954 INFO Save raft meta, path=C:\workspace\mashibing\spring_cloud_alibaba\nacos-8848\data\protocol\raft\naming_persistent_service\meta-data, term=1, votedFor=192.168.0.189:7848, cost time=17 ms
+
+2023-09-23 23:57:29,984 INFO Node <naming_persistent_service/192.168.0.189:7848> become leader of group, term=1, conf=192.168.0.189:7848,192.168.0.189:7868,192.168.0.189:7888, oldConf=.
+
+2023-09-23 23:57:29,994 ERROR Fail to connect 192.168.0.189:7888, remoting exception: java.util.concurrent.ExecutionException: io.grpc.StatusRuntimeException: UNAVAILABLE: io exception.
+
+2023-09-23 23:57:29,995 ERROR Fail to init sending channel to 192.168.0.189:7888.
+
+2023-09-23 23:57:29,995 ERROR Fail to start replicator to peer=192.168.0.189:7888, replicatorType=Follower.
+
+2023-09-23 23:57:29,995 ERROR Fail to add a replicator, peer=192.168.0.189:7888.
+
+2023-09-23 23:57:30,001 INFO Replicator=Replicator [state=null, statInfo=<running=null, firstLogIndex=0, lastLogIncluded=0, lastLogIndex=0, lastTermIncluded=0>, peerId=192.168.0.189:7868, type=Follower]@192.168.0.189:7868 is started
+
+2023-09-23 23:57:30,020 INFO -Djraft.recyclers.maxCapacityPerThread: 4096.
+
+2023-09-23 23:57:30,107 INFO onLeaderStart: term=1.
+
+2023-09-23 23:57:32,542 ERROR Fail to check replicator connection to peer=192.168.0.189:7888, replicatorType=Follower.
+
+2023-09-23 23:57:35,052 INFO Replicator=Replicator [state=null, statInfo=<running=null, firstLogIndex=0, lastLogIncluded=0, lastLogIndex=0, lastTermIncluded=0>, peerId=192.168.0.189:7888, type=Follower]@192.168.0.189:7888 is started
+
+2023-09-23 23:57:37,583 WARN Fail to issue RPC to 192.168.0.189:7888, consecutiveErrorTimes=10, error=Status[EINTERNAL<1004>: Check connection[192.168.0.189:7888] fail and try to create new one]
+
+2023-09-23 23:57:39,617 WARN Channel[192.168.0.189:7888] in TRANSIENT_FAILURE state 21 times, will be reset connect backoff.
+
+2023-09-23 23:57:41,656 WARN Fail to issue RPC to 192.168.0.189:7888, consecutiveErrorTimes=20, error=Status[EINTERNAL<1004>: RPC exception:UNAVAILABLE: io exception]
+
+2023-09-23 23:57:43,161 WARN Heartbeat to peer 192.168.0.189:7888 failure, try to send a probe request.
+

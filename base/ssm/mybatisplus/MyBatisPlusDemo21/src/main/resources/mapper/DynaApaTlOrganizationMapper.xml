@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mp.mapper.DynaApaTlOrganizationMapper">
+
+    <resultMap id="BaseResultMap" type="com.bobo.mp.pojo.DynaApaTlOrganization">
+            <id property="id" column="ID" jdbcType="DECIMAL"/>
+            <result property="orgCode" column="ORG_CODE" jdbcType="VARCHAR"/>
+            <result property="orgName" column="ORG_NAME" jdbcType="VARCHAR"/>
+            <result property="orgLevel" column="ORG_LEVEL" jdbcType="DECIMAL"/>
+            <result property="parentOrgId" column="PARENT_ORG_ID" jdbcType="DECIMAL"/>
+            <result property="orgContacts" column="ORG_CONTACTS" jdbcType="VARCHAR"/>
+            <result property="orgTelephone" column="ORG_TELEPHONE" jdbcType="VARCHAR"/>
+            <result property="orgMobile" column="ORG_MOBILE" jdbcType="VARCHAR"/>
+            <result property="orgEmail" column="ORG_EMAIL" jdbcType="VARCHAR"/>
+            <result property="pinyinName" column="PINYIN_NAME" jdbcType="VARCHAR"/>
+            <result property="createUserName" column="CREATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="updateUserName" column="UPDATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="branchCode" column="BRANCH_CODE" jdbcType="VARCHAR"/>
+            <result property="branchName" column="BRANCH_NAME" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,ORG_CODE,ORG_NAME,
+        ORG_LEVEL,PARENT_ORG_ID,ORG_CONTACTS,
+        ORG_TELEPHONE,ORG_MOBILE,ORG_EMAIL,
+        PINYIN_NAME,CREATE_USER_NAME,UPDATE_USER_NAME,
+        CREATE_TIME,UPDATE_TIME,BRANCH_CODE,
+        BRANCH_NAME
+    </sql>
+</mapper>

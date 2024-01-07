@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+this is index page 哈喽
+ <span th:text="pageMessage"></span>
+ <span th:text="${msg}"></span>
+<hr/>
+    <input th:value="pageMessage" />
+    <input th:value="${msg}" />
+
+</body>
+</html>

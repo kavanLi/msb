@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EmpMapper3">
+
+    <!--
+    增删方法的返回值类型都是int
+    resultType就无需指定了
+    insert update delete 标签中没有resultType
+    但是仍然可以有paramaterType
+    -->
+
+    <!-- 增加方法
+    public int addEmp(Emp emp);
+    -->
+    <insert id="addEmp" parameterType="emp">
+        insert into emp values(#{empno},#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+    </insert>
+
+    <!--修改
+    根据工号修改员工姓名
+    public int updateEmp(Emp emp);
+
+    -->
+    <update id="updateEmp" parameterType="emp">
+        update emp set ename = #{ename} where empno=#{empno}
+    </update>
+
+
+    <!-- 删除
+    删除大于给定工号的员工信息
+    public int deleteEmp(int empno)
+    -->
+    <delete id="deleteEmp" parameterType="int">
+        delete from emp where empno >= #{empno}
+    </delete>
+
+
+</mapper>

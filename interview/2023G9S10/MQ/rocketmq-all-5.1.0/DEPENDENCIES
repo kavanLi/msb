@@ -1,0 +1,17 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache RocketMQ 5.1.0
+
+
+From: 'an unknown organization'
+  - Awaitility (http://awaitility.org) org.awaitility:awaitility:jar:4.1.0
+    License: Apache 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Hamcrest (http://hamcrest.org/JavaHamcrest/) org.hamcrest:hamcrest:jar:2.1
+    License: BSD Licence 3  (http://opensource.org/licenses/BSD-3-Clause)
+
+
+
+

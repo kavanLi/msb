@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.msb.mapper.DeptMapper">
+    <!--Dept findDeptByDeptno(int deptno);
+    select="com.msb.mapper.EmpMapper.findEmpsByDeptno" 调用的另一个SQL语句
+    javaType="list"  实体类的属性数据类型
+    column="deptno"  给另一个SQL语句传入的参数列
+    jdbcType="INTEGER" 参数对应JDBC的数据类型
+    fetchType="eager"  加载方式 eager 积极加载  lazy延迟加载-->
+    <resultMap id="deptJoinEmps" type="dept">
+        <id property="deptno" column="deptno"></id>
+        <result property="dname" column="dname"></result>
+        <result property="loc" column="loc"></result>
+
+        <collection property="empList"
+                    select="com.msb.mapper.EmpMapper.findEmpsByDeptno"
+                    javaType="list"
+                    column="deptno"
+                    jdbcType="INTEGER"
+                    fetchType="lazy"
+        >
+        </collection>
+
+    </resultMap>
+
+    <select id="findDeptByDeptno" resultMap="deptJoinEmps">
+        select * from dept where deptno =#{deptno}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

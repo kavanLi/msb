@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mp.mapper.DynaAmsOrgprovisionsMapper">
+
+    <resultMap id="BaseResultMap" type="com.bobo.mp.pojo.DynaAmsOrgprovisions">
+            <id property="id" column="ID" jdbcType="DECIMAL"/>
+            <result property="domainid" column="DOMAINID" jdbcType="DECIMAL"/>
+            <result property="orgId" column="ORG_ID" jdbcType="DECIMAL"/>
+            <result property="orgLabel" column="ORG_LABEL" jdbcType="VARCHAR"/>
+            <result property="orgno" column="ORGNO" jdbcType="VARCHAR"/>
+            <result property="manageModel" column="MANAGE_MODEL" jdbcType="DECIMAL"/>
+            <result property="accountName" column="ACCOUNT_NAME" jdbcType="VARCHAR"/>
+            <result property="accountNo" column="ACCOUNT_NO" jdbcType="VARCHAR"/>
+            <result property="bankName" column="BANK_NAME" jdbcType="VARCHAR"/>
+            <result property="bankCode" column="BANK_CODE" jdbcType="VARCHAR"/>
+            <result property="isTransformDaifu" column="IS_TRANSFORM_DAIFU" jdbcType="DECIMAL"/>
+            <result property="daifuMerchantId" column="DAIFU_MERCHANT_ID" jdbcType="VARCHAR"/>
+            <result property="manageBankId" column="MANAGE_BANK_ID" jdbcType="DECIMAL"/>
+            <result property="manageBankLabel" column="MANAGE_BANK_LABEL" jdbcType="VARCHAR"/>
+            <result property="manageBankNo" column="MANAGE_BANK_NO" jdbcType="VARCHAR"/>
+            <result property="platNo" column="PLAT_NO" jdbcType="VARCHAR"/>
+            <result property="serverNo" column="SERVER_NO" jdbcType="VARCHAR"/>
+            <result property="signPublicCertsStr" column="SIGN_PUBLIC_CERTS_STR" jdbcType="VARCHAR"/>
+            <result property="signPrivateCertsStr" column="SIGN_PRIVATE_CERTS_STR" jdbcType="VARCHAR"/>
+            <result property="enPublicCertsStr" column="EN_PUBLIC_CERTS_STR" jdbcType="VARCHAR"/>
+            <result property="dePrivateCertsStr" column="DE_PRIVATE_CERTS_STR" jdbcType="VARCHAR"/>
+            <result property="tltRefundAutoTransfer" column="TLT_REFUND_AUTO_TRANSFER" jdbcType="DECIMAL"/>
+            <result property="targetTltMerchantId" column="TARGET_TLT_MERCHANT_ID" jdbcType="VARCHAR"/>
+            <result property="tltOverdraftAmount" column="TLT_OVERDRAFT_AMOUNT" jdbcType="DECIMAL"/>
+            <result property="transferBizType" column="TRANSFER_BIZ_TYPE" jdbcType="DECIMAL"/>
+            <result property="issendbank" column="ISSENDBANK" jdbcType="DECIMAL"/>
+            <result property="paymentMaxAmount" column="PAYMENT_MAX_AMOUNT" jdbcType="DECIMAL"/>
+            <result property="paymentMinAmount" column="PAYMENT_MIN_AMOUNT" jdbcType="DECIMAL"/>
+            <result property="bankProvince" column="BANK_PROVINCE" jdbcType="VARCHAR"/>
+            <result property="bankCity" column="BANK_CITY" jdbcType="VARCHAR"/>
+            <result property="createDatetime" column="CREATE_DATETIME" jdbcType="TIMESTAMP"/>
+            <result property="createUserId" column="CREATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="lastUpdateDatetime" column="LAST_UPDATE_DATETIME" jdbcType="TIMESTAMP"/>
+            <result property="updateUserId" column="UPDATE_USER_ID" jdbcType="VARCHAR"/>
+            <result property="acctOrgType" column="ACCT_ORG_TYPE" jdbcType="DECIMAL"/>
+            <result property="allowPulloutBegintime" column="ALLOW_PULLOUT_BEGINTIME" jdbcType="VARCHAR"/>
+            <result property="allowPulloutEndtime" column="ALLOW_PULLOUT_ENDTIME" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,DOMAINID,ORG_ID,
+        ORG_LABEL,ORGNO,MANAGE_MODEL,
+        ACCOUNT_NAME,ACCOUNT_NO,BANK_NAME,
+        BANK_CODE,IS_TRANSFORM_DAIFU,DAIFU_MERCHANT_ID,
+        MANAGE_BANK_ID,MANAGE_BANK_LABEL,MANAGE_BANK_NO,
+        PLAT_NO,SERVER_NO,SIGN_PUBLIC_CERTS_STR,
+        SIGN_PRIVATE_CERTS_STR,EN_PUBLIC_CERTS_STR,DE_PRIVATE_CERTS_STR,
+        TLT_REFUND_AUTO_TRANSFER,TARGET_TLT_MERCHANT_ID,TLT_OVERDRAFT_AMOUNT,
+        TRANSFER_BIZ_TYPE,ISSENDBANK,PAYMENT_MAX_AMOUNT,
+        PAYMENT_MIN_AMOUNT,BANK_PROVINCE,BANK_CITY,
+        CREATE_DATETIME,CREATE_USER_ID,LAST_UPDATE_DATETIME,
+        UPDATE_USER_ID,ACCT_ORG_TYPE,ALLOW_PULLOUT_BEGINTIME,
+        ALLOW_PULLOUT_ENDTIME
+    </sql>
+</mapper>

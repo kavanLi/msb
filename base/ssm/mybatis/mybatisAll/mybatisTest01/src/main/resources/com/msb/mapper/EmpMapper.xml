@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EmpMapper">
+
+    <!--
+    返回单个对象
+    public Emp findOne();
+    id 相当于方法名
+    resultType 相当于返回值类型
+        sql语句的查询结果用哪个类来进行封装 如果返回值类型是集合,这里写的也是集合中的元素对应的类,不是集合本身作为类型
+    paramaterType 参数类型
+    SQL语句就是具体的方法体的实现
+    -->
+    <select id="findOne" resultType="emp" >
+        select * from emp where empno = 7499
+    </select>
+
+
+    <!--
+    返回多个对象List集合
+    查询全部的员工信息
+    public List<Emp> findAll()
+    -->
+    <select id="findAll" resultType="emp">
+        select * from emp
+    </select>
+
+    <!--返回多个对象的Map集合
+    把查询出来的数据中的某一列作为键,整条数据封装的对象作为值
+    public Map<key,Emp> findEmpMap()
+    <empno,Emp>
+    <key,Emp>
+    -->
+    <select id="findEmpMap" resultType="map">
+        select * from emp
+    </select>
+
+</mapper>

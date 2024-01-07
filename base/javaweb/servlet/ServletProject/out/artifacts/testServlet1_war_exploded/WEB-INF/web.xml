@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>mashibing</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123456</param-value>
+    </context-param>
+
+
+
+    <servlet>
+        <servlet-name>servlet1</servlet-name>
+        <servlet-class>com.msb.testServlet.Servlet1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>servlet2</servlet-name>
+        <servlet-class>com.msb.testServlet.Servlet2</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>servlet3</servlet-name>
+        <servlet-class>com.msb.testServlet.Servlet3</servlet-class>
+        <init-param>
+            <param-name>brand</param-name>
+            <param-value>ASUS</param-value>
+        </init-param>
+        <init-param>
+            <param-name>screen</param-name>
+            <param-value>三星</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>servlet4</servlet-name>
+        <servlet-class>com.msb.testServlet.Servlet4</servlet-class>
+        <init-param>
+            <param-name>pinpai</param-name>
+            <param-value>联想</param-value>
+        </init-param>
+        <init-param>
+            <param-name>pingmu</param-name>
+            <param-value>京东方</param-value>
+        </init-param>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>servlet1</servlet-name>
+        <url-pattern>/servlet1.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servlet2</servlet-name>
+        <url-pattern>/servlet2.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>servlet3</servlet-name>
+        <url-pattern>/servlet3.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servlet4</servlet-name>
+        <url-pattern>/servlet4.do</url-pattern>
+    </servlet-mapping>
+    
+    
+</web-app>

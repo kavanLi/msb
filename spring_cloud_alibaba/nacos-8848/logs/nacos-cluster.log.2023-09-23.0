@@ -1,0 +1,34 @@
+2023-09-23 18:16:48,339 INFO Current addressing mode selection : StandaloneMemberLookup
+
+2023-09-23 18:16:48,345 WARN [serverlist] updated to : [Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 23:57:06,672 INFO Current addressing mode selection : FileConfigMemberLookup
+
+2023-09-23 23:57:06,679 WARN [serverlist] updated to : [Member{ip='192.168.0.189', port=8868, state=UP, extendInfo={raftPort=7868}}, Member{ip='192.168.0.189', port=8888, state=UP, extendInfo={raftPort=7888}}, Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 23:57:06,688 WARN [serverlist] updated to : [Member{ip='192.168.0.189', port=8868, state=UP, extendInfo={raftPort=7868}}, Member{ip='192.168.0.189', port=8888, state=UP, extendInfo={raftPort=7888}}, Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 23:57:06,691 WARN [serverlist] updated to : [Member{ip='192.168.0.189', port=8868, state=UP, extendInfo={raftPort=7868}}, Member{ip='192.168.0.189', port=8888, state=UP, extendInfo={raftPort=7888}}, Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 23:57:15,574 INFO This node is ready to provide external services
+
+2023-09-23 23:57:22,620 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:24,630 ERROR failed to report new info to target node : 192.168.0.189:8868, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:26,643 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:28,654 ERROR failed to report new info to target node : 192.168.0.189:8868, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:30,670 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:32,734 ERROR failed to report new info to target node : 192.168.0.189:8868, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:34,704 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:38,746 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:42,756 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+
+2023-09-23 23:57:46,768 ERROR failed to report new info to target node : 192.168.0.189:8888, error : caused: Connection refused: no further information;
+

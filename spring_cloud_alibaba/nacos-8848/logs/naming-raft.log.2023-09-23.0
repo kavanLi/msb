@@ -1,0 +1,157 @@
+2023-09-23 18:16:48,414 INFO raft peers changed: [Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 18:16:48,449 INFO initializing Raft sub-system
+
+2023-09-23 18:16:48,451 INFO finish loading all datums, size: 0 cost 2 ms.
+
+2023-09-23 18:16:48,460 INFO cache loaded, datum count: 0, current term: 0
+
+2023-09-23 18:16:48,460 INFO finish to load data from disk, cost: 11 ms.
+
+2023-09-23 18:16:48,464 INFO timer started: leader timeout ms: 15000, heart-beat timeout ms: 5000
+
+2023-09-23 18:16:49,534 INFO add listener: com.alibaba.nacos.naming.domains.meta.00-00---000-NACOS_SWITCH_DOMAIN-000---00-00
+
+2023-09-23 18:16:49,551 INFO add listener: com.alibaba.nacos.naming.domains.meta.
+
+2023-09-23 18:16:53,392 WARN start to close old raft protocol!!!
+
+2023-09-23 18:16:53,392 WARN stop old raft protocol task for notifier
+
+2023-09-23 18:16:53,392 WARN stop old raft protocol task for master task
+
+2023-09-23 18:16:53,392 WARN stop old raft protocol task for heartbeat task
+
+2023-09-23 18:16:53,392 WARN clean old cache datum for old raft
+
+2023-09-23 18:16:53,392 WARN start to close old raft protocol!!!
+
+2023-09-23 18:16:53,392 WARN stop old raft protocol task for notifier
+
+2023-09-23 18:16:53,392 WARN stop old raft protocol task for master task
+
+2023-09-23 18:16:53,392 WARN stop old raft protocol task for heartbeat task
+
+2023-09-23 18:16:53,392 WARN clean old cache datum for old raft
+
+2023-09-23 18:16:53,392 WARN start to move old raft protocol metadata
+
+2023-09-23 18:16:53,395 WARN start to move old raft protocol metadata
+
+2023-09-23 18:16:53,397 INFO raft peers changed: [Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={lastRefreshTime=1695464213395, raftPort=7848, version=1.4.1}}]
+
+2023-09-23 23:57:06,757 INFO raft peers changed: [Member{ip='192.168.0.189', port=8868, state=UP, extendInfo={raftPort=7868}}, Member{ip='192.168.0.189', port=8888, state=UP, extendInfo={raftPort=7888}}, Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 23:57:06,808 INFO initializing Raft sub-system
+
+2023-09-23 23:57:06,809 INFO finish loading all datums, size: 0 cost 1 ms.
+
+2023-09-23 23:57:06,817 INFO cache loaded, datum count: 0, current term: 0
+
+2023-09-23 23:57:06,817 INFO finish to load data from disk, cost: 9 ms.
+
+2023-09-23 23:57:06,821 INFO timer started: leader timeout ms: 15000, heart-beat timeout ms: 5000
+
+2023-09-23 23:57:06,829 INFO leader timeout, start voting,leader: null, term: 0
+
+2023-09-23 23:57:07,666 INFO raft peers changed: [Member{ip='192.168.0.189', port=8868, state=UP, extendInfo={raftPort=7868}}, Member{ip='192.168.0.189', port=8888, state=UP, extendInfo={raftPort=7888}}, Member{ip='192.168.0.189', port=8848, state=UP, extendInfo={raftPort=7848}}]
+
+2023-09-23 23:57:09,312 ERROR error while sending vote to server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:09,312 ERROR error while sending vote to server: 192.168.0.189:8868
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:11,947 INFO add listener: com.alibaba.nacos.naming.domains.meta.00-00---000-NACOS_SWITCH_DOMAIN-000---00-00
+
+2023-09-23 23:57:11,969 INFO add listener: com.alibaba.nacos.naming.domains.meta.
+
+2023-09-23 23:57:24,321 INFO leader timeout, start voting,leader: null, term: 1
+
+2023-09-23 23:57:26,362 ERROR error while sending vote to server: 192.168.0.189:8868
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:26,362 ERROR error while sending vote to server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:30,017 WARN [IS LEADER] no leader is available now!
+
+2023-09-23 23:57:33,492 INFO received illegitimate vote, voter-term:1, votee-term:2
+
+2023-09-23 23:57:42,653 INFO received illegitimate vote, voter-term:1, votee-term:2
+
+2023-09-23 23:57:43,818 INFO leader timeout, start voting,leader: null, term: 2
+
+2023-09-23 23:57:43,824 INFO received approve from peer: {"ip":"192.168.0.189:8868","voteFor":"192.168.0.189:8848","term":3,"leaderDueMs":15450,"heartbeatDueMs":4500,"state":"FOLLOWER"}
+
+2023-09-23 23:57:43,835 INFO 192.168.0.189:8848 has become the LEADER
+
+2023-09-23 23:57:45,866 ERROR error while sending vote to server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:54,010 ERROR NACOS-RAFT beat failed: 500, peer: 192.168.0.189:8888
+
+2023-09-23 23:57:56,814 WARN start to close old raft protocol!!!
+
+2023-09-23 23:57:56,814 WARN stop old raft protocol task for notifier
+
+2023-09-23 23:57:56,814 WARN stop old raft protocol task for master task
+
+2023-09-23 23:57:56,814 WARN stop old raft protocol task for heartbeat task
+
+2023-09-23 23:57:56,817 WARN clean old cache datum for old raft
+
+2023-09-23 23:57:56,817 WARN start to close old raft protocol!!!
+
+2023-09-23 23:57:56,817 WARN stop old raft protocol task for notifier
+
+2023-09-23 23:57:56,817 WARN stop old raft protocol task for master task
+
+2023-09-23 23:57:56,817 WARN stop old raft protocol task for heartbeat task
+
+2023-09-23 23:57:56,817 WARN clean old cache datum for old raft
+
+2023-09-23 23:57:56,817 WARN start to move old raft protocol metadata
+
+2023-09-23 23:57:56,817 WARN start to move old raft protocol metadata
+

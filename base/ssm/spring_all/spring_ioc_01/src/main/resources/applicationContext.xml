@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="user1" class="com.msb.bean.User"  lazy-init="true" scope="singleton" ></bean>
+
+    <!--
+    User user1=new User()
+    user1.setuserid()
+    -->
+    <bean id="user2" class="com.msb.bean.User">
+        <property name="userid" value="2"></property>
+        <property name="username" value="张三"></property>
+        <property name="password" value="abcdef"></property>
+    </bean>
+
+    <!--
+    User user3=new User(1,"","")
+    -->
+    <bean id="user3" class="com.msb.bean.User">
+        <constructor-arg name="userid" value="3"></constructor-arg>
+        <constructor-arg name="username" value="晓明"></constructor-arg>
+        <constructor-arg name="password" value="987654"></constructor-arg>
+    </bean>
+
+    <bean id="user4" class="com.msb.bean.User">
+        <constructor-arg index="0"  value="4"></constructor-arg>
+        <constructor-arg index="1"  value="小黑"></constructor-arg>
+        <constructor-arg index="2"  value="654321"></constructor-arg>
+    </bean>
+
+    <!--
+    通过p名称空间和c名称空间实现DI
+    -->
+    <bean id="user5" class="com.msb.bean.User" p:userid="5" p:username="小东" p:password="111111" ></bean>
+    <bean id="user6" class="com.msb.bean.User" c:userid="6" c:username="小西" c:password="222222" ></bean>
+
+</beans>

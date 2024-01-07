@@ -1,0 +1,24 @@
+server:
+  port: 8002
+logging:
+  config: classpath:logback.xml
+
+dubbo:
+  application:
+    name: dubbo-provider
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  #这里协议一定加s,所以可以设置多个通讯协议
+  protocols:
+    p1:
+      name: dubbo
+      #客户端连接20883 就可以访问我们的dubbo端口
+      port: 20883
+#    p2:
+#      name: rest
+#      #客户端连接20884，就可以访问我们的rest接口
+#      port: 20884
+#    p3:
+#      name: tri
+#      #客户端连接20885，就可以访问我们的triple接口
+#      port: 20885

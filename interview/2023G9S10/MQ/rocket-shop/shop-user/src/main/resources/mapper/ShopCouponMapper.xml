@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.dao.ShopCouponMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.model.ShopCoupon" >
+    <constructor >
+      <idArg column="coupon_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="coupon_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="is_used" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="used_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    coupon_id, coupon_price, is_used, used_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shop_coupon
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from shop_coupon
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.model.ShopCoupon" >
+    insert into shop_coupon (coupon_id, coupon_price, is_used, 
+      used_time)
+    values (#{couponId,jdbcType=BIGINT}, #{couponPrice,jdbcType=DECIMAL}, #{isUsed,jdbcType=INTEGER}, 
+      #{usedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.model.ShopCoupon" >
+    insert into shop_coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="couponPrice != null" >
+        coupon_price,
+      </if>
+      <if test="isUsed != null" >
+        is_used,
+      </if>
+      <if test="usedTime != null" >
+        used_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="couponPrice != null" >
+        #{couponPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isUsed != null" >
+        #{isUsed,jdbcType=INTEGER},
+      </if>
+      <if test="usedTime != null" >
+        #{usedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.model.ShopCoupon" >
+    update shop_coupon
+    <set >
+      <if test="couponPrice != null" >
+        coupon_price = #{couponPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isUsed != null" >
+        is_used = #{isUsed,jdbcType=INTEGER},
+      </if>
+      <if test="usedTime != null" >
+        used_time = #{usedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.model.ShopCoupon" >
+    update shop_coupon
+    set coupon_price = #{couponPrice,jdbcType=DECIMAL},
+      is_used = #{isUsed,jdbcType=INTEGER},
+      used_time = #{usedTime,jdbcType=TIMESTAMP}
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+</mapper>

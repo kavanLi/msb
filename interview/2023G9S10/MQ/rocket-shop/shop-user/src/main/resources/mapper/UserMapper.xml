@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.dao.UserDao">
+	<!-- 使用优惠券 -->
+	<update id="useCoupon" >
+		update shop_coupon
+		set is_used=1,used_time=now()
+		where coupon_id = #{couponId,jdbcType=INTEGER}
+	</update>
+
+</mapper>

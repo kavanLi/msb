@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mp.mapper.DynaAmsUserOptLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.bobo.mp.domain.pojo.DynaAmsUserOptLog">
+        <id property="id" column="ID" jdbcType="DECIMAL"/>
+        <result property="createSource" column="CREATE_SOURCE" jdbcType="DECIMAL"/>
+        <result property="loginName" column="LOGIN_NAME" jdbcType="VARCHAR"/>
+        <result property="companyId" column="COMPANY_ID" jdbcType="DECIMAL"/>
+        <result property="companyName" column="COMPANY_NAME" jdbcType="VARCHAR"/>
+        <result property="ipAddress" column="IP_ADDRESS" jdbcType="VARCHAR"/>
+        <result property="requestUrl" column="REQUEST_URL" jdbcType="VARCHAR"/>
+        <result property="requestParam" column="REQUEST_PARAM" jdbcType="VARCHAR"/>
+        <result property="requestTime" column="REQUEST_TIME" jdbcType="TIMESTAMP"/>
+        <result property="optName" column="OPT_NAME" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID
+        ,CREATE_SOURCE,LOGIN_NAME,
+        COMPANY_ID,COMPANY_NAME,IP_ADDRESS,
+        REQUEST_URL,REQUEST_PARAM,REQUEST_TIME,
+        OPT_NAME
+    </sql>
+
+    <insert id="insertDynaAmsUserOptLog" parameterType="com.bobo.mp.domain.pojo.DynaAmsUserOptLog">
+        <![CDATA[
+        INSERT INTO DYNA_AMS_USER_OPT_LOG (ID,
+                                           CREATE_SOURCE,
+                                           LOGIN_NAME,
+                                           COMPANY_ID,
+                                           COMPANY_NAME,
+                                           IP_ADDRESS,
+                                           REQUEST_URL,
+                                           REQUEST_PARAM,
+                                           REQUEST_TIME,
+                                           OPT_NAME)
+        VALUES (SEQ_userOptLog.NEXTVAL,
+                #{createSource,jdbcType=NUMERIC},
+                #{loginName,jdbcType=VARCHAR},
+                #{companyId,jdbcType=NUMERIC},
+                #{companyName,jdbcType=VARCHAR},
+                #{ipAddress,jdbcType=VARCHAR},
+                #{requestUrl,jdbcType=VARCHAR},
+                #{requestParam,jdbcType=VARCHAR},
+                #{requestTime,jdbcType=TIMESTAMP},
+                #{optName,jdbcType=VARCHAR})
+        ]]>
+    </insert>
+</mapper>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+开发form表单注意事项
+1form 不是from
+2form表单内部不是所有的标签信息都会提交 一些输入信息  input select textarea ... ...
+3要提交的标签必须具备name属性  name属性的作用是让后台区分数据  id便于在前端区分数据
+4要提交的标签一般都要具备value属性  value属性确定我们要提交的具体的数据
+5 get post
+  get方式数据是通过URL携带
+  提交的数据只能是文本
+  提交的数据量不大
+  get方式提交的数据相对不安全
+
+  post 将数据单独打包放到请求体中
+  提交的数据可以是文本可以是各种文件
+  提交的数据量理论上没有上限
+  post方式提交数据相对安全
+
+  当一个表单标签
+  readonly只读 也是会提交数据的
+  hidden  隐藏 也是会提交数据
+  disabled 不可用 显示但是不提交
+
+-->
+<form method="get" action="myServlet">
+    <table style="margin: 0px auto" width="300px" cellpadding="0px" cellspacing="0px" border="1px">
+        <tr>
+            <td>用户名</td>
+            <td>
+                <input type="text" name="username" id="in1" value="12345" disabled >
+            </td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td>
+                <input type="password" name="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>
+                <input type="radio" name="gender" value="1" checked>男
+                <input type="radio" name="gender" value="0">女
+            </td>
+        </tr>
+        <tr>
+            <td>爱好</td>
+            <td>
+                <input type="checkbox" name="hobby" value="1">蓝球
+                <input type="checkbox" name="hobby" value="2">足球
+                <input type="checkbox" name="hobby" value="3">羽毛球
+                <input type="checkbox" name="hobby" value="4">乒乓球
+            </td>
+        </tr>
+        <tr>
+            <td>个人简介</td>
+            <td>
+                <!--文本域 双标签 页面上显示的文字是双标签中的文本 不是value属性
+
+                    文本域提交的数据不是value属性值,是双标签中的文本
+                -->
+                <textarea name="introduce" >b</textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>籍贯</td>
+            <td>
+                <!--
+                select
+                option没有定义value属性 那么就提交option中间的文字(不推荐)
+
+                -->
+                <select name="provience">
+                    <option value="1">a京</option>
+                    <option value="2">b津</option>
+                    <option value="3">c冀</option>
+                </select>
+            </td>
+        </tr>
+        <tr align="center">
+
+            <td colspan="2">
+                <input type="submit" value="提交数据">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+    <!--扫描controller-->
+    <context:component-scan base-package="com.msb.controller"></context:component-scan>
+    <mvc:annotation-driven />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+
+    <!--静态资源放行-->
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+   <!-- <mvc:resources mapping="/upload/**" location="/upload/"></mvc:resources>-->
+
+
+    <!--注册拦截器-->
+   <!-- <mvc:interceptors>
+
+
+        <mvc:interceptor>
+            <mvc:mapping path="/login.action"/>
+            <bean id="myInterceptor1" class="com.msb.interceptor.MyInterceptor"></bean>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/login.action"/>
+            <bean id="myInterceptor2" class="com.msb.interceptor.MyInterceptor2"></bean>
+        </mvc:interceptor>
+
+    </mvc:interceptors>-->
+
+
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.ArithmeticException" >redirect:/error1.jsp</prop>
+                <prop key="java.lang.NullPointerException" >redirect:/error2.jsp</prop>
+            </props>
+        </property>
+    </bean>-->
+
+
+</beans>

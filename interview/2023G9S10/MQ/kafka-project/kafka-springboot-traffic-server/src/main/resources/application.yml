@@ -1,0 +1,20 @@
+server:
+  port: 8090
+#============== kafka ===================
+kafka:
+  consumer:
+    zookeeper.connect: localhost:2181
+    servers: 127.0.0.1:9092
+    enable.auto.commit: true
+    session.timeout: 6000
+    auto.commit.interval: 100
+    auto.offset.reset: latest
+    topic: test
+    group.id: test
+    concurrency: 1
+  producer:
+    servers: 127.0.0.1:9092
+    retries: 0
+    batch.size: 4096
+    linger: 1
+    buffer.memory: 40960

@@ -1,0 +1,80 @@
+2023-09-23 18:16:26,553 INFO notifyConnectTimeout:200
+
+2023-09-23 18:16:26,557 INFO notifySocketTimeout:8000
+
+2023-09-23 18:16:26,557 INFO isHealthCheck:true
+
+2023-09-23 18:16:26,557 INFO maxHealthCheckFailCount:12
+
+2023-09-23 18:16:26,557 INFO maxContent:10485760
+
+2023-09-23 18:16:43,103 INFO use local db service for init
+
+2023-09-23 18:16:45,963 WARN Lexical error at line 4, column 66.  Encountered: <EOF> after : "".
+
+2023-09-23 18:16:46,003 WARN Syntax error: Encountered "*" at line 1, column 1.
+
+2023-09-23 18:16:46,662 WARN Lexical error at line 4, column 13.  Encountered: "`" (96), after : "".
+
+2023-09-23 18:16:46,662 WARN Lexical error at line 1, column 13.  Encountered: "`" (96), after : "".
+
+2023-09-23 18:16:46,663 WARN Lexical error at line 1, column 13.  Encountered: "`" (96), after : "".
+
+2023-09-23 18:16:46,664 WARN Lexical error at line 1, column 13.  Encountered: "`" (96), after : "".
+
+2023-09-23 18:16:46,664 INFO use StandaloneDatabaseOperateImpl
+
+2023-09-23 18:16:49,748 WARN DumpService start
+
+2023-09-23 18:16:49,749 INFO start clear all config-info.
+
+2023-09-23 18:16:49,751 WARN clear all config-info failed.
+
+2023-09-23 18:16:49,751 WARN clear all config-info-tenant failed.
+
+2023-09-23 18:16:49,822 INFO start clear all config-info-beta.
+
+2023-09-23 18:16:49,823 WARN clear all config-info-beta failed.
+
+2023-09-23 18:16:49,823 WARN clear all config-info-beta-tenant failed.
+
+2023-09-23 18:16:49,834 INFO start clear all config-info-tag.
+
+2023-09-23 18:16:49,834 WARN clear all config-info-tag failed.
+
+2023-09-23 18:16:49,834 WARN clear all config-info-tag-tenant failed.
+
+2023-09-23 23:57:20,306 INFO notifyConnectTimeout:200
+
+2023-09-23 23:57:20,314 INFO notifySocketTimeout:8000
+
+2023-09-23 23:57:20,314 INFO isHealthCheck:true
+
+2023-09-23 23:57:20,314 INFO maxHealthCheckFailCount:12
+
+2023-09-23 23:57:20,314 INFO maxContent:10485760
+
+2023-09-23 23:57:20,315 INFO spring.datasource.platform:mysql
+
+2023-09-23 23:57:43,734 WARN DumpService start
+
+2023-09-23 23:57:43,736 INFO start clear all config-info.
+
+2023-09-23 23:57:43,737 WARN clear all config-info failed.
+
+2023-09-23 23:57:43,738 WARN clear all config-info-tenant failed.
+
+2023-09-23 23:57:43,743 INFO start clear all config-info-beta.
+
+2023-09-23 23:57:43,744 WARN clear all config-info-beta failed.
+
+2023-09-23 23:57:43,744 WARN clear all config-info-beta-tenant failed.
+
+2023-09-23 23:57:43,745 INFO start clear all config-info-tag.
+
+2023-09-23 23:57:43,746 WARN clear all config-info-tag failed.
+
+2023-09-23 23:57:43,746 WARN clear all config-info-tag-tenant failed.
+
+2023-09-23 23:57:43,767 WARN initialDelay:60
+

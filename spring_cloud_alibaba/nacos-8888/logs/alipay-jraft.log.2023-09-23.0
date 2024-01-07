@@ -1,0 +1,32 @@
+2023-09-23 23:57:39,497 INFO SPI service [com.alipay.sofa.jraft.JRaftServiceFactory - com.alipay.sofa.jraft.core.DefaultJRaftServiceFactory] loading.
+
+2023-09-23 23:57:39,656 INFO SPI service [com.alipay.sofa.jraft.rpc.RaftRpcFactory - com.alipay.sofa.jraft.rpc.impl.GrpcRaftRpcFactory] loading.
+
+2023-09-23 23:57:42,283 INFO SPI service [com.alipay.sofa.jraft.util.timer.RaftTimerFactory - com.alipay.sofa.jraft.util.timer.DefaultRaftTimerFactory] loading.
+
+2023-09-23 23:57:42,292 INFO The number of active nodes increment to 1.
+
+2023-09-23 23:57:42,624 INFO Starts FSMCaller successfully.
+
+2023-09-23 23:57:42,642 WARN No data for snapshot reader C:\workspace\mashibing\spring_cloud_alibaba\nacos-8888\data\protocol\raft\naming_persistent_service\snapshot.
+
+2023-09-23 23:57:42,683 INFO Node <naming_persistent_service/192.168.0.189:7888> init, term=0, lastLogId=LogId [index=0, term=0], conf=192.168.0.189:7848,192.168.0.189:7868,192.168.0.189:7888, oldConf=.
+
+2023-09-23 23:57:42,689 WARN RPC server is not started in RaftGroupService.
+
+2023-09-23 23:57:42,689 INFO Start the RaftGroupService successfully.
+
+2023-09-23 23:57:42,913 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7848.
+
+2023-09-23 23:57:42,914 WARN Channel in SHUTDOWN state: 192.168.0.189:7848.
+
+2023-09-23 23:57:43,124 WARN Unable to fsync directory C:\workspace\mashibing\spring_cloud_alibaba\nacos-8888\data\protocol\raft\naming_persistent_service\meta-data on windows.
+
+2023-09-23 23:57:43,133 INFO Save raft meta, path=C:\workspace\mashibing\spring_cloud_alibaba\nacos-8888\data\protocol\raft\naming_persistent_service\meta-data, term=1, votedFor=0.0.0.0:0, cost time=31 ms
+
+2023-09-23 23:57:43,136 WARN Node <naming_persistent_service/192.168.0.189:7888> reject term_unmatched AppendEntriesRequest from 192.168.0.189:7848, term=1, prevLogIndex=1, prevLogTerm=1, localPrevLogTerm=0, lastLogIndex=0, entriesSize=0.
+
+2023-09-23 23:57:43,147 WARN Node <naming_persistent_service/192.168.0.189:7888> reject term_unmatched AppendEntriesRequest from 192.168.0.189:7848, term=1, prevLogIndex=1, prevLogTerm=1, localPrevLogTerm=0, lastLogIndex=0, entriesSize=0.
+
+2023-09-23 23:57:43,182 INFO -Djraft.recyclers.maxCapacityPerThread: 4096.
+

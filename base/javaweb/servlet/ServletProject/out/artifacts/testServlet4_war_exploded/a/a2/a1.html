@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+    base标签的作用是在相对路径之前自动补充base[href]中的值
+    如果base标签不写,那么默认就是当前文件所在的路径
+    -->
+    <base href="http://127.0.0.1:8080/testServlet4_war_exploded/">
+    <!--<base href="http://127.0.0.1:8080/testServlet4_war_exploded/a/a2/">-->
+</head>
+<body>
+this is page a1
+<br/>
+
+    <!--
+    相对(基准)路径:以当前文件本身的位置去定位其他文件,相对自己的路径,以当前文件所在的位置为基准位置
+    绝对(基准)路径:以一个固定的位置去定位其他文文件,以一个固定的路径作为定位文件的基准位置,和文件本身位置无关
+
+    相对路径,不以/开头,就是相对路径  ..代表向上一层
+    绝对路径,以/开头   在页面上 /代表从项目的部署目录开始找  从webapps中开始找
+    页面的绝对路径要有项目名,除非我们的项目没有设置项目名
+    -->
+
+    <a href="a2.html" TARGET="_self">相对路径跳转至A2</a>
+    <a href="../../b/b2/b1.html" TARGET="_self">相对路径跳转至b1</a>
+    <br/>
+    <a href="a/a2/a2.html" TARGET="_self">base相对路径跳转至A2</a>
+    <a href="b/b2/b1.html" TARGET="_self">base相对路径跳转至b1</a>
+    <br/>
+    <a href="/testServlet4_war_exploded/a/a2/a2.html" TARGET="_self">绝对路径跳转至A2</a>
+    <a href="/testServlet4_war_exploded/b/b2/b1.html" TARGET="_self">绝对路径跳转至b1</a>
+
+
+</body>
+</html>

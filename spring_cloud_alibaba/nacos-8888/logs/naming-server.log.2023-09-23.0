@@ -1,0 +1,62 @@
+2023-09-23 18:16:48,423 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
+
+2023-09-23 18:16:49,549 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2023-09-23 18:16:49,551 INFO listen for service meta change
+
+2023-09-23 18:16:53,397 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848], new: [192.168.0.189:8848]
+
+2023-09-23 18:17:02,579 ERROR [HEALTH-CHECK] error while processing NIO task
+
+java.lang.InterruptedException: null
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireInterruptibly(AbstractQueuedSynchronizer.java:1220)
+	at java.util.concurrent.locks.ReentrantLock.lockInterruptibly(ReentrantLock.java:335)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:462)
+	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.processTask(TcpSuperSenseProcessor.java:137)
+	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.run(TcpSuperSenseProcessor.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:39,267 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
+
+2023-09-23 23:57:40,201 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:43,143 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:43,543 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2023-09-23 23:57:43,545 INFO listen for service meta change
+
+2023-09-23 23:57:47,348 INFO receive config info: unknown#192.168.0.189:8868#1695484666613#6
+
+
+2023-09-23 23:57:47,349 INFO receive config info: unknown#192.168.0.189:8848#1695484666102#6
+
+
+2023-09-23 23:57:47,368 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:48,113 INFO receive config info: unknown#192.168.0.189:8848#1695484668110#6
+
+
+2023-09-23 23:57:48,631 INFO receive config info: unknown#192.168.0.189:8868#1695484668627#6
+
+
+2023-09-23 23:57:48,759 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:50,128 INFO receive config info: unknown#192.168.0.189:8848#1695484670125#6
+
+
+2023-09-23 23:57:50,641 INFO receive config info: unknown#192.168.0.189:8868#1695484670638#6
+
+
+2023-09-23 23:57:51,185 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:52,136 INFO receive config info: unknown#192.168.0.189:8848#1695484672134#6
+
+
+2023-09-23 23:57:52,775 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+

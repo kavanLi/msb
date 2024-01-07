@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #empTable{
+            width: 80%;
+            border: 1px solid blue;
+            margin: 0px auto;
+        }
+        #empTable th,td{
+            border: 1px solid green;
+            text-align: center;
+        }
+        .a{
+            background-color: antiquewhite;
+        }
+        .b{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<table  id="empTable" cellpadding="0px" cellspacing="0px">
+    <tr>
+        <th>索引</th>
+        <th>序号</th>
+        <th>总人数</th>
+        <th>偶数索引?</th>
+        <th>奇数索引?</th>
+        <th>第一?</th>
+        <th>最后?</th>
+        <th>工号</th>
+        <th>姓名</th>
+        <th>职务</th>
+        <th>上级</th>
+        <th>入职日期</th>
+        <th>入职年</th>
+        <th>入职月</th>
+        <th>入职日</th>
+        <th>工资</th>
+        <th>补助</th>
+        <th>部门号</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="emp,i:${empList}" th:class="${i.odd}?a:b">
+        <td th:text="${i.index}"></td>
+        <td th:text="${i.count}"></td>
+        <td th:text="${i.size}"></td>
+        <td th:text="${i.odd}"></td>
+        <td th:text="${i.even}"></td>
+        <td th:text="${i.first}"></td>
+        <td th:text="${i.last}"></td>
+        <td th:text="${emp.empno}"></td>
+        <td th:text="${emp.ename}"></td>
+        <td th:text="${emp.job}"></td>
+        <td th:text="${#strings.isEmpty(emp.mgr)}?老板:${emp.mgr}"></td>
+        <td th:text="${#dates.format(emp.hiredate,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#dates.year(emp.hiredate)}"></td>
+        <td th:text="${#dates.month(emp.hiredate)}"></td>
+        <td th:text="${#dates.day(emp.hiredate)}"></td>
+        <td th:text="${#numbers.formatDecimal(emp.sal,7,'COMMA',2,'POINT')}"></td>
+        <td th:text="${#strings.isEmpty(emp.comm)}?0:${#numbers.formatDecimal(emp.sal,7,'COMMA',2,'POINT')}"></td>
+        <td th:text="${emp.deptno}"></td>
+        <td>
+            <a href="javascript:void(0)" th:onclick="removeEmp([[${emp.empno}]],[[${emp.ename}]])">删除</a>
+        </td>
+    </tr>
+    
+</table>
+<script>
+    function removeEmp(empno,ename){
+        var resulet =confirm("确定要删除编号为"+empno+"的"+ename);
+        if(resulet){
+            window.location.href="removeEmp?empno="+empno+"&ename="+ename;
+        }
+    }
+
+</script>
+
+<hr/>
+request:<br/>
+<span th:text="${#httpServletRequest.getAttribute('msg')}"></span><br/>
+<span th:text="${#request.getAttribute('msg')}"></span><br/>
+<span th:text="${msg}"></span><br/>
+
+session:<br/>
+<span th:text="${#httpSession.getAttribute('msg')}"></span><br/>
+<span th:text="${#session.getAttribute('msg')}"></span><br/>
+<span th:text="${session.msg}"></span><br/>
+
+application:<br/>
+<span th:text="${#servletContext.getAttribute('msg')}"></span><br/>
+<span th:text="${application.msg}"></span><br/>
+
+<hr/>
+new words ... ...
+
+new words 2
+</body>
+</html>

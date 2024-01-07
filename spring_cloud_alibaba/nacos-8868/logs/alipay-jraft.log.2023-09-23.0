@@ -1,0 +1,40 @@
+2023-09-23 23:57:26,085 INFO SPI service [com.alipay.sofa.jraft.JRaftServiceFactory - com.alipay.sofa.jraft.core.DefaultJRaftServiceFactory] loading.
+
+2023-09-23 23:57:26,446 INFO SPI service [com.alipay.sofa.jraft.rpc.RaftRpcFactory - com.alipay.sofa.jraft.rpc.impl.GrpcRaftRpcFactory] loading.
+
+2023-09-23 23:57:29,067 INFO SPI service [com.alipay.sofa.jraft.util.timer.RaftTimerFactory - com.alipay.sofa.jraft.util.timer.DefaultRaftTimerFactory] loading.
+
+2023-09-23 23:57:29,076 INFO The number of active nodes increment to 1.
+
+2023-09-23 23:57:29,380 INFO Starts FSMCaller successfully.
+
+2023-09-23 23:57:29,395 WARN No data for snapshot reader C:\workspace\mashibing\spring_cloud_alibaba\nacos-8868\data\protocol\raft\naming_persistent_service\snapshot.
+
+2023-09-23 23:57:29,432 INFO Node <naming_persistent_service/192.168.0.189:7868> init, term=0, lastLogId=LogId [index=0, term=0], conf=192.168.0.189:7848,192.168.0.189:7868,192.168.0.189:7888, oldConf=.
+
+2023-09-23 23:57:29,435 WARN RPC server is not started in RaftGroupService.
+
+2023-09-23 23:57:29,436 INFO Start the RaftGroupService successfully.
+
+2023-09-23 23:57:29,648 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7848.
+
+2023-09-23 23:57:29,650 WARN Channel in SHUTDOWN state: 192.168.0.189:7848.
+
+2023-09-23 23:57:29,899 INFO Node <naming_persistent_service/192.168.0.189:7868> received PreVoteRequest from 192.168.0.189:7848, term=1, currTerm=0, granted=true, requestLastLogId=LogId [index=0, term=0], lastLogId=LogId [index=0, term=0].
+
+2023-09-23 23:57:29,941 INFO Node <naming_persistent_service/192.168.0.189:7868> received RequestVoteRequest from 192.168.0.189:7848, term=1, currTerm=0.
+
+2023-09-23 23:57:29,966 WARN Unable to fsync directory C:\workspace\mashibing\spring_cloud_alibaba\nacos-8868\data\protocol\raft\naming_persistent_service\meta-data on windows.
+
+2023-09-23 23:57:29,969 INFO Save raft meta, path=C:\workspace\mashibing\spring_cloud_alibaba\nacos-8868\data\protocol\raft\naming_persistent_service\meta-data, term=1, votedFor=0.0.0.0:0, cost time=24 ms
+
+2023-09-23 23:57:29,980 WARN Unable to fsync directory C:\workspace\mashibing\spring_cloud_alibaba\nacos-8868\data\protocol\raft\naming_persistent_service\meta-data on windows.
+
+2023-09-23 23:57:29,980 INFO Save raft meta, path=C:\workspace\mashibing\spring_cloud_alibaba\nacos-8868\data\protocol\raft\naming_persistent_service\meta-data, term=1, votedFor=192.168.0.189:7848, cost time=10 ms
+
+2023-09-23 23:57:30,005 WARN Channel in TRANSIENT_FAILURE state: 192.168.0.189:7868.
+
+2023-09-23 23:57:30,005 WARN Channel in SHUTDOWN state: 192.168.0.189:7868.
+
+2023-09-23 23:57:30,081 INFO -Djraft.recyclers.maxCapacityPerThread: 4096.
+

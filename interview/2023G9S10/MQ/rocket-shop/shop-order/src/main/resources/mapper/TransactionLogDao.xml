@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.dao.TransactionLogDao">
+  <resultMap id="BaseResultMap" type="cn.edu.model.TransactionLog">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="business" jdbcType="VARCHAR" property="business" />
+    <result column="foreign_key" jdbcType="VARCHAR" property="foreignKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, business, foreign_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from transaction_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from transaction_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.edu.model.TransactionLog" useGeneratedKeys="true">
+    insert into transaction_log (id,business, foreign_key)
+    values (#{id,jdbcType=VARCHAR},#{business,jdbcType=VARCHAR}, #{foreignKey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.edu.model.TransactionLog" useGeneratedKeys="true">
+    insert into transaction_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="business != null">
+        business,
+      </if>
+      <if test="foreignKey != null">
+        foreign_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="business != null">
+        #{business,jdbcType=VARCHAR},
+      </if>
+      <if test="foreignKey != null">
+        #{foreignKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.model.TransactionLog">
+    update transaction_log
+    <set>
+      <if test="business != null">
+        business = #{business,jdbcType=VARCHAR},
+      </if>
+      <if test="foreignKey != null">
+        foreign_key = #{foreignKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.model.TransactionLog">
+    update transaction_log
+    set business = #{business,jdbcType=VARCHAR},
+      foreign_key = #{foreignKey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(*)
+    from transaction_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+</mapper>

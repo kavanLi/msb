@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user1" class="com.msb.bean.User">
+        <!--null值-->
+        <property name="userid">
+            <null></null>
+        </property>
+        <!--特殊符号 转译字符 < &lt;  >&gt;  & &amp;     -->
+        <property name="username" value="&amp;xiaoming&lt;&gt;"></property>
+        <!-- 特殊符号  <![CDATA[内容]]>  -->
+        <property name="password">
+            <value><![CDATA[&<123456>]]></value>
+        </property>
+    </bean>
+
+</beans>

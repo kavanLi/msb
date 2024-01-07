@@ -1,0 +1,293 @@
+2023-09-23 18:16:48,423 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
+
+2023-09-23 18:16:49,549 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2023-09-23 18:16:49,551 INFO listen for service meta change
+
+2023-09-23 18:16:53,397 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848], new: [192.168.0.189:8848]
+
+2023-09-23 18:17:02,579 ERROR [HEALTH-CHECK] error while processing NIO task
+
+java.lang.InterruptedException: null
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireInterruptibly(AbstractQueuedSynchronizer.java:1220)
+	at java.util.concurrent.locks.ReentrantLock.lockInterruptibly(ReentrantLock.java:335)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:462)
+	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.processTask(TcpSuperSenseProcessor.java:137)
+	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.run(TcpSuperSenseProcessor.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:25,858 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
+
+2023-09-23 23:57:26,784 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:30,060 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:30,515 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2023-09-23 23:57:30,516 INFO listen for service meta change
+
+2023-09-23 23:57:32,831 WARN Exception while request: http://192.168.0.189:8888/nacos/v1/ns/operator/cluster/state, caused: {}
+
+org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.189:8888 [/192.168.0.189] failed: Connection refused: connect
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.alibaba.nacos.common.http.client.request.DefaultHttpClientRequest.execute(DefaultHttpClientRequest.java:55)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchange(NacosRestTemplate.java:447)
+	at com.alibaba.nacos.naming.misc.HttpClient.request(HttpClient.java:116)
+	at com.alibaba.nacos.naming.misc.HttpClient.httpGet(HttpClient.java:79)
+	at com.alibaba.nacos.naming.misc.NamingProxy.reqCommon(NamingProxy.java:306)
+	at com.alibaba.nacos.naming.cluster.ServerListManager$ServerInfoUpdater.run(ServerListManager.java:173)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:606)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134)
+	... 23 common frames omitted
+2023-09-23 23:57:32,832 WARN NamingProxy
+
+java.io.IOException: failed to req API:http://192.168.0.189:8888/nacos/v1/ns/operator/cluster/state. code:500 msg: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.189:8888 [/192.168.0.189] failed: Connection refused: connect
+	at com.alibaba.nacos.naming.misc.NamingProxy.reqCommon(NamingProxy.java:321)
+	at com.alibaba.nacos.naming.cluster.ServerListManager$ServerInfoUpdater.run(ServerListManager.java:173)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:34,406 INFO receive config info: unknown#192.168.0.189:8848#1695484654045#6
+
+
+2023-09-23 23:57:34,407 INFO receive config info: unknown#192.168.0.189:8848#1695484652043#6
+
+
+2023-09-23 23:57:34,591 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:34,715 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:36,058 INFO receive config info: unknown#192.168.0.189:8848#1695484656054#6
+
+
+2023-09-23 23:57:36,590 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:38,072 INFO receive config info: unknown#192.168.0.189:8848#1695484658068#6
+
+
+2023-09-23 23:57:38,526 WARN Exception while request: http://192.168.0.189:8888/nacos/v1/ns/operator/cluster/state, caused: {}
+
+org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.189:8888 [/192.168.0.189] failed: Connection refused: connect
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.alibaba.nacos.common.http.client.request.DefaultHttpClientRequest.execute(DefaultHttpClientRequest.java:55)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchange(NacosRestTemplate.java:447)
+	at com.alibaba.nacos.naming.misc.HttpClient.request(HttpClient.java:116)
+	at com.alibaba.nacos.naming.misc.HttpClient.httpGet(HttpClient.java:79)
+	at com.alibaba.nacos.naming.misc.NamingProxy.reqCommon(NamingProxy.java:306)
+	at com.alibaba.nacos.naming.cluster.ServerListManager$ServerInfoUpdater.run(ServerListManager.java:173)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:606)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134)
+	... 23 common frames omitted
+2023-09-23 23:57:38,526 WARN NamingProxy
+
+java.io.IOException: failed to req API:http://192.168.0.189:8888/nacos/v1/ns/operator/cluster/state. code:500 msg: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.189:8888 [/192.168.0.189] failed: Connection refused: connect
+	at com.alibaba.nacos.naming.misc.NamingProxy.reqCommon(NamingProxy.java:321)
+	at com.alibaba.nacos.naming.cluster.ServerListManager$ServerInfoUpdater.run(ServerListManager.java:173)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:38,589 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:38,718 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:40,080 INFO receive config info: unknown#192.168.0.189:8848#1695484660077#6
+
+
+2023-09-23 23:57:40,621 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:41,144 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868]
+
+2023-09-23 23:57:42,630 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:42,730 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868], new: [192.168.0.189:8848, 192.168.0.189:8868]
+
+2023-09-23 23:57:44,525 WARN Exception while request: http://192.168.0.189:8888/nacos/v1/ns/operator/cluster/state, caused: {}
+
+org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.189:8888 [/192.168.0.189] failed: Connection refused: connect
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.alibaba.nacos.common.http.client.request.DefaultHttpClientRequest.execute(DefaultHttpClientRequest.java:55)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.execute(NacosRestTemplate.java:482)
+	at com.alibaba.nacos.common.http.client.NacosRestTemplate.exchange(NacosRestTemplate.java:447)
+	at com.alibaba.nacos.naming.misc.HttpClient.request(HttpClient.java:116)
+	at com.alibaba.nacos.naming.misc.HttpClient.httpGet(HttpClient.java:79)
+	at com.alibaba.nacos.naming.misc.NamingProxy.reqCommon(NamingProxy.java:306)
+	at com.alibaba.nacos.naming.cluster.ServerListManager$ServerInfoUpdater.run(ServerListManager.java:173)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:606)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134)
+	... 23 common frames omitted
+2023-09-23 23:57:44,525 WARN NamingProxy
+
+java.io.IOException: failed to req API:http://192.168.0.189:8888/nacos/v1/ns/operator/cluster/state. code:500 msg: org.apache.http.conn.HttpHostConnectException: Connect to 192.168.0.189:8888 [/192.168.0.189] failed: Connection refused: connect
+	at com.alibaba.nacos.naming.misc.NamingProxy.reqCommon(NamingProxy.java:321)
+	at com.alibaba.nacos.naming.cluster.ServerListManager$ServerInfoUpdater.run(ServerListManager.java:173)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:44,642 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:45,566 INFO receive config info: unknown#192.168.0.189:8888#1695484665541#6
+
+
+2023-09-23 23:57:46,644 WARN [STATUS-SYNCHRONIZE] failed to request serverStatus, remote server: 192.168.0.189:8888
+
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:194)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64)
+	at java.lang.Thread.run(Thread.java:748)
+2023-09-23 23:57:47,396 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+
+2023-09-23 23:57:51,966 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888], new: [192.168.0.189:8848, 192.168.0.189:8868, 192.168.0.189:8888]
+

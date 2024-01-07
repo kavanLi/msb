@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.dao.shopGoodsUniqueMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.model.shopGoodsUnique" >
+    <constructor >
+      <arg column="order_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="cn.edu.model.shopGoodsUnique" >
+    insert into shop_goods_unique (order_id)
+    values (#{orderId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.model.shopGoodsUnique" >
+    insert into shop_goods_unique
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

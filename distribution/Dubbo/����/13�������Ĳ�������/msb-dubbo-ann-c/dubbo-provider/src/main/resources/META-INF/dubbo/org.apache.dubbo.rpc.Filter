@@ -1,0 +1,2 @@
+myFilter=com.msb.dubbo.provider.filters.MyFilter
+providerContextFilter=com.msb.dubbo.provider.filters.ProviderContextFilter

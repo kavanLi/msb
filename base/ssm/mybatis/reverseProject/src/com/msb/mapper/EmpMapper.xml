@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.msb.mapper.EmpMapper" >
+  <resultMap id="BaseResultMap" type="com.msb.pojo.Emp" >
+    <id column="EMPNO" property="empno" jdbcType="INTEGER" />
+    <result column="ENAME" property="ename" jdbcType="VARCHAR" />
+    <result column="JOB" property="job" jdbcType="VARCHAR" />
+    <result column="MGR" property="mgr" jdbcType="INTEGER" />
+    <result column="HIREDATE" property="hiredate" jdbcType="DATE" />
+    <result column="SAL" property="sal" jdbcType="DOUBLE" />
+    <result column="COMM" property="comm" jdbcType="DOUBLE" />
+    <result column="DEPTNO" property="deptno" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from emp
+    where EMPNO = #{empno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from emp
+    where EMPNO = #{empno,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.msb.pojo.Emp" >
+    insert into emp (EMPNO, ENAME, JOB, 
+      MGR, HIREDATE, SAL, COMM, 
+      DEPTNO)
+    values (#{empno,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{mgr,jdbcType=INTEGER}, #{hiredate,jdbcType=DATE}, #{sal,jdbcType=DOUBLE}, #{comm,jdbcType=DOUBLE}, 
+      #{deptno,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.msb.pojo.Emp" >
+    insert into emp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empno != null" >
+        EMPNO,
+      </if>
+      <if test="ename != null" >
+        ENAME,
+      </if>
+      <if test="job != null" >
+        JOB,
+      </if>
+      <if test="mgr != null" >
+        MGR,
+      </if>
+      <if test="hiredate != null" >
+        HIREDATE,
+      </if>
+      <if test="sal != null" >
+        SAL,
+      </if>
+      <if test="comm != null" >
+        COMM,
+      </if>
+      <if test="deptno != null" >
+        DEPTNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empno != null" >
+        #{empno,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="mgr != null" >
+        #{mgr,jdbcType=INTEGER},
+      </if>
+      <if test="hiredate != null" >
+        #{hiredate,jdbcType=DATE},
+      </if>
+      <if test="sal != null" >
+        #{sal,jdbcType=DOUBLE},
+      </if>
+      <if test="comm != null" >
+        #{comm,jdbcType=DOUBLE},
+      </if>
+      <if test="deptno != null" >
+        #{deptno,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.msb.pojo.Emp" >
+    update emp
+    <set >
+      <if test="ename != null" >
+        ENAME = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        JOB = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="mgr != null" >
+        MGR = #{mgr,jdbcType=INTEGER},
+      </if>
+      <if test="hiredate != null" >
+        HIREDATE = #{hiredate,jdbcType=DATE},
+      </if>
+      <if test="sal != null" >
+        SAL = #{sal,jdbcType=DOUBLE},
+      </if>
+      <if test="comm != null" >
+        COMM = #{comm,jdbcType=DOUBLE},
+      </if>
+      <if test="deptno != null" >
+        DEPTNO = #{deptno,jdbcType=INTEGER},
+      </if>
+    </set>
+    where EMPNO = #{empno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.msb.pojo.Emp" >
+    update emp
+    set ENAME = #{ename,jdbcType=VARCHAR},
+      JOB = #{job,jdbcType=VARCHAR},
+      MGR = #{mgr,jdbcType=INTEGER},
+      HIREDATE = #{hiredate,jdbcType=DATE},
+      SAL = #{sal,jdbcType=DOUBLE},
+      COMM = #{comm,jdbcType=DOUBLE},
+      DEPTNO = #{deptno,jdbcType=INTEGER}
+    where EMPNO = #{empno,jdbcType=INTEGER}
+  </update>
+</mapper>

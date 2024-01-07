@@ -1,0 +1,13 @@
+server:
+  port: 8002
+logging:
+  config: classpath:logback.xml
+
+dubbo:
+  application:
+    name: dubbo-provider
+  protocol:
+    name: dubbo
+    port: 20883
+  registry:
+    address: zookeeper://127.0.0.1:2181

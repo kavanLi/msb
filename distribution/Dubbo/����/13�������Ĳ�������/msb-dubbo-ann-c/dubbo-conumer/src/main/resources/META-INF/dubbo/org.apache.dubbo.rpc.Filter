@@ -1,0 +1,1 @@
+consumerContextFilter=com.msb.dubbo.consumer.filters.ConsumerContextFilter

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <!--目标对象-->
+    <bean id="userDao" class="com.msb.dao.impl.UserDaoImpl"></bean>
+    <!--切面对象-->
+    <bean id="daoAspect" class="com.msb.aspect.DaoAspect"></bean>
+
+    <!--配置AOP增强功能-->
+    <aop:config>
+        <!--配置切点-->
+        <aop:pointcut id="pointCutAdd" expression="execution(* com.msb.dao.UserDao.addUser(..))"/>
+        <!--配置切面-->
+        <aop:aspect ref="daoAspect">
+            <aop:before method="methodBefore" pointcut-ref="pointCutAdd"></aop:before>
+            <aop:after method="methodAfter" pointcut-ref="pointCutAdd"></aop:after>
+            <aop:around method="methodAround" pointcut-ref="pointCutAdd"></aop:around>
+            <aop:after-returning method="methodAfterReturning" pointcut-ref="pointCutAdd" returning="res"></aop:after-returning>
+            <aop:after-throwing method="methodAfterThrowing" pointcut-ref="pointCutAdd" throwing="ex"></aop:after-throwing>
+        </aop:aspect>
+
+    </aop:config>
+
+
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mybatisx.mapper.TUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.bobo.mybatisx.domain.TUser">
+            <id property="uid" column="uid" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="age" column="age" jdbcType="INTEGER"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,name,age,
+        email,is_deleted
+    </sql>
+    <select id="queryUserById" resultType="com.bobo.mybatisx.domain.TUser">
+        select * from t_user where id = #{id}
+    </select>
+</mapper>
