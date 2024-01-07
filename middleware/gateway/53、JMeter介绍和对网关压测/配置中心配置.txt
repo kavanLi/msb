@@ -1,0 +1,20 @@
+{
+	"rules":[{
+		"id":"1",
+		"name":"test1",
+		"protocol":"http",
+		"serviceId":"backend-http-server",
+		"prefix":"/user",
+		"paths":[
+			"/http-server/ping","/user/update"
+		],
+		"order":1,
+		"filterConfigs":[{
+			"id":"load_balance_filter",
+			"config":{
+				"load_balancer":"RoundRobin"
+			}
+		} 
+		] 
+	}]
+}
