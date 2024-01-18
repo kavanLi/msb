@@ -11,7 +11,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.SystemException;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.annotation.OperationLogAnnotation;

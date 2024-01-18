@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import nonapi.io.github.classgraph.json.Id;
 
 /**
  * 
@@ -26,6 +27,7 @@ public class DynaAmsOrgprovisions implements Serializable {
      * ??
      */
     @TableId
+    @Id
     private Long id;
 
     /**

@@ -111,35 +111,71 @@ class MyBatisPlusDemo21ApplicationTests {
             "refund",
             "orderSplitRefund").collect(Collectors.toList());
 
+    private final static List <Long> yunstIndustryAppIdList = Stream.of(1743191916647714844L,
+            1743191916647714845L,
+            1455358424832794626L,
+            1486217815395803137L,
+            1259773592833462274L,
+            1686902624895705089L,
+            1704313121942732801L,
+            1341646583606824961L,
+            1428278509113409537L,
+            1727136895332200450L,
+            1646329687519006721L).collect(Collectors.toList());
 
     @SneakyThrows
     @Test
     @ReportDB
     void initData4DynaAmsSubprodApi() {
+        printDatabaseInfo();
         List <DynaAmsSoaservice> dynaAmsSoaservices = dynaAmsSoaserviceService.list();
         List <DynaAmsSubprodApi> subProdApiList = new ArrayList <>();
         Random random = new Random();
+
+        List <DynaAmsSoaservice> yunstIndustry = new ArrayList <>();
+        List <DynaAmsSoaservice> YunstSecondGen = new ArrayList <>();
+
         for (DynaAmsSoaservice soaService : dynaAmsSoaservices) {
-            DynaAmsSubprodApi subProdApi = new DynaAmsSubprodApi();
-            subProdApi.setApiId(soaService.getId());
-            subProdApi.setAvailable((short) random.nextInt(2));
-            subProdApi.setNameEn(soaService.getNameEn());
-            subProdApi.setNameSoa(soaService.getNameSoa());
-            subProdApi.setPVersion(soaService.getPVersion());
-            subProdApi.setProdId(String.valueOf(random.nextInt(3)));
-            subProdApi.setCreateTime(new Date());
-            subProdApi.setUpdateTime(new Date());
             if (yunstIndustryApiName.contains(soaService.getNameEn())) {
-                subProdApi.setApplicationId(1272802971645644802L);
+                yunstIndustry.add(soaService);
+            } else {
+                YunstSecondGen.add(soaService);
+            }
+        }
+
+        for (DynaAmsSoaservice soaService : yunstIndustry) {
+            for (Long appId : yunstIndustryAppIdList) {
+                DynaAmsSubprodApi subProdApi = new DynaAmsSubprodApi();
+                subProdApi.setApiId(soaService.getId());
+                subProdApi.setAvailable((short) 1);
+                subProdApi.setNameEn(soaService.getNameEn());
+                subProdApi.setNameSoa(soaService.getNameSoa());
+                subProdApi.setPVersion(soaService.getPVersion());
+                subProdApi.setProdId(String.valueOf(random.nextInt(3)));
+                subProdApi.setCreateTime(new Date());
+                subProdApi.setUpdateTime(new Date());
+                subProdApi.setApplicationId(appId);
                 subProdApi.setCreateUserName("慧营销接口");
                 subProdApi.setUpdateUserName("慧营销接口");
-            } else {
-                subProdApi.setApplicationId(1811011059060727510L);
-                subProdApi.setCreateUserName("云商通二代接口");
-                subProdApi.setUpdateUserName("云商通二代接口");
+                subProdApiList.add(subProdApi);
             }
-            subProdApiList.add(subProdApi);
         }
+
+        //for (DynaAmsSoaservice soaService : YunstSecondGen) {
+        //    DynaAmsSubprodApi subProdApi = new DynaAmsSubprodApi();
+        //    subProdApi.setApiId(soaService.getId());
+        //    subProdApi.setAvailable((short) 1);
+        //    subProdApi.setNameEn(soaService.getNameEn());
+        //    subProdApi.setNameSoa(soaService.getNameSoa());
+        //    subProdApi.setPVersion(soaService.getPVersion());
+        //    subProdApi.setProdId(String.valueOf(random.nextInt(3)));
+        //    subProdApi.setCreateTime(new Date());
+        //    subProdApi.setUpdateTime(new Date());
+        //    subProdApi.setApplicationId(1811011059060727510L);
+        //    subProdApi.setCreateUserName("云商通二代接口");
+        //    subProdApi.setUpdateUserName("云商通二代接口");
+        //    subProdApiList.add(subProdApi);
+        //}
         dynaAmsSubprodApiService.saveBatch(subProdApiList);
     }
 
@@ -164,8 +200,11 @@ class MyBatisPlusDemo21ApplicationTests {
         //Thread.sleep(1000);
         //Map <Long, String> allEnumList1 = EnumCacheUtil.getAllEnumList();
         System.out.println(123);
-        //List <DynaAmsOrganization> dynaAmsOrganizations = dynaAmsOrganizationService.list();
-        //System.out.println(123);
+        for (int i = 0; i < 10; i++) {
+            List <DynaAmsOrganization> dynaAmsOrganizations = dynaAmsOrganizationService.list();
+            Thread.sleep(1000);
+            System.out.println(123);
+        }
 
         // 获取分公司信息
         //DynaAmsOrganization dynaAmsOrganization = dynaAmsOrganizationService.getById(1764L);

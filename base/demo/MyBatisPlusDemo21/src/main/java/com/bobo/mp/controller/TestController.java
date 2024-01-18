@@ -2,9 +2,12 @@ package com.bobo.mp.controller;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,11 @@ import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
 import com.bobo.mp.service.DynaAmsOrganizationService;
 import com.bobo.mp.service.DynaAmsUserOptLogService;
 import lombok.SneakyThrows;
+import oracle.jdbc.OracleConnection;
+import oracle.jdbc.OracleStatement;
+import oracle.jdbc.dcn.DatabaseChangeEvent;
+import oracle.jdbc.dcn.DatabaseChangeListener;
+import oracle.jdbc.dcn.DatabaseChangeRegistration;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +64,7 @@ public class TestController {
 
     @Autowired
     ApplicationContext ctx;
+
 
     @GetMapping("/test2")
     public JSONArray test2() {

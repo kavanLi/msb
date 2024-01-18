@@ -1,0 +1,8 @@
+
+<form id="stock_sub_form" th:action="@{/subscriptions}" th:object="${stockSymbol}" method="post">
+    <!--        <li th:each="stock : ${stocks}">-->
+    <div th:each="stock : ${stocks}">
+        <input type="radio" th:field="*{symbol}" th:value="${stock.symbol}"/>
+        <label th:text="${stock.symbol} + ' - ' + ${stock.name}"></label>
+    </div>
+</form>

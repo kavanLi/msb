@@ -3,6 +3,11 @@ package com.example.demo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -11,9 +16,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.constraints.NotNull;
 
@@ -28,9 +36,14 @@ import com.example.demo.domain.User;
 import com.example.demo.domain.entity.MapperTestEO;
 import com.example.demo.domain.model.MapperTestVO;
 import lombok.extern.slf4j.Slf4j;
+import oracle.jdbc.dcn.DatabaseChangeEvent;
+import oracle.jdbc.dcn.DatabaseChangeListener;
+import oracle.jdbc.dcn.DatabaseChangeRegistration;
+import oracle.jdbc.driver.OracleConnection;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
+import org.slf4j.MDC;
 import org.springframework.util.Assert;
 
 /**
@@ -87,7 +100,19 @@ public class MainTest {
 
 
     /* getters/setters ----------------------------------------------------- */
+
+
+
+
+
+
     public static void main(String[] args) throws Exception {
+
+        List <Integer> collect = Stream.of(1, 2, 3).collect(Collectors.toList());
+        collect.add(4);
+        MDC.put("traceId", "666666666");
+        log.info("Processing request...");
+        MDC.clear();
 
         // 创建随机数生成器
         Random random = new Random();
@@ -100,7 +125,6 @@ public class MainTest {
             System.out.println(randomNumber);
 
         }
-
 
 
         //Short short1 = true && false;
@@ -1088,45 +1112,45 @@ public class MainTest {
 
     }
 
-    /* private methods ----------------------------------------------------- */
+/* private methods ----------------------------------------------------- */
 
-    /* getters/setters ----------------------------------------------------- */
-    enum OperationType {
-        syncMolecularPathology("同步分子病理数据"),
-        referInfo("查询信息"),
-        editSopForm("编辑sop表单或表格"),
-        updateSopForm("更新sop表单或表格"),
-        updateInfo("更新信息"),
-        createAnalyze("创建分析"),
-        continueAnalyze("继续分析"),
-        reAnalyze("重新分析"),
-        analyzed("分析完成"),
-        verifying("开始审核"),
-        verified("审核完成"),
-        submitCheck("提交复核"),
-        checking("开始复核"),
-        checked("复核完成"),
-        submitReview("提交重新验证"),
-        editMutationSite("更改位点数据"),
-        prepareReport("准备报告"),
-        editReport("编辑报告"),
-        sendReport("发送报告"),
-        archive("归档"),
-        terminate("分析终止"),
-        withdraw("撤回");
+/* getters/setters ----------------------------------------------------- */
+enum OperationType {
+    syncMolecularPathology("同步分子病理数据"),
+    referInfo("查询信息"),
+    editSopForm("编辑sop表单或表格"),
+    updateSopForm("更新sop表单或表格"),
+    updateInfo("更新信息"),
+    createAnalyze("创建分析"),
+    continueAnalyze("继续分析"),
+    reAnalyze("重新分析"),
+    analyzed("分析完成"),
+    verifying("开始审核"),
+    verified("审核完成"),
+    submitCheck("提交复核"),
+    checking("开始复核"),
+    checked("复核完成"),
+    submitReview("提交重新验证"),
+    editMutationSite("更改位点数据"),
+    prepareReport("准备报告"),
+    editReport("编辑报告"),
+    sendReport("发送报告"),
+    archive("归档"),
+    terminate("分析终止"),
+    withdraw("撤回");
 
-        String title;
+    String title;
 
-        private OperationType(String title) {
-            this.title = title;
-        }
-
-        public String getTitle() {
-            return this.title;
-        }
-
-
+    private OperationType(String title) {
+        this.title = title;
     }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+
+}
 
     public static int getMSWordsCount(String context) {
         int words_count = 0;

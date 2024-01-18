@@ -1,0 +1,11 @@
+# 应用名称
+spring:
+  application:
+    name: msb-webflux-mongodb
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test-db
+
+

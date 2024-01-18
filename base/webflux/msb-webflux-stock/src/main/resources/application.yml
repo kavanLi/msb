@@ -1,0 +1,26 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: mall-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.56.10:8848
+
+    gateway:
+      routes:
+        - id: mall-product-route
+          uri: lb://mall-product
+          predicates:
+            - Path=/app/pms/**
+          filters:
+            - RewritePath=/app/pms/(?<segment>/?.*), /product/$\{segment}
+        - id: renren-fast
+          uri: lb://renren-fast
+          predicates:
+            - Path=/app/**
+          filters:
+            - RewritePath=/app/(?<segment>/?.*), /renren-fast/$\{segment}

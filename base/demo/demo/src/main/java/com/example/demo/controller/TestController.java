@@ -52,6 +52,15 @@ public class TestController {
         return errors;
     }
 
+    @GetMapping(value = "/secure")
+    public Map<String, String> secure(){
+        System.out.println(123123123);
+        Map<String, String> errors = new HashMap <>();
+        errors.put("123", "1231");
+        return errors;
+    }
+
+
     @GetMapping(value = "/foobar")
     @OperationLogAnnotation
     public Map<String, String> test1323(){

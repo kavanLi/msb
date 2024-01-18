@@ -17,7 +17,7 @@
         <!-- 日志输出格式 -->
         <layout class="ch.qos.logback.classic.PatternLayout">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 [%method,%line]显示代码行号 %msg：日志消息，%n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%method,%line]- %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} traceId:%X{traceId} [%thread] %-5level %logger{50} [%method,%line]- %msg%n</pattern>
         </layout>
 <!--        <encoder>-->
 <!--            &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 [%method,%line]显示代码行号 %msg：日志消息，%n是换行符&ndash;&gt;-->
@@ -43,7 +43,7 @@
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息， [%method,%line]显示代码行号 %n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%method,%line] - %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} traceId:%X{traceId} [%thread] %-5level %logger{50} [%method,%line] - %msg%n
             </pattern>
         </layout>
         <!--日志文件最大的大小-->

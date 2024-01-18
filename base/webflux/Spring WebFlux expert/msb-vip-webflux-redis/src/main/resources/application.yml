@@ -1,0 +1,11 @@
+# 应用名称
+spring:
+  application:
+    name: msb-vip-webflux-redis
+  redis:
+    host: 110.40.198.77
+    port: 6379
+    timeout: 5000
+
+
+
