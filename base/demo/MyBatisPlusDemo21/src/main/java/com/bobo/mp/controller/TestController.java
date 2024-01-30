@@ -114,22 +114,22 @@ public class TestController {
     @GetMapping(value = "")
     @ReportDB
     public Map <String, String> test() {
-        DataSource ds = ctx.getBean(DataSource.class);
-        new Thread(() -> {
-            DynaAmsOrganization dynaAmsOrganization = dynaAmsOrganizationService.getById(1764L);
-            while (true) {
-                System.out.println(dynaAmsOrganization.getName());
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }).start();
+        //DataSource ds = ctx.getBean(DataSource.class);
+        //new Thread(() -> {
+        //    DynaAmsOrganization dynaAmsOrganization = dynaAmsOrganizationService.getById(1764L);
+        //    while (true) {
+        //        System.out.println(dynaAmsOrganization.getName());
+        //        try {
+        //            Thread.sleep(1000);
+        //        } catch (InterruptedException e) {
+        //            throw new RuntimeException(e);
+        //        }
+        //    }
+        //}).start();
         //DynaAmsUserOptLog byId = dynaAmsUserOptLogService.getById(360930L);
         //System.out.println(yourProperty);
         Map <String, String> errors = new HashMap <>();
-        errors.put("123", "1231");
+        errors.put("123", "test");
         return errors;
     }
 

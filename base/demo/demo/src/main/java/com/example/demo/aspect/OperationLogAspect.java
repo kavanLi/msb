@@ -71,7 +71,7 @@ public class OperationLogAspect {
 
     @Around("execution(* com.example.demo.controller..*.*(..))")
     public Object methodAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        asyncService.processUpdateAndLog("666");
+        //asyncService.processUpdateAndLog("666");
         System.out.println("aroundA invoked before---------------------------------------");
         saveOperationLog(proceedingJoinPoint);
         Object proceed = proceedingJoinPoint.proceed();
@@ -141,7 +141,9 @@ public class OperationLogAspect {
             log.info("========================================== Start ==========================================");
             //打印请求参数相关日志
             // 打印请求 url
-            log.info("url:{}", request.getRequestURI());
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            int clientPort = attr.getRequest().getLocalPort();
+            log.info("url:{},port {}, client port {}", request.getRequestURI(), request.getServerPort(), clientPort);
             // 打印 Http method
             log.info("HTTP Method:{}", request.getMethod());
             log.info("HTTP Headers:{}", getHeaders(request.getHeaderNames(), request));
@@ -153,7 +155,7 @@ public class OperationLogAspect {
             log.info("Request Param Args:{}", getParameterMap(request.getParameterMap()));
             log.info("Request Body Args:{}", args);
             User user1 = new User();
-            user1.setEmail(String.valueOf(args[0]));
+            //user1.setEmail(String.valueOf(args[0]));
             // 如果是传JsonObject
             // 获取方法参数
             // 遍历参数，找到 User 类型的参数
@@ -166,8 +168,8 @@ public class OperationLogAspect {
             }
 
             //如果是传JsonStr
-            String string = String.valueOf(args[0]);
-            com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(string);
+            //String string = String.valueOf(args[0]);
+            //com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(string);
 
 
 
