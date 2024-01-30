@@ -108,6 +108,13 @@ public class MainTest {
 
     public static void main(String[] args) throws Exception {
 
+        for (int j = 0; j < 3000; j++) {
+            System.out.println("        - id: msb" + j + "\n" +
+                    "          uri: http://localhost:8080\n" +
+                    "          predicates:\n" +
+                    "            - Path=/test" + j);
+        }
+
         List <Integer> collect = Stream.of(1, 2, 3).collect(Collectors.toList());
         collect.add(4);
         MDC.put("traceId", "666666666");

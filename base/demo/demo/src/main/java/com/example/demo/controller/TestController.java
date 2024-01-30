@@ -56,7 +56,7 @@ public class TestController {
     public Map<String, String> secure(){
         System.out.println(123123123);
         Map<String, String> errors = new HashMap <>();
-        errors.put("123", "1231");
+        errors.put("123", "secure");
         return errors;
     }
 
@@ -66,7 +66,7 @@ public class TestController {
     public Map<String, String> test1323(){
         System.out.println(123123123);
         Map<String, String> errors = new HashMap <>();
-        errors.put("123", "1231");
+        errors.put("123", "foobar");
         return errors;
     }
 
