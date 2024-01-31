@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -37,6 +38,11 @@ public class WebFluxController {
                 .accountNo("sdfsdf")
                 .build();
         return Mono.just(dynaAmsOrgprovisions);
+    }
+
+    @GetMapping("/user1")
+    public Mono <String> user1() {
+        return Mono.just("Hello, WebFlux !");
     }
 
     @GetMapping("/hello")
