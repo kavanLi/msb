@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+    <bean id="courseService" class="com.mashibing.service.impl.CourseServiceImpl">
+        <property name="courseDao" ref="courseDao"></property>
+    </bean>
+
+    <bean id="courseDao" class="com.mashibing.dao.impl.CourseDaoImpl">
+        <property name="courseName" value="java"></property>
+    </bean>
+</beans>

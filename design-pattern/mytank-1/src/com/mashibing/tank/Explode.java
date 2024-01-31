@@ -1,28 +1,47 @@
 package com.mashibing.tank;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
-public class Explode {
-    public static int WIDTH = ResourceMgr.explodes[0].getWidth();
-    public static int HEIGHT = ResourceMgr.explodes[0].getHeight();
+public class Explode extends GameObject {
+	public static int WIDTH = ResourceMgr.explodes[0].getWidth();
+	public static int HEIGHT = ResourceMgr.explodes[0].getHeight();
+	
 
-    private int x,y;
-    private TankFrame tf = null;
-    private boolean living = true;
+	
+	//private boolean living = true;
+	
+	private int step = 0;
+	
+	public Explode(int x, int y) {
+		this.x = x;
+		this.y = y;
+		
+		new Thread(()->new Audio("audio/explode.wav").play()).start();
+		GameModel.getInstance().add(this);
+	}
+	
+	
 
-    private int step = 0;
+	public void paint(Graphics g) {
+		
+		g.drawImage(ResourceMgr.explodes[step++], x, y, null);
+		
+		if(step >= ResourceMgr.explodes.length) 
+			GameModel.getInstance().remove(this);
+		
+		
+	}
+	
+	@Override
+	public int getWidth() {
+		return WIDTH;
+	}
 
-
-    public Explode(int x, int y, TankFrame tf) {
-        this.x = x;
-        this.y = y;
-        this.tf = tf;
-    }
-
-    public void paint(Graphics g) {
-        g.drawImage(ResourceMgr.explodes[step++], x, y, null);
-        if (step >= ResourceMgr.explodes.length) tf.explodes.remove(this);
-    }
-
+	@Override
+	public int getHeight() {
+		return HEIGHT;
+	}
+	
 
 }
