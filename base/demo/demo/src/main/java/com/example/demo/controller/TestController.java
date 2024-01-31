@@ -45,17 +45,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
     @GetMapping(value = "")
-    public Map<String, String> test(){
+    public Map <String, String> test() {
         System.out.println(123123123);
-        Map<String, String> errors = new HashMap <>();
+        Map <String, String> errors = new HashMap <>();
         errors.put("123", "1231");
         return errors;
     }
 
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/world")
+    public String testWorld(@RequestBody String reqStr) {
+        System.out.println(reqStr);
+        return "testWorld";
+    }
+
     @GetMapping(value = "/secure")
-    public Map<String, String> secure(){
+    public Map <String, String> secure() {
         System.out.println(123123123);
-        Map<String, String> errors = new HashMap <>();
+        Map <String, String> errors = new HashMap <>();
         errors.put("123", "secure");
         return errors;
     }
@@ -63,44 +69,44 @@ public class TestController {
 
     @GetMapping(value = "/foobar")
     @OperationLogAnnotation
-    public Map<String, String> test1323(){
+    public Map <String, String> test1323() {
         System.out.println(123123123);
-        Map<String, String> errors = new HashMap <>();
+        Map <String, String> errors = new HashMap <>();
         errors.put("123", "foobar");
         return errors;
     }
 
 
     /**
-     {
-     "$request": "Simulated HttpServletRequest Data",
-     "manageModel": "SimulatedManageModel",
-     "acctOrgType": "SimulatedAcctOrgType",
-     "accountNo": "SimulatedAccountNo",
-     "accountName": "SimulatedAccountName",
-     "bankName": "SimulatedBankName",
-     "bankCode": "SimulatedBankCode",
-     "bankProvince": "SimulatedBankProvince",
-     "bankCity": "SimulatedBankCity",
-     "paymentMinAmount": "SimulatedPaymentMinAmount",
-     "paymentMaxAmount": "SimulatedPaymentMaxAmount",
-     "createUser": "SimulatedCreateUser",
-     "updateUser": "SimulatedUpdateUser"
-     }
-
-     JSON.stringify() ->
-
-     '{"$request":"Simulated HttpServletRequest Data","manageModel":"SimulatedManageModel","acctOrgType":"SimulatedAcctOrgType","accountNo":"SimulatedAccountNo","accountName":"SimulatedAccountName","bankName":"SimulatedBankName","bankCode":"SimulatedBankCode","bankProvince":"SimulatedBankProvince","bankCity":"SimulatedBankCity","paymentMinAmount":"SimulatedPaymentMinAmount","paymentMaxAmount":"SimulatedPaymentMaxAmount","createUser":"SimulatedCreateUser","updateUser":"SimulatedUpdateUser"}'
-
-     EncodeUri() ->
-
-     '%7B%22$request%22:%22Simulated%20HttpServletRequest%20Data%22,%22manageModel%22:%22SimulatedManageModel%22,%22acctOrgType%22:%22SimulatedAcctOrgType%22,%22accountNo%22:%22SimulatedAccountNo%22,%22accountName%22:%22SimulatedAccountName%22,%22bankName%22:%22SimulatedBankName%22,%22bankCode%22:%22SimulatedBankCode%22,%22bankProvince%22:%22SimulatedBankProvince%22,%22bankCity%22:%22SimulatedBankCity%22,%22paymentMinAmount%22:%22SimulatedPaymentMinAmount%22,%22paymentMaxAmount%22:%22SimulatedPaymentMaxAmount%22,%22createUser%22:%22SimulatedCreateUser%22,%22updateUser%22:%22SimulatedUpdateUser%22%7D'
-
-     通过postman，Json字符串作为请求参数时，需要把编码后reqJson进行传参
-
-     **URL 编码（Percent-Encoding）**是一种将特殊字符以及非ASCII字符转换成 % 后跟两位十六进制数的形式的编码方式。这是因为在URL中，某些字符可能会被解释为控制字符或特殊字符，为了避免歧义和错误解释，需要对这些字符进行编码。
-     总体来说，URL 编码和解码是一种通用的机制，确保在网络传输中的数据完整性和可靠性。在使用 RESTful API 时，尤其是在 URL 参数中传递数据时，进行 URL 编码是一种良好的实践，可以避免因为特殊字符引起的问题。
-
+     * {
+     * "$request": "Simulated HttpServletRequest Data",
+     * "manageModel": "SimulatedManageModel",
+     * "acctOrgType": "SimulatedAcctOrgType",
+     * "accountNo": "SimulatedAccountNo",
+     * "accountName": "SimulatedAccountName",
+     * "bankName": "SimulatedBankName",
+     * "bankCode": "SimulatedBankCode",
+     * "bankProvince": "SimulatedBankProvince",
+     * "bankCity": "SimulatedBankCity",
+     * "paymentMinAmount": "SimulatedPaymentMinAmount",
+     * "paymentMaxAmount": "SimulatedPaymentMaxAmount",
+     * "createUser": "SimulatedCreateUser",
+     * "updateUser": "SimulatedUpdateUser"
+     * }
+     *
+     * JSON.stringify() ->
+     *
+     * '{"$request":"Simulated HttpServletRequest Data","manageModel":"SimulatedManageModel","acctOrgType":"SimulatedAcctOrgType","accountNo":"SimulatedAccountNo","accountName":"SimulatedAccountName","bankName":"SimulatedBankName","bankCode":"SimulatedBankCode","bankProvince":"SimulatedBankProvince","bankCity":"SimulatedBankCity","paymentMinAmount":"SimulatedPaymentMinAmount","paymentMaxAmount":"SimulatedPaymentMaxAmount","createUser":"SimulatedCreateUser","updateUser":"SimulatedUpdateUser"}'
+     *
+     * EncodeUri() ->
+     *
+     * '%7B%22$request%22:%22Simulated%20HttpServletRequest%20Data%22,%22manageModel%22:%22SimulatedManageModel%22,%22acctOrgType%22:%22SimulatedAcctOrgType%22,%22accountNo%22:%22SimulatedAccountNo%22,%22accountName%22:%22SimulatedAccountName%22,%22bankName%22:%22SimulatedBankName%22,%22bankCode%22:%22SimulatedBankCode%22,%22bankProvince%22:%22SimulatedBankProvince%22,%22bankCity%22:%22SimulatedBankCity%22,%22paymentMinAmount%22:%22SimulatedPaymentMinAmount%22,%22paymentMaxAmount%22:%22SimulatedPaymentMaxAmount%22,%22createUser%22:%22SimulatedCreateUser%22,%22updateUser%22:%22SimulatedUpdateUser%22%7D'
+     *
+     * 通过postman，Json字符串作为请求参数时，需要把编码后reqJson进行传参
+     *
+     * *URL 编码（Percent-Encoding）**是一种将特殊字符以及非ASCII字符转换成 % 后跟两位十六进制数的形式的编码方式。这是因为在URL中，某些字符可能会被解释为控制字符或特殊字符，为了避免歧义和错误解释，需要对这些字符进行编码。
+     * 总体来说，URL 编码和解码是一种通用的机制，确保在网络传输中的数据完整性和可靠性。在使用 RESTful API 时，尤其是在 URL 参数中传递数据时，进行 URL 编码是一种良好的实践，可以避免因为特殊字符引起的问题。
+     *
      * @return
      */
     @RequestMapping(value = "/testJsonObject", method = {RequestMethod.POST, RequestMethod.GET})
@@ -129,7 +135,7 @@ public class TestController {
 
     @GetMapping("/test2")
     public ResponseEntity <Map> test2() {
-        Map result = new HashMap<>();
+        Map result = new HashMap <>();
         result.put("code", "fail");
         result.put("msg", "ResponseEntity test");
         return ResponseEntity.ok(result);
@@ -237,7 +243,7 @@ public class TestController {
             response.reset();
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
-            Map<String, String> map = new HashMap<String, String>();
+            Map <String, String> map = new HashMap <String, String>();
             map.put("status", "failure");
             map.put("message", "下载文件失败" + e.getMessage());
             response.getWriter().println(JSON.toJSONString(map));
@@ -245,13 +251,13 @@ public class TestController {
     }
 
     /* private methods ----------------------------------------------------- */
-    private static List<List<String>> head() {
-        List<List<String>> list = new ArrayList<List<String>>();
-        List<String> head0 = new ArrayList<String>();
+    private static List <List <String>> head() {
+        List <List <String>> list = new ArrayList <List <String>>();
+        List <String> head0 = new ArrayList <String>();
         head0.add("字符串" + System.currentTimeMillis());
-        List<String> head1 = new ArrayList<String>();
+        List <String> head1 = new ArrayList <String>();
         head1.add("数字" + System.currentTimeMillis());
-        List<String> head2 = new ArrayList<String>();
+        List <String> head2 = new ArrayList <String>();
         head2.add("日期" + System.currentTimeMillis());
         list.add(head0);
         list.add(head1);
@@ -259,15 +265,15 @@ public class TestController {
         return list;
     }
 
-    private static List<List<String>> head1() {
-        List<List<String>> list = new ArrayList<List<String>>();
-        List<String> head0 = new ArrayList<String>();
+    private static List <List <String>> head1() {
+        List <List <String>> list = new ArrayList <List <String>>();
+        List <String> head0 = new ArrayList <String>();
         head0.add("字符串哈哈哈" + System.currentTimeMillis());
-        List<String> head1 = new ArrayList<String>();
+        List <String> head1 = new ArrayList <String>();
         head1.add("数字哈哈哈" + System.currentTimeMillis());
-        List<String> head2 = new ArrayList<String>();
+        List <String> head2 = new ArrayList <String>();
         head2.add("日期哈哈哈" + System.currentTimeMillis());
-        List<String> head3 = new ArrayList<String>();
+        List <String> head3 = new ArrayList <String>();
         head3.add("Foobar哈哈哈" + System.currentTimeMillis());
         list.add(head0);
         list.add(head1);
@@ -276,13 +282,13 @@ public class TestController {
         return list;
     }
 
-    private static List<List<String>> head2() {
-        List<List<String>> list = new ArrayList<List<String>>();
-        List<String> head0 = new ArrayList<String>();
+    private static List <List <String>> head2() {
+        List <List <String>> list = new ArrayList <List <String>>();
+        List <String> head0 = new ArrayList <String>();
         head0.add("字符串啊啊啊" + System.currentTimeMillis());
-        List<String> head1 = new ArrayList<String>();
+        List <String> head1 = new ArrayList <String>();
         head1.add("数字啊啊啊" + System.currentTimeMillis());
-        List<String> head2 = new ArrayList<String>();
+        List <String> head2 = new ArrayList <String>();
         head2.add("日期啊啊啊" + System.currentTimeMillis());
         list.add(head0);
         list.add(head1);
@@ -290,10 +296,10 @@ public class TestController {
         return list;
     }
 
-    private static List<List<Object>> dataList() {
-        List<List<Object>> list = new ArrayList<List<Object>>();
+    private static List <List <Object>> dataList() {
+        List <List <Object>> list = new ArrayList <List <Object>>();
         for (int i = 0; i < 10; i++) {
-            List<Object> data = new ArrayList<Object>();
+            List <Object> data = new ArrayList <Object>();
             data.add("字符串" + i);
             data.add(new Date());
             data.add(0.56);
@@ -302,10 +308,10 @@ public class TestController {
         return list;
     }
 
-    private static List<List<Object>> dataList1() {
-        List<List<Object>> list = new ArrayList<List<Object>>();
+    private static List <List <Object>> dataList1() {
+        List <List <Object>> list = new ArrayList <List <Object>>();
         for (int i = 0; i < 10; i++) {
-            List<Object> data = new ArrayList<Object>();
+            List <Object> data = new ArrayList <Object>();
             data.add("字符串" + i);
             data.add(new Date());
             data.add(0.56);
@@ -315,10 +321,10 @@ public class TestController {
         return list;
     }
 
-    private static List<List<Object>> dataList2() {
-        List<List<Object>> list = new ArrayList<List<Object>>();
+    private static List <List <Object>> dataList2() {
+        List <List <Object>> list = new ArrayList <List <Object>>();
         for (int i = 0; i < 10; i++) {
-            List<Object> data = new ArrayList<Object>();
+            List <Object> data = new ArrayList <Object>();
             data.add("字符串" + i);
             data.add(new Date());
             data.add(new Date());

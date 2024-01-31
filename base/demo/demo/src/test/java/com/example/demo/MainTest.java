@@ -45,6 +45,12 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.slf4j.MDC;
 import org.springframework.util.Assert;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.netty.ByteBufFlux;
+import reactor.netty.http.client.HttpClient;
 
 /**
  * @author: kavanLi-R7000
@@ -107,13 +113,36 @@ public class MainTest {
 
 
     public static void main(String[] args) throws Exception {
+        String reqStr = "Go to Zibo for barbecue";
+        System.out.println(Thread.currentThread().getName() + " 开始请求 " + reqStr);
+        WebClient webClient = WebClient.create("http://localhost:8080");
 
-        for (int j = 0; j < 3000; j++) {
-            System.out.println("        - id: msb" + j + "\n" +
-                    "          uri: http://localhost:8080\n" +
-                    "          predicates:\n" +
-                    "            - Path=/test" + j);
-        }
+        Mono <String> stringMono = webClient.get()
+                .uri("http://localhost:8080/test")
+                //.body(BodyInserters.fromValue(reqStr))
+                .retrieve()
+                .bodyToMono(String.class);
+
+        stringMono.subscribe(result -> {
+            System.out.println("返回参数: " + result);
+        }, error -> {
+            System.err.println("发生错误: " + error.getMessage());
+        }, () -> {
+            System.out.println("请求完成");
+        });
+
+        System.out.println("stringMono: " + stringMono.subscribe(res ->
+                                System.out.println(Thread.currentThread().getName() + " webClient收到应答 " + res)));
+        HttpClient httpClient = HttpClient.create().port(8080);
+        ByteBufFlux byteBufFlux = ByteBufFlux.fromString(Flux.just(reqStr));
+        httpClient.post()               // Specifies that POST method will be used
+                .uri("/test/world")   // Specifies the path
+                .send(byteBufFlux)  // Sends the request body
+                .responseContent()    // Receives the response body
+                .aggregate()
+                .asString()
+                .subscribe(res ->
+                        System.out.println(Thread.currentThread().getName() + "httpClient收到应答 " + res));
 
         List <Integer> collect = Stream.of(1, 2, 3).collect(Collectors.toList());
         collect.add(4);
@@ -124,51 +153,51 @@ public class MainTest {
         // 创建随机数生成器
         Random random = new Random();
 
-        for (int j = 0; j < 1000; j++) {
-            // 生成随机数，范围为0到1
-            int randomNumber = random.nextInt(3);
-
-            // 输出随机数
-            System.out.println(randomNumber);
-
-        }
+        //for (int j = 0; j < 1000; j++) {
+        //    // 生成随机数，范围为0到1
+        //    int randomNumber = random.nextInt(3);
+        //
+        //    // 输出随机数
+        //    System.out.println(randomNumber);
+        //
+        //}
 
 
         //Short short1 = true && false;
-        final String fs = "abcv";
-        System.out.println(fs + "_" + 234243L);
-        JSONObject bodyJsonObj = new JSONObject();
-        bodyJsonObj.put("acctNo", "123123");
-        User user = new User();
-        user.setBODY(bodyJsonObj);
-        JSONObject dataJson = new JSONObject();
-        JSONObject head = new JSONObject();
-        head.put("PdVerNo", "V1");
-        head.put("APIVerNo", "1.0");
-        dataJson.put("Head", head);
-        Runnable decrementTask = () -> {
-            while (true) {
-                lock.lock(); // 加锁
-                try {
-                    if (i == 0) {
-                        break; // 当 i 变为 0 时退出循环
-                    }
-                    i--; // 减一操作
-                    System.out.println(Thread.currentThread().getName() + " - i: " + i);
-                } finally {
-                    lock.unlock(); // 释放锁
-                }
-            }
-        };
-
-        Thread thread1 = new Thread(decrementTask);
-        Thread thread2 = new Thread(decrementTask);
-        thread1.start();
-        thread2.start();
-        thread1.join();
-        thread2.join();
-
-        System.out.println("Done!");
+        //final String fs = "abcv";
+        //System.out.println(fs + "_" + 234243L);
+        //JSONObject bodyJsonObj = new JSONObject();
+        //bodyJsonObj.put("acctNo", "123123");
+        //User user = new User();
+        //user.setBODY(bodyJsonObj);
+        //JSONObject dataJson = new JSONObject();
+        //JSONObject head = new JSONObject();
+        //head.put("PdVerNo", "V1");
+        //head.put("APIVerNo", "1.0");
+        //dataJson.put("Head", head);
+        //Runnable decrementTask = () -> {
+        //    while (true) {
+        //        lock.lock(); // 加锁
+        //        try {
+        //            if (i == 0) {
+        //                break; // 当 i 变为 0 时退出循环
+        //            }
+        //            i--; // 减一操作
+        //            System.out.println(Thread.currentThread().getName() + " - i: " + i);
+        //        } finally {
+        //            lock.unlock(); // 释放锁
+        //        }
+        //    }
+        //};
+        //
+        //Thread thread1 = new Thread(decrementTask);
+        //Thread thread2 = new Thread(decrementTask);
+        //thread1.start();
+        //thread2.start();
+        //thread1.join();
+        //thread2.join();
+        //
+        //System.out.println("Done!");
 
         /**
          * modelMapper
