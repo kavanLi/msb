@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<confing>
+    <className name="MT1101">com.mashibing.strategy.example03.MT1101ReceiptHandleStrategy</className>
+</confing>
