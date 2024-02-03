@@ -13,3 +13,4 @@ target/
 *.wav
 spring_cloud_alibaba/Sentinel-1.8.5/sentinel-adapter/sentinel-quarkus-adapter/sentinel-annotation-quarkus-adapter-deployment/src/main/java/com/alibaba/csp/sentinel/adapter/quarkus/annotation/deployment/SentinelAnnotationQuarkusAdapterProcessor.java
 spring_cloud_alibaba/Sentinel-1.8.5/sentinel-adapter/sentinel-quarkus-adapter/sentinel-annotation-quarkus-adapter-deployment/src/test/java/com/alibaba/csp/sentinel/adapter/quarkus/annotation/deployment/SentinelAnnotationQuarkusAdapterTest.java
+frame/spring_cloud_alibaba/Sentinel-1.8.5/sentinel-adapter/
