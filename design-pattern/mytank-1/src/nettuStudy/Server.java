@@ -1,25 +1,26 @@
-package mynet;
+package nettuStudy;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
 
-import com.mashibing.tank.Group;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.util.concurrent.GlobalEventExecutor;
 
 public class Server {
+
+
+    private static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     public static void main(String[] args) throws IOException {
         //BIO
@@ -92,17 +93,44 @@ public class Server {
 
     private static class ServerChildHandler extends ChannelInboundHandlerAdapter {
 
-
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
             System.out.println(Thread.currentThread().getName());
-            super.channelActive(ctx);
+            Server.clients.add(ctx.channel());
         }
 
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             System.out.println(Thread.currentThread().getName());
-            super.channelRead(ctx, msg);
+
+            ByteBuf buf = null;
+            int oldCount = 0;
+            try {
+                buf = (ByteBuf) msg;
+
+                oldCount = buf.refCnt();
+
+                byte[] bytes = new byte[buf.readableBytes()];
+                buf.getBytes(buf.readerIndex(), bytes);
+                System.out.println(new String(bytes));
+                //ctx.writeAndFlush(msg);
+                Server.clients.writeAndFlush(msg);
+
+                //System.out.println(buf);
+                //System.out.println(buf.refCnt());
+            } finally {
+                //if (buf != null) {
+                //    ReferenceCountUtil.release(buf);
+                //}
+                //System.out.println(buf.refCnt());
+            }
+
+        }
+
+        @Override
+        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+            cause.printStackTrace();
+            ctx.close();
         }
     }
 }

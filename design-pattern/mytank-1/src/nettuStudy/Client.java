@@ -1,8 +1,12 @@
-package mynet;
+package nettuStudy;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -57,6 +61,8 @@ public class Client {
             //channelFuture1.sync();
 
             System.out.println("...");
+
+            channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -69,14 +75,48 @@ public class Client {
     }
 }
 
-class ClientChannelInitializer extends ChannelInitializer<SocketChannel> {
+class ClientChannelInitializer extends ChannelInitializer <SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         System.out.println(Thread.currentThread().getName());
-
         System.out.println(socketChannel);
-        //socketChannel.pipeline().addLast();
+        socketChannel.pipeline().addLast(new ClientChildHandler());
+    }
+}
+
+
+class ClientChildHandler extends ChannelInboundHandlerAdapter {
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println(Thread.currentThread().getName());
+        // channel 第一次连上可用，写出一个字符串 ByteBuf使用 Direct Memory，但是跳过了java垃圾回收机制，需要主动释放堆外内存，不过writeAndFlush()这个方法自动释放。
+        //在使用堆外内存时需要格外小心，确保正确释放内存，以防止内存泄漏。在 Java 中，堆外内存的生命周期不受 Java 垃圾回收器的管理，需要手动释放。此外，Java 提供的 ByteBuffer 在不再使用时，会由垃圾回收器自动释放底层的堆外内存。
+        ByteBuf buf = (Unpooled.copiedBuffer("hello".getBytes()));
+        ctx.writeAndFlush(buf);
+    }
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println(Thread.currentThread().getName());
+        ByteBuf buf = null;
+
+        try {
+            buf = (ByteBuf) msg;
+            byte[] bytes = new byte[buf.readableBytes()];
+            buf.getBytes(buf.readerIndex(), bytes);
+            System.out.println(new String(bytes));
+            //ctx.writeAndFlush(msg);
+
+            //System.out.println(buf);
+            //System.out.println(buf.refCnt());
+        } finally {
+            //if (buf != null) {
+            //    ReferenceCountUtil.release(buf);
+            //}
+            //System.out.println(buf.refCnt());
+        }
     }
 }
 
