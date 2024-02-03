@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+<!--    所以 base.xml 提供了一套通用的 Logback 配置作为基础,然后在应用的 Logback 配置文件中通过 <include> 来导入这些通用设置。-->
+<!--    这么做的好处有:-->
+<!--    避免在每个项目中重复配置通用日志设置-->
+<!--    Logback 配置可以关注应用自定义的部分,比如日志级别、自定义 Appender 等-->
+<!--    当升级 Spring Boot 版本时,可以自动获取到最新的 Logback 通用配置。include 可以复用基础日志xml更加简洁-->
+<!--    Spring Boot 在打包过程中,会从 spring-boot-${version}.jar 这个jar包中提取 base.xml 文件,并打包到应用的classpath中。-->
+<!--    但是这个过程是在打包时发生的,在IDE开发的时候,base.xml 文件还没有被提取出来,所以IDE无法直接找到它。-->
+<!--    这也是为什么 logback.xml 配置可以成功引用 base.xml,但点击跳转却失败的原因。-->
+<!--    有下面这行include标签能让日志的INFO 线程 包类信息编程彩色！！！！！！！！！-->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="${catalina.base}/logs/" />
+    <!-- 控制台输出 -->
+    <appender name="Stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 日志输出格式 -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 [%method,%line]显示代码行号 %msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%method,%line]- %msg%n</pattern>
+        </layout>
+<!--        <encoder>-->
+<!--            &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 [%method,%line]显示代码行号 %msg：日志消息，%n是换行符&ndash;&gt;-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%method,%line]- %msg%n</pattern>-->
+
+<!--            &lt;!&ndash; 配置不同级别日志的颜色 &ndash;&gt;-->
+<!--            <highlight class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--                <pattern>-->
+<!--                    <style level="ERROR" value="%red(%msg)%n" />-->
+<!--                    <style level="WARN" value="%yellow(%msg)%n" />-->
+<!--                    <style level="INFO" value="%green(%msg)%n" />-->
+<!--                    <style level="DEBUG" value="%blue(%msg)%n" />-->
+<!--                </pattern>-->
+<!--            </highlight>-->
+<!--        </encoder>-->
+    </appender>
+    <!-- 按照每天生成日志文件 -->
+    <appender name="RollingFile"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/server.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息， [%method,%line]显示代码行号 %n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} [%method,%line] - %msg%n
+            </pattern>
+        </layout>
+        <!--日志文件最大的大小-->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+
+    <!-- 日志输出级别和日志的输出方式 -->
+    <root level="INFO">
+        <appender-ref ref="Stdout" />
+       <!-- <appender-ref ref="RollingFile" />-->
+    </root>
+
+    <logger name="com.manzhizhen.spring.cloud.gateway.mini" level="DEBUG"></logger>
+
+    <!--日志异步到数据库 -->
+    <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+            日志异步到数据库
+            <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+               连接池
+               <dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                  <driverClass>com.mysql.jdbc.Driver</driverClass>
+                  <url>jdbc:mysql://127.0.0.1:3306/databaseName</url>
+                  <user>root</user>
+                  <password>root</password>
+                </dataSource>
+            </connectionSource>
+      </appender> -->
+</configuration>

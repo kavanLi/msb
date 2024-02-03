@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-cloud-gateway-mini
+  cloud:
+    gateway:
+      mini:
+        httpclient:
+          connectTimeout: 1000
+          responseTimeout: 5000
+    consul:
+#      discovery:
+#        acl-token: 如果你开启了Consul的访问token，那么这里需要填token，否则可以删除这个key
+  config:
+    import: optional:consul:localhost:8500
