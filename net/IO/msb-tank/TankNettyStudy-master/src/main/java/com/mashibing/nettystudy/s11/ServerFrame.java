@@ -34,6 +34,8 @@ public class ServerFrame extends Frame {
 		});
 		
 		this.btnStart.addActionListener((e)->{
+			// ui线程被sync()方法阻塞，后续界面无法操作
+			System.out.println(Thread.currentThread().getName());
 			server.serverStart();
 		});
 		

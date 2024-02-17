@@ -47,8 +47,8 @@ public class TankJoinMsg extends Msg {
 	public void parse(byte[] bytes) {
 		DataInputStream dis = new DataInputStream(new ByteArrayInputStream(bytes));
 		try {
-			//TODO:ÏÈ¶ÁTYPEĞÅÏ¢£¬¸ù¾İTYPEĞÅÏ¢´¦Àí²»Í¬µÄÏûÏ¢
-			//ÂÔ¹ıÏûÏ¢ÀàĞÍ
+			//TODO:ï¿½È¶ï¿½TYPEï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TYPEï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ï¢
+			//ï¿½Ô¹ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 			//dis.readInt();
 			
 			this.x = dis.readInt();
@@ -67,6 +67,26 @@ public class TankJoinMsg extends Msg {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public static void main(String[] args) {
+		// ç”Ÿæˆä¸€ä¸ªUUID
+		UUID uuid = UUID.randomUUID();
+
+		// å°†UUIDæ‹†åˆ†ä¸ºä¸¤ä¸ªlongå€¼
+		long mostSignificantBits = uuid.getMostSignificantBits();
+		long leastSignificantBits = uuid.getLeastSignificantBits();
+
+		// æ‰“å°åŸå§‹UUIDå’Œæ‹†åˆ†åçš„longå€¼
+		System.out.println("Original UUID: " + uuid);
+		System.out.println("Most Significant Bits: " + mostSignificantBits);
+		System.out.println("Least Significant Bits: " + leastSignificantBits);
+
+		// å°†ä¸¤ä¸ªlongå€¼åˆå¹¶æˆä¸€ä¸ªUUID
+		UUID reconstructedUUID = new UUID(mostSignificantBits, leastSignificantBits);
+
+		// æ‰“å°é‡æ–°æ„å»ºçš„UUID
+		System.out.println("Reconstructed UUID: " + reconstructedUUID);
 	}
 	@Override
 	public byte[] toBytes() {
