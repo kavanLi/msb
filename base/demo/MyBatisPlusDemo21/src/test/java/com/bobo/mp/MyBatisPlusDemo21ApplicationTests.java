@@ -1,5 +1,6 @@
 package com.bobo.mp;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -8,13 +9,15 @@ import com.bobo.mp.dataSource.annotation.ReportDB;
 import com.bobo.mp.domain.DynaAmsSoaservice;
 import com.bobo.mp.domain.DynaAmsSubprodApi;
 import com.bobo.mp.domain.pojo.DynaAmsOrganization;
+import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
 import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
 import com.bobo.mp.domain.pojo.DynaApaTlOrganization;
+import com.bobo.mp.mapper.DynaAmsOrgprovisionsMapper;
 import com.bobo.mp.mapper.UserMapper;
 import com.bobo.mp.domain.pojo.User;
+import com.bobo.mp.service.DynaAmsOrgprovisionsService;
 import com.bobo.mp.service.DynaAmsSoaserviceService;
 import com.bobo.mp.service.DynaAmsSubprodApiService;
-import com.bobo.mp.service.DynaAmsUserOptLogService;
 import com.bobo.mp.service.DynaApaTlOrganizationService;
 import com.bobo.mp.service.IUserService;
 import com.bobo.mp.service.DynaAmsOrganizationService;
@@ -30,6 +33,7 @@ import org.springframework.jdbc.datasource.DataSourceUtils;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -49,17 +53,24 @@ class MyBatisPlusDemo21ApplicationTests {
     @Autowired
     private DynaAmsOrganizationService dynaAmsOrganizationService;
 
+
+    @Autowired
+    private DynaAmsOrgprovisionsService dynaAmsOrgprovisionsService;
+
     @Autowired
     private DynaApaTlOrganizationService dynaApaTlOrganizationService;
 
-    @Autowired
-    private DynaAmsUserOptLogService dynaAmsUserOptLogService;
+    //@Autowired
+    //private DynaAmsUserOptLogService dynaAmsUserOptLogService;
 
     @Autowired
     private DynaAmsSubprodApiService dynaAmsSubprodApiService;
 
     @Autowired
     private DynaAmsSoaserviceService dynaAmsSoaserviceService;
+
+    @Autowired
+    private DynaAmsOrgprovisionsMapper dynaAmsOrgprovisionsMapper;
 
     @Autowired
     private DataSource dataSource;
@@ -178,6 +189,40 @@ class MyBatisPlusDemo21ApplicationTests {
         //}
         dynaAmsSubprodApiService.saveBatch(subProdApiList);
     }
+
+    @SneakyThrows
+    @Test
+    @ReportDB
+    void testMybatisPlusCustomSql() {
+        LambdaQueryWrapper <DynaAmsOrgprovisions> queryWrapper = new LambdaQueryWrapper <>();
+        queryWrapper.eq(DynaAmsOrgprovisions::getOrgId, "2");
+        queryWrapper.eq(DynaAmsOrgprovisions::getOrgLabel, "开发专用应用");
+        queryWrapper.eq(DynaAmsOrgprovisions::getOrgno, "100000000002");
+        queryWrapper.eq(DynaAmsOrgprovisions::getAccountNo, "801100201421000055");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date orderGenerateTimeBegin = sdf.parse("2018-01-01" + " 00:00:00");
+        queryWrapper.ge(DynaAmsOrgprovisions::getCreateDatetime, orderGenerateTimeBegin);
+        Date orderGenerateTimeEndStr = sdf.parse("2025-01-01" + " 00:00:00" + " 23:59:59");
+        queryWrapper.le(DynaAmsOrgprovisions::getLastUpdateDatetime, orderGenerateTimeEndStr);
+        //按创建时间进行排序
+
+        Map<String, Object> params = new HashMap <>();
+
+        params.put("orgId", "2");
+        params.put("orgLabel", "开发专用应用");
+        params.put("orgno", "100000000002");
+        params.put("accountNo", "801100201421000055");
+        params.put("createDatetime", orderGenerateTimeBegin);
+        params.put("lastUpdateDatetime", orderGenerateTimeEndStr);
+        //List <DynaAmsOrgprovisions> saasyunstMchtOrders = dynaAmsOrgprovisionsMapper.list4Summary(queryWrapper);
+        List <DynaAmsOrgprovisions> list = dynaAmsOrgprovisionsService.list(queryWrapper);
+        List <DynaAmsOrgprovisions> maps1 = dynaAmsOrgprovisionsMapper.list4Summary(params);
+        List <Map <String, Object>> maps = dynaAmsOrgprovisionsMapper.list4Summary1(params);
+        List <DynaAmsOrgprovisions> maps2 = dynaAmsOrgprovisionsMapper.list4Summary2(params);
+
+        System.out.println(1234);
+    }
+
 
     @SneakyThrows
     @Test

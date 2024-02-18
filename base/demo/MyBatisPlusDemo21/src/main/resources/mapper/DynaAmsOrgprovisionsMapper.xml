@@ -59,4 +59,64 @@
         UPDATE_USER_ID,ACCT_ORG_TYPE,ALLOW_PULLOUT_BEGINTIME,
         ALLOW_PULLOUT_ENDTIME
     </sql>
+
+    <resultMap id="feeSummaryResultMap" type="com.bobo.mp.domain.pojo.DynaAmsOrgprovisions">
+        <id property="id" column="ID" jdbcType="DECIMAL"/>
+        <result property="bankName" column="BANK_NAME" jdbcType="VARCHAR"/>
+        <result property="bankCode" column="BANK_CODE" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="customColumn">BANK_NAME, BANK_CODE</sql>
+    <sql id="orgprovisionsSelect">select <include refid="customColumn"></include> FROM DYNA_AMS_ORGPROVISIONS</sql>
+
+    <select id="list4Summary" resultMap="feeSummaryResultMap" parameterType="java.util.Map">
+--         SELECT BANK_NAME, BANK_CODE
+--         FROM DYNA_AMS_ORGPROVISIONS
+        <include refid="orgprovisionsSelect"></include>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test='params != null'>
+                <if test='params.orgId != null'>AND ORG_ID = #{params.orgId}</if>
+                <if test='params.orgLabel != null'>AND ORG_LABEL = #{params.orgLabel}</if>
+                <if test='params.orgno != null'>AND ORGNO = #{params.orgno}</if>
+                <if test='params.accountNo != null'>AND ACCOUNT_NO = #{params.accountNo}</if>
+                <if test='params.createDatetime != null'>AND CREATE_DATETIME &gt;= #{params.createDatetime}</if>
+                <if test='params.lastUpdateDatetime != null'>AND LAST_UPDATE_DATETIME &lt;= #{params.lastUpdateDatetime}</if>
+            </if>
+        </trim>
+        ORDER BY CREATE_DATETIME DESC
+    </select>
+    <select id="list4Summary1" resultType="java.util.Map"
+            parameterType="java.util.Map">
+        --         SELECT BANK_NAME, BANK_CODE
+        --         FROM DYNA_AMS_ORGPROVISIONS
+        <include refid="orgprovisionsSelect"></include>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test='params != null'>
+                <if test='params.orgId != null'>AND ORG_ID = #{params.orgId}</if>
+                <if test='params.orgLabel != null'>AND ORG_LABEL = #{params.orgLabel}</if>
+                <if test='params.orgno != null'>AND ORGNO = #{params.orgno}</if>
+                <if test='params.accountNo != null'>AND ACCOUNT_NO = #{params.accountNo}</if>
+                <if test='params.createDatetime != null'>AND CREATE_DATETIME &gt;= #{params.createDatetime}</if>
+                <if test='params.lastUpdateDatetime != null'>AND LAST_UPDATE_DATETIME &lt;= #{params.lastUpdateDatetime}</if>
+            </if>
+        </trim>
+        ORDER BY CREATE_DATETIME DESC
+    </select>
+    <select id="list4Summary2" resultType="com.bobo.mp.domain.pojo.DynaAmsOrgprovisions" parameterType="java.util.Map">
+        --         SELECT BANK_NAME, BANK_CODE
+        --         FROM DYNA_AMS_ORGPROVISIONS
+        <include refid="orgprovisionsSelect"></include>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test='params != null'>
+                <if test='params.orgId != null'>AND ORG_ID = #{params.orgId}</if>
+                <if test='params.orgLabel != null'>AND ORG_LABEL = #{params.orgLabel}</if>
+                <if test='params.orgno != null'>AND ORGNO = #{params.orgno}</if>
+                <if test='params.accountNo != null'>AND ACCOUNT_NO = #{params.accountNo}</if>
+                <if test='params.createDatetime != null'>AND CREATE_DATETIME &gt;= #{params.createDatetime}</if>
+                <if test='params.lastUpdateDatetime != null'>AND LAST_UPDATE_DATETIME &lt;= #{params.lastUpdateDatetime}</if>
+            </if>
+        </trim>
+        ORDER BY CREATE_DATETIME DESC
+    </select>
+
 </mapper>

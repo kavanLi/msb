@@ -17,7 +17,6 @@ import com.bobo.mp.dataSource.annotation.ReportDB;
 import com.bobo.mp.domain.pojo.DynaAmsOrganization;
 import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
 import com.bobo.mp.service.DynaAmsOrganizationService;
-import com.bobo.mp.service.DynaAmsUserOptLogService;
 import lombok.SneakyThrows;
 import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleStatement;
@@ -56,8 +55,8 @@ import org.springframework.web.bind.annotation.RestController;
 @ResponseBody
 public class TestController {
 
-    @Autowired
-    private DynaAmsUserOptLogService dynaAmsUserOptLogService;
+    //@Autowired
+    //private DynaAmsUserOptLogService dynaAmsUserOptLogService;
 
     @Autowired
     private DynaAmsOrganizationService dynaAmsOrganizationService;

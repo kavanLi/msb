@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 
 import com.bobo.mp.dataSource.annotation.ReportDB;
 import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
-import com.bobo.mp.mapper.DynaAmsUserOptLogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -24,11 +23,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsyncService {
 
-    @Autowired
-    private DynaAmsUserOptLogService dynaAmsUserOptLogService;
-
-    @Autowired
-    private DynaAmsUserOptLogMapper dynaAmsUserOptLogMapper;
+    //@Autowired
+    //private DynaAmsUserOptLogService dynaAmsUserOptLogService;
+    //
+    //@Autowired
+    //private DynaAmsUserOptLogMapper dynaAmsUserOptLogMapper;
 
     @Autowired
     private DynaAmsOrganizationService dynaAmsOrganizationService;
@@ -79,7 +78,7 @@ public class AsyncService {
     @ReportDB
     public void test() {
         // 具体任务
-        DynaAmsUserOptLog dynaAmsUserOptLog1 = dynaAmsUserOptLogService.getById(360930L);
+        //DynaAmsUserOptLog dynaAmsUserOptLog1 = dynaAmsUserOptLogService.getById(360930L);
 
         //DynaAmsUserOptLog dynaAmsUserOptLog = DynaAmsUserOptLog.builder()
         //        .createSource(3L)
@@ -91,14 +90,14 @@ public class AsyncService {
         //        .requestParam("String.valueOf(args)").build();
         //Boolean save1 = dynaAmsUserOptLogMapper.insertDynaAmsUserOptLog(dynaAmsUserOptLog);
         //boolean save = dynaAmsUserOptLogService.save(dynaAmsUserOptLog);
-        while (running) {
-            System.out.println(dynaAmsUserOptLog1.getOptName());
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        //while (running) {
+        //    System.out.println(dynaAmsUserOptLog1.getOptName());
+        //    try {
+        //        Thread.sleep(1000);
+        //    } catch (InterruptedException e) {
+        //        throw new RuntimeException(e);
+        //    }
+        //}
     }
 
     @Async

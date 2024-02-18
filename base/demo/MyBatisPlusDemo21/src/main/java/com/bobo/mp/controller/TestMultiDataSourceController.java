@@ -14,7 +14,6 @@ import com.bobo.mp.domain.pojo.DynaAmsOrganization;
 import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
 import com.bobo.mp.service.AsyncService;
 import com.bobo.mp.service.DynaAmsOrganizationService;
-import com.bobo.mp.service.DynaAmsUserOptLogService;
 import lombok.SneakyThrows;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,8 +36,8 @@ import org.springframework.web.bind.annotation.RestController;
 @ResponseBody
 public class TestMultiDataSourceController {
 
-    @Autowired
-    private DynaAmsUserOptLogService dynaAmsUserOptLogService;
+    //@Autowired
+    //private DynaAmsUserOptLogService dynaAmsUserOptLogService;
 
     @Autowired
     private DynaAmsOrganizationService dynaAmsOrganizationService;
