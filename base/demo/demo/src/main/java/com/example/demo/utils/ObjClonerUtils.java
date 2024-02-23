@@ -1,9 +1,11 @@
-package com.example.demo.utils;
+package com.example.demo.utils.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 深度克隆 实现Serializable接口,如果类中存在组合形式的使用,那么每个类都要实现Serializable接口
@@ -11,6 +13,7 @@ import java.io.ObjectOutputStream;
  * @create: 2019-11-01 16:43
  * To change this template use File | Settings | File and Code Templates.
  */
+@Slf4j
 public final class ObjClonerUtils {
     /* fields -------------------------------------------------------------- */
 
@@ -32,6 +35,7 @@ public final class ObjClonerUtils {
             retobj=(T) ios.readObject();
         }catch (Exception e) {
             e.printStackTrace();
+            log.error(e.getMessage());
         }
         return retobj;
     }

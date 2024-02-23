@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -113,45 +114,48 @@ public class MainTest {
 
 
     public static void main(String[] args) throws Exception {
-        String reqStr = "Go to Zibo for barbecue";
-        System.out.println(Thread.currentThread().getName() + " 开始请求 " + reqStr);
-        WebClient webClient = WebClient.create("http://localhost:8080");
 
-        Mono <String> stringMono = webClient.get()
-                .uri("http://localhost:8080/test")
-                //.body(BodyInserters.fromValue(reqStr))
-                .retrieve()
-                .bodyToMono(String.class);
+        System.out.println(dateTimeFormatter.format(LocalDateTime.now()));
 
-        stringMono.subscribe(result -> {
-            System.out.println("返回参数: " + result);
-        }, error -> {
-            System.err.println("发生错误: " + error.getMessage());
-        }, () -> {
-            System.out.println("请求完成");
-        });
-
-        System.out.println("stringMono: " + stringMono.subscribe(res ->
-                                System.out.println(Thread.currentThread().getName() + " webClient收到应答 " + res)));
-        HttpClient httpClient = HttpClient.create().port(8080);
-        ByteBufFlux byteBufFlux = ByteBufFlux.fromString(Flux.just(reqStr));
-        httpClient.post()               // Specifies that POST method will be used
-                .uri("/test/world")   // Specifies the path
-                .send(byteBufFlux)  // Sends the request body
-                .responseContent()    // Receives the response body
-                .aggregate()
-                .asString()
-                .subscribe(res ->
-                        System.out.println(Thread.currentThread().getName() + "httpClient收到应答 " + res));
-
-        List <Integer> collect = Stream.of(1, 2, 3).collect(Collectors.toList());
-        collect.add(4);
-        MDC.put("traceId", "666666666");
-        log.info("Processing request...");
-        MDC.clear();
-
-        // 创建随机数生成器
-        Random random = new Random();
+        //String reqStr = "Go to Zibo for barbecue";
+        //System.out.println(Thread.currentThread().getName() + " 开始请求 " + reqStr);
+        //WebClient webClient = WebClient.create("http://localhost:8080");
+        //
+        //Mono <String> stringMono = webClient.get()
+        //        .uri("http://localhost:8080/test")
+        //        //.body(BodyInserters.fromValue(reqStr))
+        //        .retrieve()
+        //        .bodyToMono(String.class);
+        //
+        //stringMono.subscribe(result -> {
+        //    System.out.println("返回参数: " + result);
+        //}, error -> {
+        //    System.err.println("发生错误: " + error.getMessage());
+        //}, () -> {
+        //    System.out.println("请求完成");
+        //});
+        //
+        //System.out.println("stringMono: " + stringMono.subscribe(res ->
+        //                        System.out.println(Thread.currentThread().getName() + " webClient收到应答 " + res)));
+        //HttpClient httpClient = HttpClient.create().port(8080);
+        //ByteBufFlux byteBufFlux = ByteBufFlux.fromString(Flux.just(reqStr));
+        //httpClient.post()               // Specifies that POST method will be used
+        //        .uri("/test/world")   // Specifies the path
+        //        .send(byteBufFlux)  // Sends the request body
+        //        .responseContent()    // Receives the response body
+        //        .aggregate()
+        //        .asString()
+        //        .subscribe(res ->
+        //                System.out.println(Thread.currentThread().getName() + "httpClient收到应答 " + res));
+        //
+        //List <Integer> collect = Stream.of(1, 2, 3).collect(Collectors.toList());
+        //collect.add(4);
+        //MDC.put("traceId", "666666666");
+        //log.info("Processing request...");
+        //MDC.clear();
+        //
+        //// 创建随机数生成器
+        //Random random = new Random();
 
         //for (int j = 0; j < 1000; j++) {
         //    // 生成随机数，范围为0到1

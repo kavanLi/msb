@@ -1,6 +1,7 @@
 package com.bobo.mp.controller;
 
 import java.time.Duration;
+import java.util.Date;
 
 import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
 import com.bobo.mp.domain.pojo.User;
@@ -36,6 +37,7 @@ public class WebFluxController {
         DynaAmsOrgprovisions dynaAmsOrgprovisions = DynaAmsOrgprovisions.builder()
                 .id(123L)
                 .accountNo("sdfsdf")
+                .createDatetime(new Date())
                 .build();
         return Mono.just(dynaAmsOrgprovisions);
     }

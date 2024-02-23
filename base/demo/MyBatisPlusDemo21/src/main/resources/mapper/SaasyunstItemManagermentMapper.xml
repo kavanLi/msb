@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SaasyunstItemManagermentMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SaasyunstItemManagerment">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="bizUserId" column="biz_user_id" jdbcType="VARCHAR"/>
+            <result property="itemNo" column="item_no" jdbcType="VARCHAR"/>
+            <result property="itemName" column="item_name" jdbcType="VARCHAR"/>
+            <result property="itemDesc" column="item_desc" jdbcType="VARCHAR"/>
+            <result property="itemTier" column="item_tier" jdbcType="TINYINT"/>
+            <result property="itemScene" column="item_scene" jdbcType="TINYINT"/>
+            <result property="seqNo" column="seq_no" jdbcType="INTEGER"/>
+            <result property="itemPrice" column="item_price" jdbcType="BIGINT"/>
+            <result property="isRealName" column="is_real_name" jdbcType="TINYINT"/>
+            <result property="receiverId" column="receiver_id" jdbcType="VARCHAR"/>
+            <result property="receiverName" column="receiver_name" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="createUserName" column="create_user_name" jdbcType="VARCHAR"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="modifiedUserName" column="modified_user_name" jdbcType="VARCHAR"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,biz_user_id,item_no,
+        item_name,item_desc,item_tier,
+        item_scene,seq_no,item_price,
+        is_real_name,receiver_id,receiver_name,
+        status,create_user_name,gmt_create,
+        modified_user_name,gmt_modified
+    </sql>
+</mapper>

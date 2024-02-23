@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mp.mapper.SaasyunstMchtOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bobo.mp.domain.pojo.SaasyunstMchtOrder">
+        <id column="id" property="id"/>
+        <result column="application_id" property="applicationId"/>
+        <result column="application_name" property="applicationName"/>
+        <result column="scene" property="scene"/>
+        <result column="biz_order_no" property="bizOrderNo"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="payer_id" property="payerId"/>
+        <result column="payer_name" property="payerName"/>
+        <result column="reciever_id" property="recieverId"/>
+        <result column="reciever_name" property="recieverName"/>
+        <result column="goods_id" property="goodsId"/>
+        <result column="goods_name" property="goodsName"/>
+        <result column="amount" property="amount"/>
+        <result column="status" property="status"/>
+        <result column="fee" property="fee"/>
+        <result column="channel_fee" property="channelFee"/>
+        <result column="receive_type" property="receiveType"/>
+        <result column="receive_day" property="receiveDay"/>
+        <result column="order_generate_time" property="orderGenerateTime"/>
+        <result column="order_finish_time" property="orderFinishTime"/>
+        <result column="order_pay_time" property="orderPayTime"/>
+        <result column="refund_amount" property="refundAmount"/>
+        <result column="refund_time" property="refundTime"/>
+        <result column="refund_biz_order_no" property="refundBizOrderNo"/>
+        <result column="refund_order_no" property="refundOrderNo"/>
+        <result column="refund_type" property="refundType"/>
+        <result column="refund_status" property="refundStatus"/>
+        <result column="is_received" property="isReceived"/>
+        <result column="received_estimate_time" property="receivedEstimateTime"/>
+        <result column="received_actual_time" property="receivedActualTime"/>
+        <result column="agent_pay_biz_order_no" property="agentPayBizOrderNo"/>
+        <result column="remark" property="remark"/>
+        <result column="allocation" property="allocation"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="rule_id" property="ruleId"/>
+        <result column="fail_message" property="failMessage"/>
+        <result column="refund_fail_message" property="refundFailMessage"/>
+        <result column="agent_pay_fail_message" property="agentPayFailMessage"/>
+        <result column="refund_finish_time" property="refundFinishTime"/>
+        <result column="agent_pay_finish_time" property="agentPayFinishTime"/>
+        <result column="receive_date" property="receiveDate"/>
+    </resultMap>
+
+    <!--  出入金日结手续费账单-列表分页查询 - 汇总数据  -->
+    <resultMap id="feeSummaryResultMap" type="com.bobo.mp.domain.pojo.SaasyunstMchtOrder">
+        <id property="id" column="ID" jdbcType="DECIMAL"/>
+        <result property="amount" column="amount" jdbcType="BIGINT"/>
+        <result property="fee" column="fee" jdbcType="BIGINT"/>
+        <result property="channelFee" column="channel_fee" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="customColumn">amount, fee, channel_fee</sql>
+    <sql id="feeSummarySelect">select <include refid="customColumn"></include> FROM saasyunst_mcht_order</sql>
+
+    <select id="list4Summary" resultMap="feeSummaryResultMap" parameterType="java.util.Map">
+        --         SELECT amount, fee
+        --         FROM saasyunst_mcht_order
+        <include refid="feeSummarySelect"></include>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test='params != null'>
+                <if test='params.bizOrderNo != null'>AND biz_order_no = #{params.bizOrderNo}</if>
+                <if test='params.orderNo != null'>AND order_no = #{params.orderNo}</if>
+                <if test='params.recieverId != null'>AND reciever_id = #{params.recieverId}</if>
+                <if test='params.recieverName != null'>AND reciever_name = #{params.recieverName}</if>
+                <if test='params.status != null'>AND status = #{params.status}</if>
+                <if test='params.statusList != null and params.statusList.size > 0'>
+                    AND status IN
+                    (<foreach collection="params.statusList" item="item" separator=",">
+                    #{item}
+                </foreach>)
+                </if>
+                <if test='params.sceneList != null and params.sceneList.size > 0'>
+                    AND scene IN
+                    (<foreach collection="params.sceneList" item="item" separator=",">
+                    #{item}
+                </foreach>)
+                </if>
+                <if test='params.orderGenerateTimeBeginStr != null'>AND order_generate_time &gt;= #{params.orderGenerateTimeBeginStr}</if>
+                <if test='params.orderGenerateTimeEndStr != null'>AND order_finish_time &lt;= #{params.orderGenerateTimeEndStr}</if>
+            </if>
+        </trim>
+        ORDER BY <if test='params.orderField != null'>#{params.orderField}</if> DESC
+    </select>
+    <!--  出入金日结手续费账单-列表分页查询 - 汇总数据  -->
+</mapper>

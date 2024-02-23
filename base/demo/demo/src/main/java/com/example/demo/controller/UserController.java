@@ -61,7 +61,6 @@ public class UserController {
         map.put("map3", "map123");
         map.put("map2", "map123");
         map.put("map1", "map123");
-
         Dept dept = new Dept();
         dept.setDeptno(123);
         dept.setLoc("loc");

@@ -1,12 +1,16 @@
 package com.example.demo.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
+import org.joda.time.LocalDateTime;
 
 /**
  * 
@@ -14,6 +18,7 @@ import lombok.ToString;
  */
 @Data
 @ToString(callSuper=true)
+@Accessors(chain=true)
 public class User extends UserDaddy implements Serializable {
     /**
      * 主键ID
@@ -25,6 +30,10 @@ public class User extends UserDaddy implements Serializable {
     private Long uid;
     private JSONObject BODY;
     private JSONObject INFO;
+    private Date gmt_create;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime gmt_localDateTimeCreate;
 
     /**
      * 姓名

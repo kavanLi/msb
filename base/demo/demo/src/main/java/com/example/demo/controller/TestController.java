@@ -14,16 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.util.ListUtils;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.WriteTable;
+import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.annotation.OperationLogAnnotation;
 import com.example.demo.domain.User;
 import com.example.demo.domain.model.CommonResponse;
 import com.example.demo.exception.BaseException;
+import com.example.demo.utils.DateOrTimeUtils;
+import com.example.demo.utils.easyExcel.ConverterData;
+import com.example.demo.utils.easyExcel.DemoData;
 import com.google.gson.JsonObject;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.joda.time.LocalDateTime;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +56,52 @@ public class TestController {
         Map <String, String> errors = new HashMap <>();
         errors.put("123", "1231");
         return errors;
+    }
+
+
+    /**
+     * 测试 配置
+     * spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+     * spring.jackson.time-zone=GMT+8
+     *
+     *  spring.jackson.date-format 用于指定日期的格式，例如 "yyyy-MM-dd HH:mm:ss"，这样在序列化和反序列化 JSON 数据时，日期字段将会按照指定的格式进行处理。如果不设置，默认情况下 Jackson 会使用 ISO 8601 格式（例如 "yyyy-MM-dd'T'HH:mm:ss.SSSZ"）来处理日期。
+     *  spring.jackson.time-zone 用于指定时区，例如 "GMT+8"，这样在序列化和反序列化 JSON 数据时，日期字段将会以指定的时区进行处理。如果不设置，默认情况下 Jackson 会使用系统默认的时区。
+     *  通过在 Spring Boot 的配置文件中设置这两个属性，可以全局地配置整个应用程序中 Jackson 库对日期和时间的处理方式，确保在 JSON 数据的序列化和反序列化过程中符合预期的格式和时区要求。
+     * @return
+     */
+    @GetMapping(value = "/user")
+    public User test1() {
+        User user = new User();
+        user.setGmt_create(new Date());
+        /**
+         * localDateTime转换报错
+         * Joda date/time type `org.joda.time.LocalDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-joda" to enable handling (through reference chain: com.example.demo.domain.User["gmt_localDateTimeCreate"])
+         *
+         * 需要增加依赖
+         *
+         * <dependency>
+         *     <groupId>com.fasterxml.jackson.datatype</groupId>
+         *     <artifactId>jackson-datatype-joda</artifactId>
+         *     <version>2.13.1</version>
+         * </dependency>
+         *
+         * 似乎配置中的 spring.jackson.date-format 和 spring.jackson.time-zone 并没有生效，因为 LocalDateTime 对象的输出仍然采用了默认的格式。这可能是因为 LocalDateTime 不受这些配置项的影响，因为它不是 Jackson 默认支持的日期类型。
+         *
+         * 通过在 LocalDateTime 字段上添加 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") 注解，你可以指定它的输出格式。这样配置后，返回的 JSON 中 gmt_localDateTimeCreate 字段应该会按照指定的格式进行格式化了。
+         */
+        user.setGmt_localDateTimeCreate(LocalDateTime.now());
+        return user;
+    }
+
+    @PostMapping(value = "/user1")
+    public User user(@RequestBody User req) // 使用 @RequestBody 注解， 传参正常
+    // 无法通过application/x-www-form-urlencoded传参
+    //public User user(User req) // 不使用 @RequestBody 注解，正好相反，application/x-www-form-urlencoded 传参正常
+    // 无法通过 application/json 传参
+    {
+        User user = new User();
+        user.setGmt_create(new Date());
+        return user;
     }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/world")
@@ -188,13 +240,25 @@ public class TestController {
          * 使用table去写入
          */
 
+        String fileName = "1234_";
+
         //// 开始把数据写入excel 并让web下载
-        response.setContentType("application/vnd.ms-excel");
+        // application/vnd.ms-excel不支持压缩，通常用于旧版本的 Microsoft Excel 文件 (.xls)。兼容所有版本的Microsoft Excel
+        //response.setContentType("application/vnd.ms-excel");
+
+        // application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 支持压缩，通常用于新版本的 Microsoft Excel 文件 (.xlsx)
+        // 。不兼容旧版本的 Microsoft Excel
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setCharacterEncoding("utf-8");
         // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
-        response.setHeader("Content-disposition",
-                "attachment;filename=" + URLEncoder.encode("123", "UTF-8") + DateFormatUtils.format(new Date(),
-                        "_yyyy-MM-dd HH:mm:ss") + ".xlsx");
+        fileName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
+        //response.setHeader("Content-disposition",
+        //        "attachment;filename=" + fileName + DateFormatUtils.format(new Date(),
+        //                "_yyyy-MM-dd HH:mm:ss") + ".xlsx");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + DateOrTimeUtils.dateTimeFormatter.format(java.time.LocalDateTime.now()) + ".xlsx");
+        /**
+         * 使用table去写入
+         */
         // 这里直接写多个table的案例了，如果只有一个 也可以直一行代码搞定，参照其他案例
         ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream()).build();
         // 把sheet设置为不需要头 不然会输出sheet的头 这样看起来第一个table 就有2个头了
@@ -215,6 +279,65 @@ public class TestController {
         excelWriter.write(dataList(), writeSheet, writeTable4);
         // 千万别忘记finish 会帮忙关闭流
         excelWriter.finish();
+    }
+
+    @GetMapping("simpleDownload")
+    public void simpleDownload(HttpServletResponse response) throws IOException {
+        String fileName = "1234_";
+
+        // application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 支持压缩，通常用于新版本的 Microsoft Excel 文件 (.xlsx)
+        // 。不兼容旧版本的 Microsoft Excel
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setCharacterEncoding("utf-8");
+        // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
+        fileName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + DateOrTimeUtils.dateTimeFormatter.format(java.time.LocalDateTime.now()) + ".xlsx");
+
+        // 写法1
+        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+        //EasyExcel.write(response.getOutputStream(), DemoData.class)
+        //        .sheet("模板")
+        //        .doWrite(() -> {
+        //            // 分页查询数据
+        //            return simpleData();
+        //        });
+
+        // 写法2
+        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+        /**
+         * 最简单的写
+         */
+        //EasyExcel.write(response.getOutputStream(), DemoData.class).sheet("模板").doWrite(simpleData());
+        /**
+         * 日期、数字或者自定义格式转换
+         */
+        //EasyExcel.write(response.getOutputStream(), ConverterData.class).sheet("模板").doWrite(simpleData());
+        /**
+         * 自动列宽(不太精确)
+         *
+         * 这个目前不是很好用，比如有数字就会导致换行。而且长度也不是刚好和实际长度一致。 所以需要精确到刚好列宽的慎用。 当然也可以自己参照
+         */
+        EasyExcel.write(response.getOutputStream(), ConverterData.class).registerWriteHandler(new LongestMatchColumnWidthStyleStrategy()).sheet("模板").doWrite(simpleData());
+
+        // 写法3
+        // 这里 需要指定写用哪个class去写
+        //try (ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream(), DemoData.class).build()) {
+        //    WriteSheet writeSheet = EasyExcel.writerSheet("模板").build();
+        //    excelWriter.write(simpleData(), writeSheet);
+        //}
+
+    }
+
+    private List<DemoData> simpleData() {
+        List<DemoData> list = ListUtils.newArrayList();
+        for (int i = 0; i < 10; i++) {
+            DemoData data = new DemoData();
+            data.setString("字符串" + i);
+            data.setDate(new Date());
+            data.setDoubleData(0.56);
+            list.add(data);
+        }
+        return list;
     }
 
     /**

@@ -1,6 +1,9 @@
 package com.example.demo.utils;
 
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.StringUtils;
+import ru.lanwen.verbalregex.VerbalExpression;
 
 /**
  * @author: kavanLi
@@ -10,6 +13,17 @@ import org.apache.commons.lang3.StringUtils;
 public final class RegexUtils {
 
     /* fields -------------------------------------------------------------- */
+
+    /**
+     * 字符串中有非数字
+     */
+    public static Pattern NUMBER_PATTERN = Pattern.compile("[^0-9]");
+
+    /**
+     * 字符串包含数字
+     */
+    public static Pattern CONTAIN_NUMBER_PATTERN = Pattern.compile("(.*?)\\d(.*?)");
+
 
     private RegexUtils() {
     }
@@ -42,15 +56,16 @@ public final class RegexUtils {
     }
 
     /**
-     * 多个字符在一个字符串中交集的regex
+     * 多个字符在一个字符串中的regex 交集
      * Multiple words in any order using regex
      * https://stackoverflow.com/questions/1177081/multiple-words-in-any-order-using-regex
      * https://www.baeldung.com/string-contains-multiple-words
      * https://stackoverflow.com/questions/4389644/regex-to-match-string-containing-two-names-in-any-order
+     *
      * @param str
      * @return
      */
-    public static String multipleWordInStringRegExp(String... str) {
+    public static String multipleWordAndInStringRegExp(String... str) {
         if (str.length <= 0) {
             return "";
         }
@@ -61,6 +76,43 @@ public final class RegexUtils {
             regExp += "(?=.*" + makeQueryStringToRegExp(s) + ")";
         }
 
+        return regExp;
+    }
+
+    /**
+     * 多个字符在一个字符串中的regex 并集
+     * Multiple words in any order using regex
+     *
+     * @param str
+     * @return
+     */
+    public static String multipleWordOrInStringRegExp(String... str) {
+        if (str.length <= 0) {
+            return "";
+        }
+        VerbalExpression regex = VerbalExpression.regex().oneOf(str).build();
+
+        return regex.toString();
+    }
+
+    /**
+     * 验证由数字和26个英文字母组成的字符串 和 - 组成
+     * https://www.cnblogs.com/halao/p/7662425.html
+     *
+     * @return
+     */
+    public static String anyLettersAndNumbers() {
+        String regExp = "^[A-Za-z0-9-]+$";
+        return regExp;
+    }
+
+    /**
+     * 不包含字符串
+     *
+     * @return
+     */
+    public static String notContainString(String string) {
+        String regExp = "^(?!.*" + makeQueryStringToRegExp(string) + ")";
         return regExp;
     }
 
