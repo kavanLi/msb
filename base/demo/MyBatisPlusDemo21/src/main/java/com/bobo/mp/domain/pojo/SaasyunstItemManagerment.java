@@ -1,100 +1,147 @@
-package generator.domain;
+package com.bobo.mp.domain.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * 
+ *
+ * 有Boolean字段 有常量字段 枚举就是特殊的常量值
+ * 有LocalDateTime
+ * CREATE TABLE saasyunst_item_managerment (
+ *   id BIGINT(32) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '编号（无意义唯一）主键、unsigned、单表时自增、步长为 1',
+ *   biz_user_id VARCHAR(64) COMMENT '商户用户编号',
+ *   item_no VARCHAR(64) COMMENT '科目编号',
+ *   item_name VARCHAR(4) COMMENT '科目名称',
+ *   item_desc VARCHAR(400) COMMENT '科目描述',
+ *   item_tier TINYINT(1) COMMENT '科目层级，1-科目类别 2-科目明细',
+ *   item_scene TINYINT(1) COMMENT '应用场景，1-POS款项 2-H5款项',
+ *   seq_no INT COMMENT '顺序号',
+ *   item_price BIGINT(24) COMMENT '价格，单位：分',
+ *   is_real_name TINYINT(1) COMMENT '实名标识',
+ *   receiver_id VARCHAR(64) COMMENT '收款方编号',
+ *   receiver_name VARCHAR(64) COMMENT '收款方名称',
+ *   status TINYINT(1) COMMENT '启用状态，1-启用 0-禁用',
+ *   create_user_name VARCHAR(64) COMMENT '创建人',
+ *   gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间，格式：YYYY-MM-DD hh:mm:ss',
+ *   modified_user_name VARCHAR(64) COMMENT '更新人',
+ *   gmt_modified DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间，格式：YYYY-MM-DD hh:mm:ss'
+ * );
+ *
+ *
  * @TableName saasyunst_item_managerment
  */
+@TableName(value ="saasyunst_item_managerment")
 @Data
 public class SaasyunstItemManagerment implements Serializable {
     /**
      * 编号（无意义唯一）主键、unsigned、单表时自增、步长为 1
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
      * 商户用户编号
      */
+    @TableField(value = "biz_user_id")
     private String bizUserId;
 
     /**
      * 科目编号
      */
+    @TableField(value = "item_no")
     private String itemNo;
 
     /**
      * 科目名称
      */
+    @TableField(value = "item_name")
     private String itemName;
 
     /**
      * 科目描述
      */
+    @TableField(value = "item_desc")
     private String itemDesc;
 
     /**
      * 科目层级，1-科目类别 2-科目明细
      */
+    @TableField(value = "item_tier")
     private Integer itemTier;
 
     /**
      * 应用场景，1-POS款项 2-H5款项
      */
+    @TableField(value = "item_scene")
     private Integer itemScene;
 
     /**
      * 顺序号
      */
+    @TableField(value = "seq_no")
     private Integer seqNo;
 
     /**
      * 价格，单位：分
      */
+    @TableField(value = "item_price")
     private Long itemPrice;
 
     /**
      * 实名标识
      */
-    private Integer isRealName;
+    @TableField(value = "is_real_name")
+    private Boolean isRealName;
 
     /**
      * 收款方编号
      */
+    @TableField(value = "receiver_id")
     private String receiverId;
 
     /**
      * 收款方名称
      */
+    @TableField(value = "receiver_name")
     private String receiverName;
 
     /**
      * 启用状态，1-启用 0-禁用
      */
+    @TableField(value = "status")
     private Integer status;
 
     /**
      * 创建人
      */
+    @TableField(value = "create_user_name")
     private String createUserName;
 
     /**
      * 创建时间，格式：YYYY-MM-DD hh:mm:ss
      */
-    private Date gmtCreate;
+    @TableField(value = "gmt_create")
+    private LocalDateTime gmtCreate;
 
     /**
      * 更新人
      */
+    @TableField(value = "modified_user_name")
     private String modifiedUserName;
 
     /**
      * 更新时间，格式：YYYY-MM-DD hh:mm:ss
      */
-    private Date gmtModified;
+    @TableField(value = "gmt_modified")
+    private LocalDateTime gmtModified;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -110,22 +157,22 @@ public class SaasyunstItemManagerment implements Serializable {
         }
         SaasyunstItemManagerment other = (SaasyunstItemManagerment) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getBizUserId() == null ? other.getBizUserId() == null : this.getBizUserId().equals(other.getBizUserId()))
-            && (this.getItemNo() == null ? other.getItemNo() == null : this.getItemNo().equals(other.getItemNo()))
-            && (this.getItemName() == null ? other.getItemName() == null : this.getItemName().equals(other.getItemName()))
-            && (this.getItemDesc() == null ? other.getItemDesc() == null : this.getItemDesc().equals(other.getItemDesc()))
-            && (this.getItemTier() == null ? other.getItemTier() == null : this.getItemTier().equals(other.getItemTier()))
-            && (this.getItemScene() == null ? other.getItemScene() == null : this.getItemScene().equals(other.getItemScene()))
-            && (this.getSeqNo() == null ? other.getSeqNo() == null : this.getSeqNo().equals(other.getSeqNo()))
-            && (this.getItemPrice() == null ? other.getItemPrice() == null : this.getItemPrice().equals(other.getItemPrice()))
-            && (this.getIsRealName() == null ? other.getIsRealName() == null : this.getIsRealName().equals(other.getIsRealName()))
-            && (this.getReceiverId() == null ? other.getReceiverId() == null : this.getReceiverId().equals(other.getReceiverId()))
-            && (this.getReceiverName() == null ? other.getReceiverName() == null : this.getReceiverName().equals(other.getReceiverName()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getCreateUserName() == null ? other.getCreateUserName() == null : this.getCreateUserName().equals(other.getCreateUserName()))
-            && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
-            && (this.getModifiedUserName() == null ? other.getModifiedUserName() == null : this.getModifiedUserName().equals(other.getModifiedUserName()))
-            && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()));
+                && (this.getBizUserId() == null ? other.getBizUserId() == null : this.getBizUserId().equals(other.getBizUserId()))
+                && (this.getItemNo() == null ? other.getItemNo() == null : this.getItemNo().equals(other.getItemNo()))
+                && (this.getItemName() == null ? other.getItemName() == null : this.getItemName().equals(other.getItemName()))
+                && (this.getItemDesc() == null ? other.getItemDesc() == null : this.getItemDesc().equals(other.getItemDesc()))
+                && (this.getItemTier() == null ? other.getItemTier() == null : this.getItemTier().equals(other.getItemTier()))
+                && (this.getItemScene() == null ? other.getItemScene() == null : this.getItemScene().equals(other.getItemScene()))
+                && (this.getSeqNo() == null ? other.getSeqNo() == null : this.getSeqNo().equals(other.getSeqNo()))
+                && (this.getItemPrice() == null ? other.getItemPrice() == null : this.getItemPrice().equals(other.getItemPrice()))
+                && (this.getIsRealName() == null ? other.getIsRealName() == null : this.getIsRealName().equals(other.getIsRealName()))
+                && (this.getReceiverId() == null ? other.getReceiverId() == null : this.getReceiverId().equals(other.getReceiverId()))
+                && (this.getReceiverName() == null ? other.getReceiverName() == null : this.getReceiverName().equals(other.getReceiverName()))
+                && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+                && (this.getCreateUserName() == null ? other.getCreateUserName() == null : this.getCreateUserName().equals(other.getCreateUserName()))
+                && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
+                && (this.getModifiedUserName() == null ? other.getModifiedUserName() == null : this.getModifiedUserName().equals(other.getModifiedUserName()))
+                && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()));
     }
 
     @Override
