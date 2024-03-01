@@ -52,14 +52,29 @@
         </triggeringPolicy>
     </appender>
 
-
+    <!-- 6.【强制】对于 trace / debug / info 级别的日志输出，必须进行日志级别的开关判断：
+    说明：虽然在 debug(参数) 的方法体内第一行代码 isDisabled(Level.DEBUG_INT) 为真时（Slf4j 的常见实现 Log4j 和
+    Logback），就直接 return，但是参数可能会进行字符串拼接运算。此外，如果 debug(getName()) 这种参数内有
+    getName() 方法调用，无谓浪费方法调用的开销。
+    正例：
+    // 如果判断为真，那么可以输出 trace 和 debug 级别的日志
+    if (logger.isDebugEnabled()) {
+        logger.debug("Current ID is: {} and name is: {}", id, getName());
+    }
+    -->
     <!-- 日志输出级别和日志的输出方式 -->
-    <root level="info">
+    <root level="DEBUG">
         <appender-ref ref="Stdout" />
        <!-- <appender-ref ref="RollingFile" />-->
     </root>
 
-    <logger name="com.example.demo" level="DEBUG"></logger>
+    <!--  7.【强制】避免重复打印日志，浪费磁盘空间，务必在日志配置文件中设置 additivity=false
+    正例：<logger name="com.taobao.dubbo.config" additivity="false">
+      -->
+    <logger name="com.example.demo" level="INFO" additivity="true">
+        <appender-ref ref="Stdout" />
+    </logger>
+<!--    <logger name="com.example.demo" level="DEBUG"></logger>-->
 
     <!--日志异步到数据库 -->
     <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">

@@ -42,6 +42,8 @@ public final class DateOrTimeUtils {
      * 推荐使用 DateTimeFormatter 结合 LocalDateTime 使用来格式化日期和时间。
      * 建议在 Java 代码中使用 LocalDateTime 取代 Date。
      *
+     * 如果是 JDK8 的应用， 可以使用 Instant 代替 Date， LocalDateTime 代替 Calendar， DateTimeFormatter 代替
+     * SimpleDateFormat， 官方给出的解释： simple beautiful strong immutable thread-safe。
      *
      */
     @SneakyThrows

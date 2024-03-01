@@ -22,7 +22,7 @@ import lombok.Data;
  *   item_tier TINYINT(1) COMMENT '科目层级，1-科目类别 2-科目明细',
  *   item_scene TINYINT(1) COMMENT '应用场景，1-POS款项 2-H5款项',
  *   seq_no INT COMMENT '顺序号',
- *   item_price BIGINT(24) COMMENT '价格，单位：分',
+ *   item_price BIGINT(64) COMMENT '价格，单位：分',
  *   is_real_name TINYINT(1) COMMENT '实名标识',
  *   receiver_id VARCHAR(64) COMMENT '收款方编号',
  *   receiver_name VARCHAR(64) COMMENT '收款方名称',
@@ -33,6 +33,11 @@ import lombok.Data;
  *   gmt_modified DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间，格式：YYYY-MM-DD hh:mm:ss'
  * );
  *
+ * VARCHAR(64) 和 BIGINT(64) 中的 64 含义不同：
+ *
+ * VARCHAR(64) 中的 64 表示最大字符数，即该字段最多可以存储 64 个字符。实际存储空间取决于存储的字符串长度和字符集编码。例如，如果存储的字符串是 "Hello, world!"，使用 UTF-8 字符集编码，则实际存储空间为 13 个字节。
+ *
+ * BIGINT(64) 中的 64 表示最大位数，即该字段可以存储 64 位的二进制数据。在大多数情况下，BIGINT(64) 类型数据占用 8 个字节的存储空间，即 64 位。
  *
  * @TableName saasyunst_item_managerment
  */

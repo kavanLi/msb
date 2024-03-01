@@ -11,14 +11,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -33,14 +26,15 @@ import com.alibaba.excel.write.metadata.WriteTable;
 import com.alibaba.fastjson.JSONObject;
 import com.csvreader.CsvReader;
 import com.example.demo.constant.utils.GuavaCacheUtil;
-import com.example.demo.domain.User;
 import com.example.demo.domain.entity.MapperTestEO;
 import com.example.demo.domain.model.MapperTestVO;
+import com.example.demo.utils.AESUtils;
 import lombok.extern.slf4j.Slf4j;
 import oracle.jdbc.dcn.DatabaseChangeEvent;
 import oracle.jdbc.dcn.DatabaseChangeListener;
 import oracle.jdbc.dcn.DatabaseChangeRegistration;
 import oracle.jdbc.driver.OracleConnection;
+import org.apache.catalina.User;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
@@ -71,7 +65,6 @@ public class MainTest {
 
     /* public methods ------------------------------------------------------ */
     public String formatDateToString(String date) {
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date _date = new Date(date);
         String formatDate = simpleDateFormat.format(_date);
@@ -109,14 +102,24 @@ public class MainTest {
     /* getters/setters ----------------------------------------------------- */
 
 
-
-
-
-
     public static void main(String[] args) throws Exception {
 
-        System.out.println(dateTimeFormatter.format(LocalDateTime.now()));
+        String mobile = AESUtils.Decrypt("micIMnx1jAhraI1X3QaZqA==");
+        String pwd = AESUtils.Decrypt("$2a$10$Njb6lLGNEcTWTtIpI0sRzOST0GCyRt.Qjk2C1Z4fSlC9s0B/af1ai");
 
+        System.out.println(dateTimeFormatter.format(LocalDateTime.now()));
+        byte b = Byte.parseByte("123"); // 自动转换为 123
+        short s = Short.parseShort("456"); // 自动转换为 456
+        System.out.println(b + s);
+        String join = StringUtils.join("123", "312");
+
+        Integer a = 1;
+        Integer b1 = 2;
+        Integer c = null;
+        Boolean flag = false;
+// a*b 的结果是 int 类型， 那么 c 会强制拆箱成 int 类型， 抛出 NPE 异常
+        Integer result = (flag ? a * b1 : c);
+        System.out.println(123);
         //String reqStr = "Go to Zibo for barbecue";
         //System.out.println(Thread.currentThread().getName() + " 开始请求 " + reqStr);
         //WebClient webClient = WebClient.create("http://localhost:8080");
@@ -1152,45 +1155,45 @@ public class MainTest {
 
     }
 
-/* private methods ----------------------------------------------------- */
+    /* private methods ----------------------------------------------------- */
 
-/* getters/setters ----------------------------------------------------- */
-enum OperationType {
-    syncMolecularPathology("同步分子病理数据"),
-    referInfo("查询信息"),
-    editSopForm("编辑sop表单或表格"),
-    updateSopForm("更新sop表单或表格"),
-    updateInfo("更新信息"),
-    createAnalyze("创建分析"),
-    continueAnalyze("继续分析"),
-    reAnalyze("重新分析"),
-    analyzed("分析完成"),
-    verifying("开始审核"),
-    verified("审核完成"),
-    submitCheck("提交复核"),
-    checking("开始复核"),
-    checked("复核完成"),
-    submitReview("提交重新验证"),
-    editMutationSite("更改位点数据"),
-    prepareReport("准备报告"),
-    editReport("编辑报告"),
-    sendReport("发送报告"),
-    archive("归档"),
-    terminate("分析终止"),
-    withdraw("撤回");
+    /* getters/setters ----------------------------------------------------- */
+    enum OperationType {
+        syncMolecularPathology("同步分子病理数据"),
+        referInfo("查询信息"),
+        editSopForm("编辑sop表单或表格"),
+        updateSopForm("更新sop表单或表格"),
+        updateInfo("更新信息"),
+        createAnalyze("创建分析"),
+        continueAnalyze("继续分析"),
+        reAnalyze("重新分析"),
+        analyzed("分析完成"),
+        verifying("开始审核"),
+        verified("审核完成"),
+        submitCheck("提交复核"),
+        checking("开始复核"),
+        checked("复核完成"),
+        submitReview("提交重新验证"),
+        editMutationSite("更改位点数据"),
+        prepareReport("准备报告"),
+        editReport("编辑报告"),
+        sendReport("发送报告"),
+        archive("归档"),
+        terminate("分析终止"),
+        withdraw("撤回");
 
-    String title;
+        String title;
 
-    private OperationType(String title) {
-        this.title = title;
+        private OperationType(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return this.title;
+        }
+
+
     }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-
-}
 
     public static int getMSWordsCount(String context) {
         int words_count = 0;

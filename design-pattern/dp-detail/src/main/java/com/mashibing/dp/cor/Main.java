@@ -3,6 +3,9 @@ package com.mashibing.dp.cor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * cor：责任链模式
+ */
 public class Main {
     public static void main(String[] args) {
         Msg msg = new Msg();

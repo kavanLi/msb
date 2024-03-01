@@ -1,4 +1,4 @@
-package com.bobo.mp.constant;
+package com.bobo.mp.constants;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,9 @@
 package generator.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
@@ -8,93 +12,124 @@ import lombok.Data;
  * 
  * @TableName saasyunst_item_managerment
  */
+@TableName(value ="saasyunst_item_managerment")
 @Data
 public class SaasyunstItemManagerment implements Serializable {
     /**
      * 编号（无意义唯一）主键、unsigned、单表时自增、步长为 1
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
      * 商户用户编号
      */
+    @TableField(value = "biz_user_id")
     private String bizUserId;
 
     /**
      * 科目编号
      */
+    @TableField(value = "item_no")
     private String itemNo;
 
     /**
      * 科目名称
      */
+    @TableField(value = "item_name")
     private String itemName;
 
     /**
      * 科目描述
      */
+    @TableField(value = "item_desc")
     private String itemDesc;
 
     /**
      * 科目层级，1-科目类别 2-科目明细
      */
+    @TableField(value = "item_tier")
     private Integer itemTier;
 
     /**
      * 应用场景，1-POS款项 2-H5款项
      */
+    @TableField(value = "item_scene")
     private Integer itemScene;
 
     /**
      * 顺序号
      */
+    @TableField(value = "seq_no")
     private Integer seqNo;
 
     /**
      * 价格，单位：分
      */
+    @TableField(value = "item_price")
     private Long itemPrice;
 
     /**
      * 实名标识
      */
+    @TableField(value = "is_real_name")
     private Integer isRealName;
 
     /**
      * 收款方编号
      */
+    @TableField(value = "receiver_id")
     private String receiverId;
 
     /**
      * 收款方名称
      */
+    @TableField(value = "receiver_name")
     private String receiverName;
 
     /**
      * 启用状态，1-启用 0-禁用
      */
+    @TableField(value = "status")
     private Integer status;
 
     /**
      * 创建人
      */
+    @TableField(value = "create_user_name")
     private String createUserName;
 
     /**
      * 创建时间，格式：YYYY-MM-DD hh:mm:ss
      */
+    @TableField(value = "gmt_create")
     private Date gmtCreate;
 
     /**
      * 更新人
      */
+    @TableField(value = "modified_user_name")
     private String modifiedUserName;
 
     /**
      * 更新时间，格式：YYYY-MM-DD hh:mm:ss
      */
+    @TableField(value = "gmt_modified")
     private Date gmtModified;
 
+    /**
+     * 应用编号
+     */
+    @TableField(value = "application_id")
+    private String applicationId;
+
+    /**
+     * 父科目编号
+     */
+    @TableField(value = "parent_item_no")
+    private String parentItemNo;
+
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -125,7 +160,9 @@ public class SaasyunstItemManagerment implements Serializable {
             && (this.getCreateUserName() == null ? other.getCreateUserName() == null : this.getCreateUserName().equals(other.getCreateUserName()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getModifiedUserName() == null ? other.getModifiedUserName() == null : this.getModifiedUserName().equals(other.getModifiedUserName()))
-            && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()));
+            && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
+            && (this.getApplicationId() == null ? other.getApplicationId() == null : this.getApplicationId().equals(other.getApplicationId()))
+            && (this.getParentItemNo() == null ? other.getParentItemNo() == null : this.getParentItemNo().equals(other.getParentItemNo()));
     }
 
     @Override
@@ -149,6 +186,8 @@ public class SaasyunstItemManagerment implements Serializable {
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getModifiedUserName() == null) ? 0 : getModifiedUserName().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
+        result = prime * result + ((getApplicationId() == null) ? 0 : getApplicationId().hashCode());
+        result = prime * result + ((getParentItemNo() == null) ? 0 : getParentItemNo().hashCode());
         return result;
     }
 
@@ -175,6 +214,8 @@ public class SaasyunstItemManagerment implements Serializable {
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", modifiedUserName=").append(modifiedUserName);
         sb.append(", gmtModified=").append(gmtModified);
+        sb.append(", applicationId=").append(applicationId);
+        sb.append(", parentItemNo=").append(parentItemNo);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
