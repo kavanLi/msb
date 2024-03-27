@@ -1,7 +1,8 @@
 package com.bobo.mp.mapper;
 
-import com.bobo.mp.domain.DynaAmsSoaservice;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mashibing.internalcommon.domain.DynaAmsSoaservice;
 
 /**
 * @author kavanLi-R7000
@@ -9,7 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2024-01-05 16:17:24
 * @Entity com.bobo.mp.domain.DynaAmsSoaservice
 */
-public interface DynaAmsSoaserviceMapper extends BaseMapper<DynaAmsSoaservice> {
+public interface DynaAmsSoaserviceMapper extends BaseMapper <DynaAmsSoaservice> {
 
 }
 

@@ -3,6 +3,7 @@ package com.example.demo;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import com.example.demo.service.AsyncService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,13 @@ public class AlertTest {
 
     @Autowired
     private JavaMailSender mailSender;
+    @Autowired
+    private AsyncService asyncService;
 
+    @Test
+    public void testAsyncThreadName() {
+        asyncService.processCompletableFuture("123");
+    }
 
     /**
      * 发送文本邮件

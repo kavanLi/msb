@@ -12,16 +12,18 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.bobo.mp.constants.ItemManagermentConstants;
-import com.bobo.mp.domain.model.YchItemManagermentResp;
-import com.bobo.mp.domain.pojo.SaasyunstItemManagerment;
-import com.bobo.mp.domain.request.ItemManagermentQueryReq;
-import com.bobo.mp.domain.response.PageResponse;
+import com.mashibing.internalcommon.constant.ItemManagermentConstants;
+import com.mashibing.internalcommon.domain.model.YchItemManagermentResp;
+import com.mashibing.internalcommon.domain.pojo.SaasyunstItemManagerment;
+import com.mashibing.internalcommon.domain.request.ItemManagermentQueryReq;
+import com.mashibing.internalcommon.domain.response.PageResponse;
 import com.bobo.mp.mapper.SaasyunstItemManagermentMapper;
 import com.bobo.mp.service.SaasyunstItemManagermentService;
-import com.bobo.mp.utils.BeanUtils;
+import com.mashibing.internalcommon.utils.BeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,13 +32,15 @@ import org.springframework.stereotype.Service;
  * @createDate 2024-02-22 16:18:54
  */
 @Service
+@Lazy
 @Slf4j
 public class SaasyunstItemManagermentServiceImpl extends ServiceImpl <SaasyunstItemManagermentMapper, SaasyunstItemManagerment>
         implements SaasyunstItemManagermentService {
 
 
-    @Resource
+    @Autowired
     private SaasyunstItemManagermentService saasyunstItemManagermentService;
+
 
     /**
      * 门店端-科目管理-查询

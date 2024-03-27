@@ -1,7 +1,7 @@
 package com.bobo.mp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.bobo.mp.domain.pojo.User;
+import com.mashibing.internalcommon.domain.pojo.User;
 
 /**
  * 自定义的Service

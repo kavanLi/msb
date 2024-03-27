@@ -1,10 +1,10 @@
 package com.bobo.mp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.bobo.mp.domain.model.YchItemManagermentResp;
-import com.bobo.mp.domain.pojo.SaasyunstItemManagerment;
-import com.bobo.mp.domain.request.ItemManagermentQueryReq;
-import com.bobo.mp.domain.response.PageResponse;
+import com.mashibing.internalcommon.domain.model.YchItemManagermentResp;
+import com.mashibing.internalcommon.domain.pojo.SaasyunstItemManagerment;
+import com.mashibing.internalcommon.domain.request.ItemManagermentQueryReq;
+import com.mashibing.internalcommon.domain.response.PageResponse;
 
 /**
 * @author kavanLi-R7000

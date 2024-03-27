@@ -2,7 +2,7 @@ package com.bobo.mp.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.bobo.mp.domain.pojo.SaasyunstItemManagerment;
+import com.mashibing.internalcommon.domain.pojo.SaasyunstItemManagerment;
 
 /**
 * @author kavanLi-R7000

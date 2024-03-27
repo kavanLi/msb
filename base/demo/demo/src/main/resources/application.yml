@@ -1,0 +1,19 @@
+server:
+    tomcat:
+        connection-timeout: 100
+spring:
+    boot:
+        admin:
+            mail:
+                from: 763527350@qq.com
+                to: 763527350@qq.com
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    mail:
+        default-encoding: utf-8
+        host: smtp.qq.com
+        password: midsagvygubebbcd
+        port: 25
+        protocol: smtp
+        username: 763527350@qq.com

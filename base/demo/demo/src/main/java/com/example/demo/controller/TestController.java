@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.excel.EasyExcel;
@@ -20,26 +19,20 @@ import com.alibaba.excel.write.metadata.WriteTable;
 import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.annotation.OperationLogAnnotation;
-import com.example.demo.domain.User;
-import com.example.demo.domain.model.CommonResponse;
-import com.example.demo.exception.BaseException;
-import com.example.demo.utils.DateOrTimeUtils;
-import com.example.demo.utils.easyExcel.ConverterData;
-import com.example.demo.utils.easyExcel.DemoData;
-import com.google.gson.JsonObject;
+import com.mashibing.internalcommon.domain.User;
+import com.mashibing.internalcommon.domain.model.CommonResponse;
+import com.mashibing.internalcommon.utils.DateOrTimeUtils;
+import com.mashibing.internalcommon.utils.easyExcel.ConverterData;
+import com.mashibing.internalcommon.utils.easyExcel.DemoData;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.joda.time.LocalDateTime;
 import org.json.JSONObject;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -59,14 +52,26 @@ public class TestController {
     }
 
 
+    // 使用 @RequestBody 注解， 传参正常
+    // 无法通过application/x-www-form-urlencoded传参
+    //public User user(User req) // 不使用 @RequestBody 注解，正好相反，application/x-www-form-urlencoded 传参正常
+    // 无法通过 application/json 传参
+    @PostMapping(value = "/user11")
+    public User user1(User req) {
+        User user = new User();
+        user.setGmt_create(new Date());
+        return req;
+    }
+
     /**
      * 测试 配置
      * spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
      * spring.jackson.time-zone=GMT+8
      *
-     *  spring.jackson.date-format 用于指定日期的格式，例如 "yyyy-MM-dd HH:mm:ss"，这样在序列化和反序列化 JSON 数据时，日期字段将会按照指定的格式进行处理。如果不设置，默认情况下 Jackson 会使用 ISO 8601 格式（例如 "yyyy-MM-dd'T'HH:mm:ss.SSSZ"）来处理日期。
-     *  spring.jackson.time-zone 用于指定时区，例如 "GMT+8"，这样在序列化和反序列化 JSON 数据时，日期字段将会以指定的时区进行处理。如果不设置，默认情况下 Jackson 会使用系统默认的时区。
-     *  通过在 Spring Boot 的配置文件中设置这两个属性，可以全局地配置整个应用程序中 Jackson 库对日期和时间的处理方式，确保在 JSON 数据的序列化和反序列化过程中符合预期的格式和时区要求。
+     * spring.jackson.date-format 用于指定日期的格式，例如 "yyyy-MM-dd HH:mm:ss"，这样在序列化和反序列化 JSON 数据时，日期字段将会按照指定的格式进行处理。如果不设置，默认情况下 Jackson 会使用 ISO 8601 格式（例如 "yyyy-MM-dd'T'HH:mm:ss.SSSZ"）来处理日期。
+     * spring.jackson.time-zone 用于指定时区，例如 "GMT+8"，这样在序列化和反序列化 JSON 数据时，日期字段将会以指定的时区进行处理。如果不设置，默认情况下 Jackson 会使用系统默认的时区。
+     * 通过在 Spring Boot 的配置文件中设置这两个属性，可以全局地配置整个应用程序中 Jackson 库对日期和时间的处理方式，确保在 JSON 数据的序列化和反序列化过程中符合预期的格式和时区要求。
+     *
      * @return
      */
     @GetMapping(value = "/user")
@@ -93,12 +98,12 @@ public class TestController {
         return user;
     }
 
-    @PostMapping(value = "/user1")
-    public User user(@RequestBody User req) // 使用 @RequestBody 注解， 传参正常
+    // 使用 @RequestBody 注解， 传参正常
     // 无法通过application/x-www-form-urlencoded传参
     //public User user(User req) // 不使用 @RequestBody 注解，正好相反，application/x-www-form-urlencoded 传参正常
     // 无法通过 application/json 传参
-    {
+    @PostMapping(value = "/user1")
+    public User user(@RequestBody User req) {
         User user = new User();
         user.setGmt_create(new Date());
         return user;
@@ -328,8 +333,8 @@ public class TestController {
 
     }
 
-    private List<DemoData> simpleData() {
-        List<DemoData> list = ListUtils.newArrayList();
+    private List <DemoData> simpleData() {
+        List <DemoData> list = ListUtils.newArrayList();
         for (int i = 0; i < 10; i++) {
             DemoData data = new DemoData();
             data.setString("字符串" + i);

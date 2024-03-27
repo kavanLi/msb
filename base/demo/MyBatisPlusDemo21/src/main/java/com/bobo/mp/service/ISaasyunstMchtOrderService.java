@@ -1,10 +1,7 @@
 package com.bobo.mp.service;
 
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.bobo.mp.domain.pojo.SaasyunstMchtOrder;
+import com.mashibing.internalcommon.domain.pojo.SaasyunstMchtOrder;
 
 public interface ISaasyunstMchtOrderService extends IService <SaasyunstMchtOrder> {
 

@@ -1,7 +1,7 @@
 package com.bobo.mp.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.bobo.mp.domain.pojo.Dept;
+import com.mashibing.internalcommon.domain.pojo.Dept;
 
 /**
  * @Author: Ma HaiYang

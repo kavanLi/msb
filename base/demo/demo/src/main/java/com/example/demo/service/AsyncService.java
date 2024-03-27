@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.concurrent.CompletableFuture;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
  * @EnableAsync
  */
 @Service
+@Slf4j
 public class AsyncService {
 
     @Async
@@ -29,6 +31,7 @@ public class AsyncService {
     @Async
     public CompletableFuture <Void> processCompletableFuture(String updatedParameters) {
         try {
+            log.info("開始休息");
             System.out.println("開始休息");
             Thread.sleep(3000);
             System.out.println("休息結束");

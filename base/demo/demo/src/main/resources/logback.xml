@@ -63,7 +63,7 @@
     }
     -->
     <!-- 日志输出级别和日志的输出方式 -->
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="Stdout" />
        <!-- <appender-ref ref="RollingFile" />-->
     </root>

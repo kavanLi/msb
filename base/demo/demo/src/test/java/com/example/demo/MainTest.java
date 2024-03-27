@@ -3,13 +3,8 @@ package com.example.demo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
@@ -23,29 +18,16 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.WriteTable;
-import com.alibaba.fastjson.JSONObject;
 import com.csvreader.CsvReader;
-import com.example.demo.constant.utils.GuavaCacheUtil;
-import com.example.demo.domain.entity.MapperTestEO;
-import com.example.demo.domain.model.MapperTestVO;
-import com.example.demo.utils.AESUtils;
+import com.mashibing.internalcommon.utils.GuavaCacheUtil;
+import com.mashibing.internalcommon.domain.entity.MapperTestEO;
+import com.mashibing.internalcommon.domain.model.MapperTestVO;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.dcn.DatabaseChangeEvent;
-import oracle.jdbc.dcn.DatabaseChangeListener;
-import oracle.jdbc.dcn.DatabaseChangeRegistration;
-import oracle.jdbc.driver.OracleConnection;
-import org.apache.catalina.User;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
-import org.slf4j.MDC;
 import org.springframework.util.Assert;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.netty.ByteBufFlux;
-import reactor.netty.http.client.HttpClient;
+import org.springframework.util.StopWatch;
 
 /**
  * @author: kavanLi-R7000
@@ -103,23 +85,38 @@ public class MainTest {
 
 
     public static void main(String[] args) throws Exception {
+        // 构造 JSON 对象
+        String reqJson = "{\"service\":\"MemberService\",\"method\":\"signBalanceProtocol\",\"param\":{\"payerId\":\"eb0bdf28-df9f-11ee-9fac-00163e3416da\",\"jumpPageType\":2,\"protocolName\":\"委托扣款协议书\",\"source\":1,\"backUrl\":\"http://payment.7dingdong.com/notify/tonglian/index?notify_source=2%26project_key=72b07a12-as7d-11ea-65df-0800274e100a%26source=6%26callback=NC14\",\"protocolReqSn\":\"24032619412243521354\",\"receiverId\":\"allYunBizUserId\"}}";
 
-        String mobile = AESUtils.Decrypt("micIMnx1jAhraI1X3QaZqA==");
-        String pwd = AESUtils.Decrypt("$2a$10$Njb6lLGNEcTWTtIpI0sRzOST0GCyRt.Qjk2C1Z4fSlC9s0B/af1ai");
+        // 将 JSON 对象转换为 URL 编码的字符串
+        String encodedReqJson = URLEncoder.encode(reqJson, "UTF-8");
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        Thread.sleep(123);
+// 要执行的方法
+        stopWatch.stop();
+        long executionTime = stopWatch.getTotalTimeMillis();
 
-        System.out.println(dateTimeFormatter.format(LocalDateTime.now()));
-        byte b = Byte.parseByte("123"); // 自动转换为 123
-        short s = Short.parseShort("456"); // 自动转换为 456
-        System.out.println(b + s);
-        String join = StringUtils.join("123", "312");
+        String[] e = new String[]{"a", "b", "c"};
+        List <String> collect = Stream.of(e).collect(Collectors.toList());
+        System.out.println(collect);
 
-        Integer a = 1;
-        Integer b1 = 2;
-        Integer c = null;
-        Boolean flag = false;
-// a*b 的结果是 int 类型， 那么 c 会强制拆箱成 int 类型， 抛出 NPE 异常
-        Integer result = (flag ? a * b1 : c);
-        System.out.println(123);
+//        String mobile = AESUtils.Decrypt("micIMnx1jAhraI1X3QaZqA==");
+//        String pwd = AESUtils.Decrypt("$2a$10$Njb6lLGNEcTWTtIpI0sRzOST0GCyRt.Qjk2C1Z4fSlC9s0B/af1ai");
+//
+//        System.out.println(dateTimeFormatter.format(LocalDateTime.now()));
+//        byte b = Byte.parseByte("123"); // 自动转换为 123
+//        short s = Short.parseShort("456"); // 自动转换为 456
+//        System.out.println(b + s);
+//        String join = StringUtils.join("123", "312");
+//
+//        Integer a = 1;
+//        Integer b1 = 2;
+//        Integer c = null;
+//        Boolean flag = false;
+//// a*b 的结果是 int 类型， 那么 c 会强制拆箱成 int 类型， 抛出 NPE 异常
+//        Integer result = (flag ? a * b1 : c);
+//        System.out.println(123);
         //String reqStr = "Go to Zibo for barbecue";
         //System.out.println(Thread.currentThread().getName() + " 开始请求 " + reqStr);
         //WebClient webClient = WebClient.create("http://localhost:8080");
@@ -640,12 +637,6 @@ public class MainTest {
         //    }
         //    System.out.print("\n");
         //}
-        try {
-
-        } catch (
-                Exception e) {
-            e.printStackTrace();
-        }
         // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
         // 写法1：
         //String fileName = "/2019.07.16.xml";

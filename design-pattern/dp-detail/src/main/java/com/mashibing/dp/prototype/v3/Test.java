@@ -14,7 +14,7 @@ public class Test {
         p1.loc.street = "sh";
         System.out.println(p2.loc);
 
-        p1.loc.street.replace("sh", "sz");
+        String replace = p1.loc.street.replace("sh", "sz");
         System.out.println(p2.loc.street);
     }
 }

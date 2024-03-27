@@ -3,21 +3,18 @@ package com.bobo.mp.controller;
 import java.time.Duration;
 import java.util.Date;
 
-import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
-import com.bobo.mp.domain.pojo.User;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions;
+import com.mashibing.internalcommon.domain.pojo.User;
 import com.bobo.mp.repository.ReactiveItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -61,7 +58,7 @@ public class WebFluxController {
     }
 
     /**
-     * User 对象是通过 Mono 对象包装的，你可能会问，为啥不直接返回呢？
+     * User1 对象是通过 Mono 对象包装的，你可能会问，为啥不直接返回呢？
      * 在 WebFlux 中，Mono 是非阻塞的写法，只有这样，你才能发挥 WebFlux 非阻塞 + 异步的特性。
      *
      * 补充：在 WebFlux 中，除了 Mono 外，还有一个 Flux，这哥俩均能充当响应式编程中发布者的角色，不同的是：

@@ -2,7 +2,7 @@ package com.bobo.mp.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.bobo.mp.mapper.UserMapper;
-import com.bobo.mp.domain.pojo.User;
+import com.mashibing.internalcommon.domain.pojo.User;
 import com.bobo.mp.service.IUserService;
 import org.springframework.stereotype.Service;
 

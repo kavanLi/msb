@@ -26,7 +26,7 @@ class Child {
     public void wakeUp() {
         cry = true;
 
-        wakeUpEvent event = new wakeUpEvent(System.currentTimeMillis(), "bed", this);
+        WakeUpEvent event = new WakeUpEvent(System.currentTimeMillis(), "bed", this);
 
         for(Observer o : observers) {
             o.actionOnWakeUp(event);
@@ -34,12 +34,12 @@ class Child {
     }
 }
 
-class wakeUpEvent{
+class WakeUpEvent {
     long timestamp;
     String loc;
     Child source;
 
-    public wakeUpEvent(long timestamp, String loc, Child source) {
+    public WakeUpEvent(long timestamp, String loc, Child source) {
         this.timestamp = timestamp;
         this.loc = loc;
         this.source = source;
@@ -47,7 +47,7 @@ class wakeUpEvent{
 }
 
 interface Observer {
-    void actionOnWakeUp(wakeUpEvent event);
+    void actionOnWakeUp(WakeUpEvent event);
 }
 
 class Dad implements Observer {
@@ -56,7 +56,7 @@ class Dad implements Observer {
     }
 
     @Override
-    public void actionOnWakeUp(wakeUpEvent event) {
+    public void actionOnWakeUp(WakeUpEvent event) {
         feed();
     }
 }
@@ -67,7 +67,7 @@ class Mum implements Observer {
     }
 
     @Override
-    public void actionOnWakeUp(wakeUpEvent event) {
+    public void actionOnWakeUp(WakeUpEvent event) {
         hug();
     }
 }
@@ -78,7 +78,7 @@ class Dog implements Observer {
     }
 
     @Override
-    public void actionOnWakeUp(wakeUpEvent event) {
+    public void actionOnWakeUp(WakeUpEvent event) {
         wang();
     }
 }

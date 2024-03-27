@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.mapper.SaasyunstItemManagermentMapper">
+<mapper namespace="com.bobo.mp.mapper.SaasyunstItemManagermentMapper">
 
-    <resultMap id="BaseResultMap" type="generator.domain.SaasyunstItemManagerment">
+    <resultMap id="BaseResultMap" type="com.mashibing.internalcommon.domain.pojo.SaasyunstItemManagerment">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="bizUserId" column="biz_user_id" jdbcType="VARCHAR"/>
         <result property="itemNo" column="item_no" jdbcType="VARCHAR"/>

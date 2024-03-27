@@ -6,15 +6,14 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bobo.mp.dataSource.annotation.ReportDB;
-import com.bobo.mp.domain.DynaAmsSoaservice;
-import com.bobo.mp.domain.DynaAmsSubprodApi;
-import com.bobo.mp.domain.pojo.DynaAmsOrganization;
-import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
-import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
-import com.bobo.mp.domain.pojo.DynaApaTlOrganization;
+import com.mashibing.internalcommon.domain.DynaAmsSoaservice;
+import com.mashibing.internalcommon.domain.DynaAmsSubprodApi;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrganization;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions;
 import com.bobo.mp.mapper.DynaAmsOrgprovisionsMapper;
+import com.bobo.mp.mapper.SaasyunstMchtOrderMapper;
 import com.bobo.mp.mapper.UserMapper;
-import com.bobo.mp.domain.pojo.User;
+import com.mashibing.internalcommon.domain.pojo.User;
 import com.bobo.mp.service.DynaAmsOrgprovisionsService;
 import com.bobo.mp.service.DynaAmsSoaserviceService;
 import com.bobo.mp.service.DynaAmsSubprodApiService;
@@ -22,9 +21,6 @@ import com.bobo.mp.service.DynaApaTlOrganizationService;
 import com.bobo.mp.service.IUserService;
 import com.bobo.mp.service.DynaAmsOrganizationService;
 import lombok.SneakyThrows;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +30,6 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -71,6 +66,10 @@ class MyBatisPlusDemo21ApplicationTests {
 
     @Autowired
     private DynaAmsOrgprovisionsMapper dynaAmsOrgprovisionsMapper;
+
+    @Autowired
+    private SaasyunstMchtOrderMapper saasyunstMchtOrderMapper;
+
 
     @Autowired
     private DataSource dataSource;
@@ -220,6 +219,8 @@ class MyBatisPlusDemo21ApplicationTests {
         List <Map <String, Object>> maps = dynaAmsOrgprovisionsMapper.list4Summary1(params);
         List <DynaAmsOrgprovisions> maps2 = dynaAmsOrgprovisionsMapper.list4Summary2(params);
 
+        //IPage <SaasyunstMchtOrderDTO> iPage4Join = new Page <>(req.getPageNo(), req.getPageSize());
+        //iPage4Join = saasyunstMchtOrderMapper.getSaasyunstMchtOrderJoinList(iPage4Join, params);
         System.out.println(1234);
     }
 
@@ -342,7 +343,7 @@ class MyBatisPlusDemo21ApplicationTests {
         }).or((item) -> {
             item.isNull("email");
         }).select("uid", "name", "age");
-        //List<User> users = mapper.selectList(wrapper);
+        //List<User1> users = mapper.selectList(wrapper);
         List <Map <String, Object>> maps = mapper.selectMaps(wrapper);
         maps.forEach(System.out::println);
     }
@@ -355,7 +356,7 @@ class MyBatisPlusDemo21ApplicationTests {
     void queryAllUser3() {
         QueryWrapper <User> wrapper = new QueryWrapper <>();
         wrapper.inSql("uid", "select uid from t_user where uid < 6 ");
-        //List<User> users = mapper.selectList(wrapper);
+        //List<User1> users = mapper.selectList(wrapper);
         List <Map <String, Object>> maps = mapper.selectMaps(wrapper);
         maps.forEach(System.out::println);
     }

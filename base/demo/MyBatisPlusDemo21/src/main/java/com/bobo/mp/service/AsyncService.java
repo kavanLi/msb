@@ -1,16 +1,10 @@
 package com.bobo.mp.service;
 
-import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 
-import javax.sql.DataSource;
-
 import com.bobo.mp.dataSource.annotation.ReportDB;
-import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
-import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;

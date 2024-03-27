@@ -1,7 +1,7 @@
 package com.bobo.mp;
 
 import com.bobo.mp.mapper.UserMapper;
-import com.bobo.mp.domain.pojo.User;
+import com.mashibing.internalcommon.domain.pojo.User;
 import com.bobo.mp.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
