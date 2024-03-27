@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bobo.mp.mapper.DynaAmsOrganizationMapper">
 
-    <resultMap id="BaseResultMap" type="com.bobo.mp.domain.pojo.DynaAmsOrganization">
+    <resultMap id="BaseResultMap" type="com.mashibing.internalcommon.domain.pojo.DynaAmsOrganization">
             <id property="id" column="ID" jdbcType="DECIMAL"/>
             <result property="domainid" column="DOMAINID" jdbcType="DECIMAL"/>
             <result property="name" column="NAME" jdbcType="VARCHAR"/>

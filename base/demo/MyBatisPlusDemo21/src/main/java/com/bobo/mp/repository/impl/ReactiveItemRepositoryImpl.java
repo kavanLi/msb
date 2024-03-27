@@ -1,6 +1,6 @@
 package com.bobo.mp.repository.impl;
 
-import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions;
 import com.bobo.mp.repository.ReactiveItemRepository;
 import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;

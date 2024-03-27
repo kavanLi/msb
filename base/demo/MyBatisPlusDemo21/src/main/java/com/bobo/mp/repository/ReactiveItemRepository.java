@@ -1,6 +1,6 @@
 package com.bobo.mp.repository;
 
-import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 

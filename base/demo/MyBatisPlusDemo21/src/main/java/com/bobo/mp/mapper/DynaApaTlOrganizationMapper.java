@@ -1,6 +1,6 @@
 package com.bobo.mp.mapper;
 
-import com.bobo.mp.domain.pojo.DynaApaTlOrganization;
+import com.mashibing.internalcommon.domain.pojo.DynaApaTlOrganization;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

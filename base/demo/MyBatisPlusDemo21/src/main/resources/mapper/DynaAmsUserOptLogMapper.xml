@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bobo.mp.mapper.DynaAmsUserOptLogMapper">
 
-    <resultMap id="BaseResultMap" type="com.bobo.mp.domain.pojo.DynaAmsUserOptLog">
+    <resultMap id="BaseResultMap" type="com.mashibing.internalcommon.domain.pojo.DynaAmsUserOptLog">
         <id property="id" column="ID" jdbcType="DECIMAL"/>
         <result property="createSource" column="CREATE_SOURCE" jdbcType="DECIMAL"/>
         <result property="loginName" column="LOGIN_NAME" jdbcType="VARCHAR"/>
@@ -25,7 +25,7 @@
         OPT_NAME
     </sql>
 
-    <insert id="insertDynaAmsUserOptLog" parameterType="com.bobo.mp.domain.pojo.DynaAmsUserOptLog">
+    <insert id="insertDynaAmsUserOptLog" parameterType="com.mashibing.internalcommon.domain.pojo.DynaAmsUserOptLog">
         <![CDATA[
         INSERT INTO DYNA_AMS_USER_OPT_LOG (ID,
                                            CREATE_SOURCE,

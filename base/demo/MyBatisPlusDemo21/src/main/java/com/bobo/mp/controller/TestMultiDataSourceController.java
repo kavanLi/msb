@@ -8,10 +8,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import com.bobo.mp.dataSource.annotation.ConfigDB;
 import com.bobo.mp.dataSource.annotation.ReportDB;
-import com.bobo.mp.domain.pojo.DynaAmsOrganization;
-import com.bobo.mp.domain.pojo.DynaAmsUserOptLog;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrganization;
 import com.bobo.mp.service.AsyncService;
 import com.bobo.mp.service.DynaAmsOrganizationService;
 import lombok.SneakyThrows;

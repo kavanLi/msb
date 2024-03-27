@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bobo.mp.mapper.DynaAmsOrgprovisionsMapper">
 
-    <resultMap id="BaseResultMap" type="com.bobo.mp.domain.pojo.DynaAmsOrgprovisions">
+    <resultMap id="BaseResultMap" type="com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions">
             <id property="id" column="ID" jdbcType="DECIMAL"/>
             <result property="domainid" column="DOMAINID" jdbcType="DECIMAL"/>
             <result property="orgId" column="ORG_ID" jdbcType="DECIMAL"/>
@@ -60,7 +60,7 @@
         ALLOW_PULLOUT_ENDTIME
     </sql>
 
-    <resultMap id="feeSummaryResultMap" type="com.bobo.mp.domain.pojo.DynaAmsOrgprovisions">
+    <resultMap id="feeSummaryResultMap" type="com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions">
         <id property="id" column="ID" jdbcType="DECIMAL"/>
         <result property="bankName" column="BANK_NAME" jdbcType="VARCHAR"/>
         <result property="bankCode" column="BANK_CODE" jdbcType="VARCHAR"/>
@@ -102,7 +102,7 @@
         </trim>
         ORDER BY CREATE_DATETIME DESC
     </select>
-    <select id="list4Summary2" resultType="com.bobo.mp.domain.pojo.DynaAmsOrgprovisions" parameterType="java.util.Map">
+    <select id="list4Summary2" resultType="com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions" parameterType="java.util.Map">
         --         SELECT BANK_NAME, BANK_CODE
         --         FROM DYNA_AMS_ORGPROVISIONS
         <include refid="orgprovisionsSelect"></include>

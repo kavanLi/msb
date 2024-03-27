@@ -1,7 +1,7 @@
 package com.bobo.mp.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions;
 import com.bobo.mp.service.DynaAmsOrgprovisionsService;
 import com.bobo.mp.mapper.DynaAmsOrgprovisionsMapper;
 import org.springframework.stereotype.Service;

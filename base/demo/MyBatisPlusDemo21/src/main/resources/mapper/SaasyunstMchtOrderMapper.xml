@@ -3,7 +3,7 @@
 <mapper namespace="com.bobo.mp.mapper.SaasyunstMchtOrderMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.bobo.mp.domain.pojo.SaasyunstMchtOrder">
+    <resultMap id="BaseResultMap" type="com.mashibing.internalcommon.domain.pojo.SaasyunstMchtOrder">
         <id column="id" property="id"/>
         <result column="application_id" property="applicationId"/>
         <result column="application_name" property="applicationName"/>
@@ -48,8 +48,63 @@
         <result column="receive_date" property="receiveDate"/>
     </resultMap>
 
+    <!--  出入金日结手续费账单-列表分页查询 - 级联查询 Left Join  -->
+    <resultMap id="mchtOrderPaymentBizOrderNoJoinResultMap"
+               type="com.mashibing.internalcommon.domain.model.SaasyunstMchtOrderDTO">
+        <id property="id" column="ID" jdbcType="DECIMAL"/>
+        <result column="application_id" property="applicationId"/>
+        <result column="reciever_id" property="recieverId"/>
+        <result column="reciever_name" property="recieverName"/>
+        <result column="biz_order_no" property="bizOrderNo"/>
+        <result column="scene" property="scene"/>
+        <result column="status" property="status"/>
+        <result property="amount" column="amount" jdbcType="BIGINT"/>
+        <result property="fee" column="fee" jdbcType="BIGINT"/>
+        <result column="order_generate_time" property="orderGenerateTime"/>
+        <result property="channelFee" column="channel_fee" jdbcType="BIGINT"/>
+        <result property="paymentFee" column="payment_fee"/>
+        <result property="paymentReceiverId" column="payment_receiver_id"/>
+        <result property="paymentReceiverName" column="payment_receiver_name"/>
+    </resultMap>
+
+    <sql id="saasyunstMchtOrderPaymentBizOrderNoJoinSelect">
+        SELECT smo.id,
+               smo.application_id,
+               smo.reciever_id,
+               smo.reciever_name,
+               smo.biz_order_no,
+               smo.scene,
+               smo.status,
+               smo.amount,
+               smo.fee,
+               smo.channel_fee,
+               smo.order_generate_time,
+               smop.fee as payment_fee,
+               smop.receiver_id as payment_receiver_id,
+               smop.receiver_name as payment_receiver_name
+        FROM saasyunst_mcht_order_payment as smop
+                 LEFT JOIN saasyunst_mcht_order as smo ON smop.ori_agent_collect_biz_order_no = smo.biz_order_no
+    </sql>
+
+    <select id="getSaasyunstMchtOrderJoinList" resultMap="mchtOrderPaymentBizOrderNoJoinResultMap" parameterType="java.util.Map">
+        <include refid="saasyunstMchtOrderPaymentBizOrderNoJoinSelect"></include>
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test='params != null'>
+                <if test='params.applicationId != null'>AND smop.application_id = #{params.applicationId}</if>
+                <if test='params.bizOrderNo != null'>AND smop.ori_agent_collect_biz_order_no = #{params.bizOrderNo}</if>
+                <if test='params.bizUserId != null'>AND smop.receiver_id = #{params.bizUserId}</if>
+                <if test='params.status != null'>AND smo.status = #{params.status}</if>
+                <if test='params.scene != null'>AND smo.scene = #{params.scene}</if>
+                <if test='params.orderGenerateTimeBeginStr != null'>AND smo.order_generate_time &gt;= #{params.orderGenerateTimeBeginStr}</if>
+                <if test='params.orderGenerateTimeEndStr != null'>AND smo.order_finish_time &lt;= #{params.orderGenerateTimeEndStr}</if>
+            </if>
+        </trim>
+        ORDER BY smo.create_time DESC
+    </select>
+    <!--  出入金日结手续费账单-列表分页查询 - 级联查询 Left Join  -->
+
     <!--  出入金日结手续费账单-列表分页查询 - 汇总数据  -->
-    <resultMap id="feeSummaryResultMap" type="com.bobo.mp.domain.pojo.SaasyunstMchtOrder">
+    <resultMap id="feeSummaryResultMap" type="com.mashibing.internalcommon.domain.pojo.SaasyunstMchtOrder">
         <id property="id" column="ID" jdbcType="DECIMAL"/>
         <result property="amount" column="amount" jdbcType="BIGINT"/>
         <result property="fee" column="fee" jdbcType="BIGINT"/>
@@ -65,11 +120,31 @@
         <include refid="feeSummarySelect"></include>
         <trim prefix="WHERE" prefixOverrides="AND">
             <if test='params != null'>
+                <if test='params.applicationId != null'>AND application_id = #{params.applicationId}</if>
                 <if test='params.bizOrderNo != null'>AND biz_order_no = #{params.bizOrderNo}</if>
+                <if test='params.bizOrderNoList != null and params.bizOrderNoList.size > 0'>
+                    AND biz_order_no IN
+                    (<foreach collection="params.bizOrderNoList" item="item" separator=",">
+                    #{item}
+                </foreach>)
+                </if>
                 <if test='params.orderNo != null'>AND order_no = #{params.orderNo}</if>
                 <if test='params.recieverId != null'>AND reciever_id = #{params.recieverId}</if>
                 <if test='params.recieverName != null'>AND reciever_name = #{params.recieverName}</if>
+                <if test='params.recieverIdList != null and params.recieverIdList.size > 0'>
+                    AND reciever_id IN
+                    (<foreach collection="params.recieverIdList" item="item" separator=",">
+                    #{item}
+                </foreach>)
+                </if>
+                <if test='params.recieverNameList != null and params.recieverNameList.size > 0'>
+                    AND reciever_name IN
+                    (<foreach collection="params.recieverNameList" item="item" separator=",">
+                    #{item}
+                </foreach>)
+                </if>
                 <if test='params.status != null'>AND status = #{params.status}</if>
+                <if test='params.scene != null'>AND scene = #{params.scene}</if>
                 <if test='params.statusList != null and params.statusList.size > 0'>
                     AND status IN
                     (<foreach collection="params.statusList" item="item" separator=",">

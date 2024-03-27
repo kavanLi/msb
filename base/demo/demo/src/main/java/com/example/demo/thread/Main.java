@@ -1,7 +1,6 @@
 package com.example.demo.thread;
-import java.util.Date;
 
-import com.example.demo.domain.User;
+import com.mashibing.internalcommon.domain.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;

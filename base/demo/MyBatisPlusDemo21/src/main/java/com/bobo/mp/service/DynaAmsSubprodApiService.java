@@ -1,6 +1,6 @@
 package com.bobo.mp.service;
 
-import com.bobo.mp.domain.DynaAmsSubprodApi;
+import com.mashibing.internalcommon.domain.DynaAmsSubprodApi;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -75,6 +75,7 @@ public class LoadBalanceGlobalFilter implements GlobalFilter {
                     // 这里需要把lb（如有）替换成 http 或 https，为了简单起见，就替换成http
                     requestUrl = "lb".equals(requestUri.getScheme()) ? URI.create(requestUrl.toString().replaceFirst("lb", "http")) : requestUrl;
 
+                    // 重写GATEWAY_REQUEST_URL_ATTR 参数，实现自定义路由转发。
                     exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, requestUrl);
                     exchange.getAttributes().put(GATEWAY_LOADBALANCER_RESPONSE_ATTR, response);
 

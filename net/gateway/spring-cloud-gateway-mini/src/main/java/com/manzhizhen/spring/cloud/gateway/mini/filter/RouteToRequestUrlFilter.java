@@ -64,6 +64,7 @@ public class RouteToRequestUrlFilter implements GlobalFilter, Ordered {
 		URI mergedUrl = UriComponentsBuilder.fromUri(uri)
 				// .uri(routeUri)
 				.scheme(routeUri.getScheme()).host(routeUri.getHost()).port(routeUri.getPort()).build(encoded).toUri();
+		// 重写GATEWAY_REQUEST_URL_ATTR 参数，实现自定义路由转发。
 		exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, mergedUrl);
 		return chain.filter(exchange);
 	}

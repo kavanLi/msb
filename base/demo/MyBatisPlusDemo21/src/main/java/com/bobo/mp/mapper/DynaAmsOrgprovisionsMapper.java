@@ -3,8 +3,7 @@ package com.bobo.mp.mapper;
 import java.util.List;
 import java.util.Map;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.bobo.mp.domain.pojo.DynaAmsOrgprovisions;
+import com.mashibing.internalcommon.domain.pojo.DynaAmsOrgprovisions;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
