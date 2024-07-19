@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import com.example.demo.annotation.OperationLogAnnotation;
-import com.mashibing.internalcommon.domain.Dept;
-import com.mashibing.internalcommon.domain.User;
+import com.mashibing.internal.common.domain.Dept;
+import com.mashibing.internal.common.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

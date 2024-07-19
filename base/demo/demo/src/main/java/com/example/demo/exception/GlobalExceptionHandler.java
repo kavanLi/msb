@@ -3,14 +3,17 @@ package com.example.demo.exception;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.mashibing.internal.common.constant.ErrorCodeEnum;
+import com.mashibing.internal.common.domain.response.ResponseResult;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
@@ -19,9 +22,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  * To change this template use File | Settings | File and Code Templates.
  */
 //@RestControllerAdvice
-@ControllerAdvice
-@ResponseBody
+@RestControllerAdvice
+@Order(1)
+@Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseResult exceptionHandler(Exception e){
+        log.error("{}", e.getLocalizedMessage());
+        return ResponseResult.fail(ErrorCodeEnum.FAIL.getCode(), ErrorCodeEnum.FAIL.getValue(), e.getLocalizedMessage());
+    }
+
     //@ResponseStatus(HttpStatus.BAD_REQUEST)
     //@ExceptionHandler(value ={IllegalArgumentException.class,NullPointerException.class} )
     //public JSONObject handelException(HttpServletRequest request,

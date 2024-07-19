@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SmartyunstMemberMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SmartyunstMember">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="bizUserId" column="biz_user_id" jdbcType="VARCHAR"/>
+            <result property="memberType" column="member_type" jdbcType="BIGINT"/>
+            <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+            <result property="memberStatus" column="member_status" jdbcType="BIGINT"/>
+            <result property="memberName" column="member_name" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createBy" column="create_by" jdbcType="BIGINT"/>
+            <result property="updateBy" column="update_by" jdbcType="BIGINT"/>
+            <result property="category" column="category" jdbcType="BIGINT"/>
+            <result property="openType" column="open_type" jdbcType="TINYINT"/>
+            <result property="memberRoleId" column="member_role_id" jdbcType="BIGINT"/>
+            <result property="isBindSyb" column="is_bind_syb" jdbcType="TINYINT"/>
+            <result property="isDefaultWithdrawCard" column="is_default_withdraw_card" jdbcType="TINYINT"/>
+            <result property="maskedCardNo" column="masked_card_no" jdbcType="VARCHAR"/>
+            <result property="encryptType" column="encrypt_type" jdbcType="TINYINT"/>
+            <result property="belong" column="belong" jdbcType="VARCHAR"/>
+            <result property="subAcctNo" column="sub_acct_no" jdbcType="VARCHAR"/>
+            <result property="accountSetNo" column="account_set_no" jdbcType="VARCHAR"/>
+            <result property="defaultSybTermId" column="default_syb_term_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,biz_user_id,
+        member_type,application_id,member_status,
+        member_name,create_time,update_time,
+        create_by,update_by,category,
+        open_type,member_role_id,is_bind_syb,
+        is_default_withdraw_card,masked_card_no,encrypt_type,
+        belong,sub_acct_no,account_set_no,
+        default_syb_term_id
+    </sql>
+</mapper>

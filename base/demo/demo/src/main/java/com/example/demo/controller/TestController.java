@@ -19,11 +19,12 @@ import com.alibaba.excel.write.metadata.WriteTable;
 import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.annotation.OperationLogAnnotation;
-import com.mashibing.internalcommon.domain.User;
-import com.mashibing.internalcommon.domain.model.CommonResponse;
-import com.mashibing.internalcommon.utils.DateOrTimeUtils;
-import com.mashibing.internalcommon.utils.easyExcel.ConverterData;
-import com.mashibing.internalcommon.utils.easyExcel.DemoData;
+import com.mashibing.internal.common.annotation.RateLimit;
+import com.mashibing.internal.common.domain.User;
+import com.mashibing.internal.common.domain.model.CommonResponse;
+import com.mashibing.internal.common.utils.DateOrTimeUtils;
+import com.mashibing.internal.common.utils.easyExcel.ConverterData;
+import com.mashibing.internal.common.utils.easyExcel.DemoData;
 import io.swagger.annotations.ApiOperation;
 import org.joda.time.LocalDateTime;
 import org.json.JSONObject;
@@ -44,6 +45,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
     @GetMapping(value = "")
+    @RateLimit(permitsPerSecond = 1, interval = 3) // 限流 每3秒限制1个请求
     public Map <String, String> test() {
         System.out.println(123123123);
         Map <String, String> errors = new HashMap <>();

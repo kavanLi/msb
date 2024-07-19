@@ -10,6 +10,8 @@ spring:
     jackson:
         date-format: yyyy-MM-dd HH:mm:ss
         time-zone: GMT+8
+        # 全局接口配置，使序列化后的 JSON 响应中不包含 null 值的字段或者在类级别上使用 `@JsonInclude(JsonInclude.Include.NON_NULL)` 注解
+        default-property-inclusion: non_null
     mail:
         default-encoding: utf-8
         host: smtp.qq.com

@@ -13,7 +13,7 @@
 
     <modules>
         <module>demo</module>
-        <module>MyBatisPlusDemo21</module>
+        <module>my-batis-plus-demo-21</module>
         <module>internal-common</module>
     </modules>
 
@@ -58,6 +58,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.32</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.27</version>
         </dependency>
     </dependencies>
     <dependencyManagement>

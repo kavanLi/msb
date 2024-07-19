@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mp.mapper.DynaAmsOrganizationMapper">
+
+    <resultMap id="BaseResultMap" type="com.mashibing.internal.common.domain.pojo.DynaAmsOrganization">
+            <id property="id" column="ID" jdbcType="DECIMAL"/>
+            <result property="domainid" column="DOMAINID" jdbcType="DECIMAL"/>
+            <result property="name" column="NAME" jdbcType="VARCHAR"/>
+            <result property="codeno" column="CODENO" jdbcType="VARCHAR"/>
+            <result property="memberId" column="MEMBER_ID" jdbcType="DECIMAL"/>
+            <result property="memberLabel" column="MEMBER_LABEL" jdbcType="VARCHAR"/>
+            <result property="accountTypeId" column="ACCOUNT_TYPE_ID" jdbcType="DECIMAL"/>
+            <result property="accountTypeLabel" column="ACCOUNT_TYPE_LABEL" jdbcType="VARCHAR"/>
+            <result property="companyId" column="COMPANY_ID" jdbcType="DECIMAL"/>
+            <result property="companyLabel" column="COMPANY_LABEL" jdbcType="VARCHAR"/>
+            <result property="sysid" column="SYSID" jdbcType="VARCHAR"/>
+            <result property="publicKey" column="PUBLIC_KEY" jdbcType="VARCHAR"/>
+            <result property="privateKey" column="PRIVATE_KEY" jdbcType="VARCHAR"/>
+            <result property="allowedIp" column="ALLOWED_IP" jdbcType="VARCHAR"/>
+            <result property="timerange" column="TIMERANGE" jdbcType="DECIMAL"/>
+            <result property="state" column="STATE" jdbcType="DECIMAL"/>
+            <result property="encryption" column="ENCRYPTION" jdbcType="VARCHAR"/>
+            <result property="accessMethod" column="ACCESS_METHOD" jdbcType="DECIMAL"/>
+            <result property="remark" column="REMARK" jdbcType="VARCHAR"/>
+            <result property="transactionType" column="TRANSACTION_TYPE" jdbcType="DECIMAL"/>
+            <result property="allowedip" column="ALLOWEDIP" jdbcType="VARCHAR"/>
+            <result property="country" column="COUNTRY" jdbcType="VARCHAR"/>
+            <result property="locality" column="LOCALITY" jdbcType="VARCHAR"/>
+            <result property="organization" column="ORGANIZATION" jdbcType="VARCHAR"/>
+            <result property="organizationunit" column="ORGANIZATIONUNIT" jdbcType="VARCHAR"/>
+            <result property="orgState" column="ORG_STATE" jdbcType="VARCHAR"/>
+            <result property="memberUuid" column="MEMBER_UUID" jdbcType="VARCHAR"/>
+            <result property="certPassword" column="CERT_PASSWORD" jdbcType="VARCHAR"/>
+            <result property="cert" column="CERT" jdbcType="VARCHAR"/>
+            <result property="appType" column="APP_TYPE" jdbcType="DECIMAL"/>
+            <result property="ipcPath" column="IPC_PATH" jdbcType="VARCHAR"/>
+            <result property="licensePath" column="LICENSE_PATH" jdbcType="VARCHAR"/>
+            <result property="creditPath" column="CREDIT_PATH" jdbcType="VARCHAR"/>
+            <result property="webUrl" column="WEB_URL" jdbcType="VARCHAR"/>
+            <result property="isWithdrawSafeCard" column="IS_WITHDRAW_SAFE_CARD" jdbcType="DECIMAL"/>
+            <result property="isWithdrawtypeT0" column="IS_WITHDRAWTYPE_T0" jdbcType="DECIMAL"/>
+            <result property="isWithdrawtypeT1" column="IS_WITHDRAWTYPE_T1" jdbcType="DECIMAL"/>
+            <result property="withdrawreservemodel" column="WITHDRAWRESERVEMODEL" jdbcType="DECIMAL"/>
+            <result property="appUrl" column="APP_URL" jdbcType="VARCHAR"/>
+            <result property="manageBankId" column="MANAGE_BANK_ID" jdbcType="DECIMAL"/>
+            <result property="manageBankLabel" column="MANAGE_BANK_LABEL" jdbcType="VARCHAR"/>
+            <result property="manageBankNo" column="MANAGE_BANK_NO" jdbcType="VARCHAR"/>
+            <result property="platBusiType" column="PLAT_BUSI_TYPE" jdbcType="VARCHAR"/>
+            <result property="platAddress" column="PLAT_ADDRESS" jdbcType="VARCHAR"/>
+            <result property="platIp" column="PLAT_IP" jdbcType="VARCHAR"/>
+            <result property="companyAttr" column="COMPANY_ATTR" jdbcType="VARCHAR"/>
+            <result property="companyEstablishDate" column="COMPANY_ESTABLISH_DATE" jdbcType="TIMESTAMP"/>
+            <result property="platSource" column="PLAT_SOURCE" jdbcType="VARCHAR"/>
+            <result property="portalWithdrawType" column="PORTAL_WITHDRAW_TYPE" jdbcType="VARCHAR"/>
+            <result property="autoAudit" column="AUTO_AUDIT" jdbcType="DECIMAL"/>
+            <result property="fmCreateprinid" column="FM_CREATEPRINID" jdbcType="DECIMAL"/>
+            <result property="fmCreateprinname" column="FM_CREATEPRINNAME" jdbcType="VARCHAR"/>
+            <result property="fmUpdateprinid" column="FM_UPDATEPRINID" jdbcType="DECIMAL"/>
+            <result property="fmUpdateprinname" column="FM_UPDATEPRINNAME" jdbcType="VARCHAR"/>
+            <result property="fmCreatetime" column="FM_CREATETIME" jdbcType="TIMESTAMP"/>
+            <result property="fmUpdatetime" column="FM_UPDATETIME" jdbcType="TIMESTAMP"/>
+            <result property="isTestMerchant" column="IS_TEST_MERCHANT" jdbcType="DECIMAL"/>
+            <result property="t1customizedTriggerHour" column="T1CUSTOMIZED_TRIGGER_HOUR" jdbcType="DECIMAL"/>
+            <result property="d0customizedIntervalTime" column="D0CUSTOMIZED_INTERVAL_TIME" jdbcType="DECIMAL"/>
+            <result property="isTypeT1customized" column="IS_TYPE_T1CUSTOMIZED" jdbcType="DECIMAL"/>
+            <result property="isTypeD0customized" column="IS_TYPE_D0CUSTOMIZED" jdbcType="DECIMAL"/>
+            <result property="rechargeIntervalTime" column="RECHARGE_INTERVAL_TIME" jdbcType="DECIMAL"/>
+            <result property="appState" column="APP_STATE" jdbcType="DECIMAL"/>
+            <result property="serviceProvider" column="SERVICE_PROVIDER" jdbcType="VARCHAR"/>
+            <result property="fileDownloadCtrl" column="FILE_DOWNLOAD_CTRL" jdbcType="DECIMAL"/>
+            <result property="allFileDownloadCtrl" column="ALL_FILE_DOWNLOAD_CTRL" jdbcType="DECIMAL"/>
+            <result property="sybOrganizationId" column="SYB_ORGANIZATION_ID" jdbcType="DECIMAL"/>
+            <result property="source" column="SOURCE" jdbcType="DECIMAL"/>
+            <result property="allFileDownloadCtrlExcel" column="ALL_FILE_DOWNLOAD_CTRL_EXCEL" jdbcType="DECIMAL"/>
+            <result property="portalPayType" column="PORTAL_PAY_TYPE" jdbcType="VARCHAR"/>
+            <result property="platformAppid" column="PLATFORM_APPID" jdbcType="VARCHAR"/>
+            <result property="eaccountCustid" column="EACCOUNT_CUSTID" jdbcType="VARCHAR"/>
+            <result property="eaccountSetNotifyUrlFlag" column="EACCOUNT_SET_NOTIFY_URL_FLAG" jdbcType="DECIMAL"/>
+            <result property="eaccountCustInfoSetFlag" column="EACCOUNT_CUST_INFO_SET_FLAG" jdbcType="DECIMAL"/>
+            <result property="mchtJoinModel" column="MCHT_JOIN_MODEL" jdbcType="DECIMAL"/>
+            <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="stopType" column="STOP_TYPE" jdbcType="DECIMAL"/>
+            <result property="stopContent" column="STOP_CONTENT" jdbcType="VARCHAR"/>
+            <result property="merchantTag" column="MERCHANT_TAG" jdbcType="DECIMAL"/>
+            <result property="riskTypes" column="RISK_TYPES" jdbcType="VARCHAR"/>
+            <result property="riskLevel" column="RISK_LEVEL" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,DOMAINID,NAME,
+        CODENO,MEMBER_ID,MEMBER_LABEL,
+        ACCOUNT_TYPE_ID,ACCOUNT_TYPE_LABEL,COMPANY_ID,
+        COMPANY_LABEL,SYSID,PUBLIC_KEY,
+        PRIVATE_KEY,ALLOWED_IP,TIMERANGE,
+        STATE,ENCRYPTION,ACCESS_METHOD,
+        REMARK,TRANSACTION_TYPE,ALLOWEDIP,
+        COUNTRY,LOCALITY,ORGANIZATION,
+        ORGANIZATIONUNIT,ORG_STATE,MEMBER_UUID,
+        CERT_PASSWORD,CERT,APP_TYPE,
+        IPC_PATH,LICENSE_PATH,CREDIT_PATH,
+        WEB_URL,IS_WITHDRAW_SAFE_CARD,IS_WITHDRAWTYPE_T0,
+        IS_WITHDRAWTYPE_T1,WITHDRAWRESERVEMODEL,APP_URL,
+        MANAGE_BANK_ID,MANAGE_BANK_LABEL,MANAGE_BANK_NO,
+        PLAT_BUSI_TYPE,PLAT_ADDRESS,PLAT_IP,
+        COMPANY_ATTR,COMPANY_ESTABLISH_DATE,PLAT_SOURCE,
+        PORTAL_WITHDRAW_TYPE,AUTO_AUDIT,FM_CREATEPRINID,
+        FM_CREATEPRINNAME,FM_UPDATEPRINID,FM_UPDATEPRINNAME,
+        FM_CREATETIME,FM_UPDATETIME,IS_TEST_MERCHANT,
+        T1CUSTOMIZED_TRIGGER_HOUR,D0CUSTOMIZED_INTERVAL_TIME,IS_TYPE_T1CUSTOMIZED,
+        IS_TYPE_D0CUSTOMIZED,RECHARGE_INTERVAL_TIME,APP_STATE,
+        SERVICE_PROVIDER,FILE_DOWNLOAD_CTRL,ALL_FILE_DOWNLOAD_CTRL,
+        SYB_ORGANIZATION_ID,SOURCE,ALL_FILE_DOWNLOAD_CTRL_EXCEL,
+        PORTAL_PAY_TYPE,PLATFORM_APPID,EACCOUNT_CUSTID,
+        EACCOUNT_SET_NOTIFY_URL_FLAG,EACCOUNT_CUST_INFO_SET_FLAG,MCHT_JOIN_MODEL,
+        UPDATE_TIME,STOP_TYPE,STOP_CONTENT,
+        MERCHANT_TAG,RISK_TYPES,RISK_LEVEL
+    </sql>
+</mapper>

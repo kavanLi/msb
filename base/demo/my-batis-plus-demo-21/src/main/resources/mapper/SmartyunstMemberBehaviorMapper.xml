@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SmartyunstMemberBehaviorMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SmartyunstMemberBehavior">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+            <result property="userid" column="userid" jdbcType="VARCHAR"/>
+            <result property="bizUserId" column="biz_user_id" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="city" column="city" jdbcType="VARCHAR"/>
+            <result property="loginType" column="login_type" jdbcType="TINYINT"/>
+            <result property="province" column="province" jdbcType="VARCHAR"/>
+            <result property="registerTime" column="register_time" jdbcType="TIMESTAMP"/>
+            <result property="loginFailAmount" column="login_fail_amount" jdbcType="BIGINT"/>
+            <result property="payFailAmount" column="pay_fail_amount" jdbcType="BIGINT"/>
+            <result property="isSecurityIssue" column="is_security_issue" jdbcType="TINYINT"/>
+            <result property="isSetExtendInfo" column="is_set_extend_info" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,application_id,userid,
+        biz_user_id,create_time,ip,
+        city,login_type,province,
+        register_time,login_fail_amount,pay_fail_amount,
+        is_security_issue,is_set_extend_info
+    </sql>
+</mapper>

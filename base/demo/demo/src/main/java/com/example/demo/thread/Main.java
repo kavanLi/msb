@@ -1,6 +1,6 @@
 package com.example.demo.thread;
 
-import com.mashibing.internalcommon.domain.User;
+import com.mashibing.internal.common.domain.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;

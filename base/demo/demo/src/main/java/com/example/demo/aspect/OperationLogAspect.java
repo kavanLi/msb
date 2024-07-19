@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import com.example.demo.annotation.OperationLogAnnotation;
-import com.mashibing.internalcommon.domain.User;
+import com.mashibing.internal.common.domain.User;
 import com.example.demo.service.AsyncService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

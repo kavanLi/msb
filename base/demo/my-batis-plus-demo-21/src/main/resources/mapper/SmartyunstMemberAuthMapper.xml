@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SmartyunstMemberAuthMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SmartyunstMemberAuth">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+            <result property="bizUserId" column="biz_user_id" jdbcType="VARCHAR"/>
+            <result property="userid" column="userid" jdbcType="VARCHAR"/>
+            <result property="realNameTime" column="real_name_time" jdbcType="TIMESTAMP"/>
+            <result property="cerType" column="cer_type" jdbcType="BIGINT"/>
+            <result property="identityCardNo" column="identity_card_no" jdbcType="VARCHAR"/>
+            <result property="identityCardNoEncrypt" column="identity_card_no_encrypt" jdbcType="VARCHAR"/>
+            <result property="identityBeginDate" column="identity_begin_date" jdbcType="VARCHAR"/>
+            <result property="identityEndDate" column="identity_end_date" jdbcType="VARCHAR"/>
+            <result property="identityAuthDate" column="identity_auth_date" jdbcType="TIMESTAMP"/>
+            <result property="phoneAuthDate" column="phone_auth_date" jdbcType="TIMESTAMP"/>
+            <result property="maskedCardNo" column="masked_card_no" jdbcType="VARCHAR"/>
+            <result property="encryptType" column="encrypt_type" jdbcType="TINYINT"/>
+            <result property="bindType" column="bind_type" jdbcType="TINYINT"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="faceCheckTime" column="face_check_time" jdbcType="TIMESTAMP"/>
+            <result property="updateUserName" column="update_user_name" jdbcType="VARCHAR"/>
+            <result property="faceIdentifyCount" column="face_identify_count" jdbcType="BIGINT"/>
+            <result property="faceIdentifyFailCount" column="face_identify_fail_count" jdbcType="BIGINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,application_id,biz_user_id,
+        userid,real_name_time,cer_type,
+        identity_card_no,identity_card_no_encrypt,identity_begin_date,
+        identity_end_date,identity_auth_date,phone_auth_date,
+        masked_card_no,encrypt_type,bind_type,
+        phone,face_check_time,update_user_name,
+        face_identify_count,face_identify_fail_count,create_time,
+        update_time,creator,modifier
+    </sql>
+</mapper>

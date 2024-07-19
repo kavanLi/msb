@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.UmsMemberMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.UmsMember">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+            <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+            <result property="bizUserId" column="biz_user_id" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="country" column="country" jdbcType="VARCHAR"/>
+            <result property="province" column="province" jdbcType="VARCHAR"/>
+            <result property="area" column="area" jdbcType="VARCHAR"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+            <result property="city" column="city" jdbcType="VARCHAR"/>
+            <result property="personalizedSignature" column="personalized_signature" jdbcType="VARCHAR"/>
+            <result property="job" column="job" jdbcType="VARCHAR"/>
+            <result property="nationality" column="nationality" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="TINYINT"/>
+            <result property="memberLevelId" column="member_level_id" jdbcType="BIGINT"/>
+            <result property="sourceType" column="source_type" jdbcType="TINYINT"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="integration" column="integration" jdbcType="INTEGER"/>
+            <result property="growth" column="growth" jdbcType="INTEGER"/>
+            <result property="luckeyCount" column="luckey_count" jdbcType="INTEGER"/>
+            <result property="historyIntegration" column="history_integration" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isSecurityIssue" column="is_security_issue" jdbcType="TINYINT"/>
+            <result property="isSetExtendInfo" column="is_set_extend_info" jdbcType="TINYINT"/>
+            <result property="isIdentityChecked" column="is_identity_checked" jdbcType="TINYINT"/>
+            <result property="isPhoneChecked" column="is_phone_checked" jdbcType="TINYINT"/>
+            <result property="isFaceCheck" column="is_face_check" jdbcType="TINYINT"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,application_id,open_id,
+        biz_user_id,phone,username,
+        password,icon,email,
+        country,province,area,
+        nickname,birthday,city,
+        personalized_signature,job,nationality,
+        address,gender,member_level_id,
+        source_type,status,integration,
+        growth,luckey_count,history_integration,
+        create_time,update_time,is_security_issue,
+        is_set_extend_info,is_identity_checked,is_phone_checked,
+        is_face_check,creator,modifier
+    </sql>
+</mapper>

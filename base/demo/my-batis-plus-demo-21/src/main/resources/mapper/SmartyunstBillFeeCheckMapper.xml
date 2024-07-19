@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SmartyunstBillFeeCheckMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SmartyunstBillFeeCheck">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+            <result property="applicationName" column="application_name" jdbcType="VARCHAR"/>
+            <result property="storeId" column="store_id" jdbcType="VARCHAR"/>
+            <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
+            <result property="branchId" column="branch_id" jdbcType="VARCHAR"/>
+            <result property="branchName" column="branch_name" jdbcType="VARCHAR"/>
+            <result property="checkBatchNo" column="check_batch_no" jdbcType="VARCHAR"/>
+            <result property="checkDate" column="check_date" jdbcType="TIMESTAMP"/>
+            <result property="reconStatus" column="recon_status" jdbcType="TINYINT"/>
+            <result property="reconOperator" column="recon_operator" jdbcType="VARCHAR"/>
+            <result property="checkResult" column="check_result" jdbcType="TINYINT"/>
+            <result property="runType" column="run_type" jdbcType="TINYINT"/>
+            <result property="billTransCount" column="bill_trans_count" jdbcType="BIGINT"/>
+            <result property="billTotalAmount" column="bill_total_amount" jdbcType="BIGINT"/>
+            <result property="billPaidAmount" column="bill_paid_amount" jdbcType="BIGINT"/>
+            <result property="orderTransCount" column="order_trans_count" jdbcType="BIGINT"/>
+            <result property="orderTotalAmount" column="order_total_amount" jdbcType="BIGINT"/>
+            <result property="orderTotalPaidAmount" column="order_total_paid_amount" jdbcType="BIGINT"/>
+            <result property="orderTotalChannelFee" column="order_total_channel_fee" jdbcType="BIGINT"/>
+            <result property="orderTotalRefundAmount" column="order_total_refund_amount" jdbcType="BIGINT"/>
+            <result property="billOrderTime" column="bill_order_time" jdbcType="TIMESTAMP"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,application_id,application_name,
+        store_id,store_name,branch_id,
+        branch_name,check_batch_no,check_date,
+        recon_status,recon_operator,check_result,
+        run_type,bill_trans_count,bill_total_amount,
+        bill_paid_amount,order_trans_count,order_total_amount,
+        order_total_paid_amount,order_total_channel_fee,order_total_refund_amount,
+        bill_order_time,remark,create_time,
+        update_time,creator,modifier
+    </sql>
+</mapper>

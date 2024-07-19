@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.mp.mapper.DynaAmsSubprodApiMapper">
+
+    <resultMap id="BaseResultMap" type="com.mashibing.internal.common.domain.DynaAmsSubprodApi">
+            <id property="id" column="ID" jdbcType="DECIMAL"/>
+            <result property="prodId" column="PROD_ID" jdbcType="VARCHAR"/>
+            <result property="apiId" column="API_ID" jdbcType="DECIMAL"/>
+            <result property="applicationId" column="APPLICATION_ID" jdbcType="DECIMAL"/>
+            <result property="nameEn" column="NAME_EN" jdbcType="VARCHAR"/>
+            <result property="pVersion" column="P_VERSION" jdbcType="VARCHAR"/>
+            <result property="nameSoa" column="NAME_SOA" jdbcType="VARCHAR"/>
+            <result property="createUserName" column="CREATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="updateUserName" column="UPDATE_USER_NAME" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+            <result property="available" column="AVAILABLE" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,PROD_ID,API_ID,
+        APPLICATION_ID,NAME_EN,P_VERSION,
+        NAME_SOA,CREATE_USER_NAME,CREATE_TIME,
+        UPDATE_USER_NAME,UPDATE_TIME,AVAILABLE
+    </sql>
+</mapper>

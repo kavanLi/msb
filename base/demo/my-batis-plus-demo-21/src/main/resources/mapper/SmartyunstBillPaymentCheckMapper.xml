@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SmartyunstBillPaymentCheckMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SmartyunstBillPaymentCheck">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+            <result property="applicationName" column="application_name" jdbcType="VARCHAR"/>
+            <result property="storeId" column="store_id" jdbcType="VARCHAR"/>
+            <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
+            <result property="branchId" column="branch_id" jdbcType="VARCHAR"/>
+            <result property="branchName" column="branch_name" jdbcType="VARCHAR"/>
+            <result property="paymentId" column="payment_id" jdbcType="VARCHAR"/>
+            <result property="paymentName" column="payment_name" jdbcType="VARCHAR"/>
+            <result property="recieverId" column="reciever_id" jdbcType="VARCHAR"/>
+            <result property="recieverName" column="reciever_name" jdbcType="VARCHAR"/>
+            <result property="checkBatchNo" column="check_batch_no" jdbcType="VARCHAR"/>
+            <result property="checkDate" column="check_date" jdbcType="TIMESTAMP"/>
+            <result property="runType" column="run_type" jdbcType="TINYINT"/>
+            <result property="billOrderTime" column="bill_order_time" jdbcType="TIMESTAMP"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="modifier" column="modifier" jdbcType="VARCHAR"/>
+            <result property="itemTransCount" column="item_trans_count" jdbcType="BIGINT"/>
+            <result property="itemSuccessTransCount" column="item_success_trans_count" jdbcType="BIGINT"/>
+            <result property="itemPaymentCollectionCount" column="item_payment_collection_count" jdbcType="BIGINT"/>
+            <result property="itemConsumeCount" column="item_consume_count" jdbcType="BIGINT"/>
+            <result property="itemAgentCollentionCount" column="item_agent_collention_count" jdbcType="BIGINT"/>
+            <result property="itemBillModeCount" column="item_bill_mode_count" jdbcType="BIGINT"/>
+            <result property="itemOtherCount" column="item_other_count" jdbcType="BIGINT"/>
+            <result property="itemTotalAmount" column="item_total_amount" jdbcType="BIGINT"/>
+            <result property="itemSuccessPaidAmount" column="item_success_paid_amount" jdbcType="BIGINT"/>
+            <result property="itemPaymentCollectionAmount" column="item_payment_collection_amount" jdbcType="BIGINT"/>
+            <result property="itemConsumeAmount" column="item_consume_amount" jdbcType="BIGINT"/>
+            <result property="itemAgentCollentionAmount" column="item_agent_collention_amount" jdbcType="BIGINT"/>
+            <result property="itemBillModeAmount" column="item_bill_mode_amount" jdbcType="BIGINT"/>
+            <result property="itemOtherAmount" column="item_other_amount" jdbcType="BIGINT"/>
+            <result property="itemTotalFee" column="item_total_fee" jdbcType="BIGINT"/>
+            <result property="itemSuccessSplitFee" column="item_success_split_fee" jdbcType="BIGINT"/>
+            <result property="reconStatus" column="recon_status" jdbcType="TINYINT"/>
+            <result property="reconOperator" column="recon_operator" jdbcType="VARCHAR"/>
+            <result property="checkResult" column="check_result" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,application_id,application_name,
+        store_id,store_name,branch_id,
+        branch_name,payment_id,payment_name,
+        reciever_id,reciever_name,check_batch_no,
+        check_date,run_type,bill_order_time,
+        remark,create_time,update_time,
+        creator,modifier,item_trans_count,
+        item_success_trans_count,item_payment_collection_count,item_consume_count,
+        item_agent_collention_count,item_bill_mode_count,item_other_count,
+        item_total_amount,item_success_paid_amount,item_payment_collection_amount,
+        item_consume_amount,item_agent_collention_amount,item_bill_mode_amount,
+        item_other_amount,item_total_fee,item_success_split_fee,
+        recon_status,recon_operator,check_result
+    </sql>
+</mapper>
