@@ -1,6 +1,6 @@
 package com.mashibing.internal.common.domain.request;
 
-import com.mashibing.internal.common.constant.ItemManagermentConstants;
+import com.mashibing.internal.common.constant.ItemManagementConstants;
 import lombok.Data;
 
 @Data
@@ -79,7 +79,7 @@ public class ItemManagermentQueryReq {
     /**
      * 启用状态，1-启用 0-禁用
      */
-    private Integer status = ItemManagermentConstants.ItemStatus.ITEM_STATUS_ENABLE.getCode();
+    private Integer status = ItemManagementConstants.ItemStatus.ITEM_STATUS_ENABLE.getCode();
 
     /**
      * 创建人

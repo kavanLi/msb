@@ -2,7 +2,7 @@ package com.bobo.mp.service;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.bobo.mp.dataSource.annotation.ReportDB;
+import com.mashibing.internal.common.config.dataSource.annotation.ReportDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;

@@ -18,7 +18,11 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.WriteTable;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.csvreader.CsvReader;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashibing.internal.common.utils.GuavaCacheUtil;
 import com.mashibing.internal.common.domain.entity.MapperTestEO;
 import com.mashibing.internal.common.domain.model.MapperTestVO;
@@ -87,6 +91,33 @@ public class MainTest {
     public static void main(String[] args) throws Exception {
         // 构造 JSON 对象
         String reqJson = "{\"service\":\"MemberService\",\"method\":\"signBalanceProtocol\",\"param\":{\"payerId\":\"eb0bdf28-df9f-11ee-9fac-00163e3416da\",\"jumpPageType\":2,\"protocolName\":\"委托扣款协议书\",\"source\":1,\"backUrl\":\"http://payment.7dingdong.com/notify/tonglian/index?notify_source=2%26project_key=72b07a12-as7d-11ea-65df-0800274e100a%26source=6%26callback=NC14\",\"protocolReqSn\":\"24032619412243521354\",\"receiverId\":\"allYunBizUserId\"}}";
+        JSONArray jsonArray = JSON.parseArray("[{\"key\":\"receiverName\",\"value\":\"分配方名称\"},{\"key\":\"parentItemName\",\"value\":\"款项类别名称\"},{\"key\":\"itemName\",\"value\":\"款项明细名称\"},{\"key\":\"itemPrice\",\"value\":\"金额\"}]");
+        String ticketInfo = "";
+        for (Object json : jsonArray) {
+            String key = ((JSONObject) json).getString("key");
+            String value = ((JSONObject) json).getString("value");
+            switch (key) {
+                case "receiverName":
+                    // 分配方名称
+                    ticketInfo += value + "：" + "123" + "#";
+                    break;
+                case "parentItemName":
+                    // 款项类别名称
+                    ticketInfo += value + "：" + "456" + "#";
+                    break;
+                case "itemName":
+                    // 款项明细名称
+                    ticketInfo += value + "：" + "789" + "#";
+                    break;
+                case "itemPrice":
+                    // 金额
+                    ticketInfo += value + "：" + "3元"  + "#";
+                    break;
+                default:
+                    break;
+            }
+        }
+        ticketInfo = ticketInfo.replaceFirst("#$", "") + "\n";
 
         // 将 JSON 对象转换为 URL 编码的字符串
         String encodedReqJson = URLEncoder.encode(reqJson, "UTF-8");

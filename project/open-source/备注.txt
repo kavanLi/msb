@@ -1,2 +1,28 @@
 printtemplate-master：小票模板
 smart-admin：后台管理框架
+
+
+假设你要查看远程仓库 origin 上的 main 分支的最新版本，并拉取它。以下是完整的步骤：
+
+# 1. 查看远程仓库信息
+git remote -v
+
+# 2. 获取远程仓库的更新
+git fetch origin
+
+# 3. 查看远程仓库的分支
+git branch -r
+
+# 4. 查看远程仓库的最新提交（可选）
+git log origin/main -1
+git log origin/master -1
+
+# 5. 拉取远程仓库的最新版本并合并到当前分支
+git pull origin main/master
+
+详细解释
+git remote -v：显示所有远程仓库及其对应的 URL。
+git fetch origin：从名为 origin 的远程仓库获取最新的更新，但不进行合并。
+git branch -r：显示所有远程仓库的分支。
+git log origin/main -1：查看 origin/main 分支的最新一次提交。
+git pull origin main：从 origin 仓库的 main 分支拉取最新的更改并合并到你当前所在的分支。

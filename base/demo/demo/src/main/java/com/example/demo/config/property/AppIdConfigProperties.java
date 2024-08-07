@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * To change this template use File | Settings | File and Code Templates.
  */
 @Component
-@ConfigurationProperties(prefix = "config-list")
+@ConfigurationProperties(prefix = "channel.yunst2.config-list")
 public class AppIdConfigProperties {
 
     private List <AppIdConfig> appIdConfigs;

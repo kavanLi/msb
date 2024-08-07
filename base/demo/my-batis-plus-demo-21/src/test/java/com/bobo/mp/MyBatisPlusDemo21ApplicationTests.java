@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.bobo.mp.dataSource.annotation.ReportDB;
+import com.mashibing.internal.common.config.dataSource.annotation.ReportDB;
 import com.mashibing.internal.common.domain.DynaAmsSoaservice;
 import com.mashibing.internal.common.domain.DynaAmsSubprodApi;
 import com.mashibing.internal.common.domain.pojo.DynaAmsOrganization;

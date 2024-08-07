@@ -17,7 +17,7 @@ import com.example.demo.config.property.AppIdConfig;
 import com.example.demo.config.property.AppIdConfigProperties;
 import com.example.demo.config.property.ListProperties;
 import com.example.demo.config.property.UserEntity;
-import com.example.demo.exception.BaseException;
+import com.mashibing.internal.common.exception.BaseException;
 import com.example.demo.service.AsyncService;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryConfig;

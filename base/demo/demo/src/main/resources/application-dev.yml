@@ -17,20 +17,38 @@ list:
     - uid: 0x002
       nickname: xiaolan
 
-config-list:
-  app:
-    - url: http://192.168.38.24:8080/
-      appId: 21762000921804636162
-      secretKey: 878427523d3525e070298d44481b8d2e
-      privateKey: MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgiaZmB+feACtziE8SYjVZsaQwLNLRiyO8ebSupeoWIF2gCgYIKoEcz1UBgi2hRANCAATwEo0zq6KaB992PToWeJH52LmfS0sFovnB8/LMaoIAOTlFJtA3YgjWXKlO3KT+GqOCfCC4xE60isCr28tqy7hM
-      allinpayPublicKey: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEu9LNkJlyLtjJxtQWIGlcZ/hyHt5eZ7LEH1nfOiK1H9HsE1cMPu5KK5jZVTtAyc7lPMXixUMirf6A3tMbuMbgqg==
-    - url: http://192.168.38.24:8080/
-      appId: 21772171096426889217
-      secretKey: 878427523d3525e070298d44481b8d2e
-      privateKey: MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgiaZmB+feACtziE8SYjVZsaQwLNLRiyO8ebSupeoWIF2gCgYIKoEcz1UBgi2hRANCAATwEo0zq6KaB992PToWeJH52LmfS0sFovnB8/LMaoIAOTlFJtA3YgjWXKlO3KT+GqOCfCC4xE60isCr28tqy7hM
-      allinpayPublicKey: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEu9LNkJlyLtjJxtQWIGlcZ/hyHt5eZ7LEH1nfOiK1H9HsE1cMPu5KK5jZVTtAyc7lPMXixUMirf6A3tMbuMbgqg==
-    - url: http://192.168.38.24:8080/
-      appId: 21777219938337234946
-      secretKey: 878427523d3525e070298d44481b8d2e
-      privateKey: MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgULvkqyQUyaMvmt+pNRbd4pXmMFz6p7EthuotPv4i04ugCgYIKoEcz1UBgi2hRANCAARE00L9Tz3LU8lIfFdMrnefiEb4HXwqc/6+3OmOLCR+EIyLwYrc6OKMkjXDZw1aq0r2CgcY7dy33B8r6yUmzg8D
-      allinpayPublicKey: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEu9LNkJlyLtjJxtQWIGlcZ/hyHt5eZ7LEH1nfOiK1H9HsE1cMPu5KK5jZVTtAyc7lPMXixUMirf6A3tMbuMbgqg==
+# 渠道参数
+channel:
+  yunst2:
+    # 测试1
+    #  request-url-prefix: http://192.168.38.24:8080/
+    #  download-url-prefix: http://192.168.38.24:8080/
+    #  upload-url-prefix: http://192.168.38.24:8080/
+    # 测试2
+    request-url-prefix: http://192.168.93.26:8080/
+    download-url-prefix: http://192.168.93.26:8080/
+    upload-url-prefix: http://192.168.93.26:8080/
+    #  request-url-prefix: https://ibsapi.allinpay.com/
+    #  download-url-prefix: https://ibsapi.allinpay.com/
+    #  upload-url-prefix: https://ibsapi.allinpay.com/
+    download-file-path: /app/smartyunst/downloads/files/
+    verifyPublicKey:
+      api:
+        allinpayPublicKey: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEu9LNkJlyLtjJxtQWIGlcZ/hyHt5eZ7LEH1nfOiK1H9HsE1cMPu5KK5jZVTtAyc7lPMXixUMirf6A3tMbuMbgqg==
+      sass:
+        allinpayPublicKey: MFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEu9LNkJlyLtjJxtQWIGlcZ/hyHt5eZ7LEH1nfOiK1H9HsE1cMPu5KK5jZVTtAyc7lPMXixUMirf6A3tMbuMbgqg==
+    config-list:
+      app:
+        - url:
+          appId:
+          spAppId: 1234567800
+          channelType: 1
+          merchantTag: 0
+          sensitiveEncryptTag: 1
+          secretKey: 878427523d3525e070298d44481b8d2e
+          privateKey: MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQgSw1xZjuSVJZuQhXzUsWkojABSh/p4AGEGsrzsbZWVUmgCgYIKoEcz1UBgi2hRANCAARcV29rRwkf/s57G7jOqWxt62OKGtDqan6icmxI2bfstaM6EFHoEhrWXJmea6Y2XCqql/g4FYH1Zkmdd/yN3k9w
+          allinpayPublicKey: ${channel.yunst2.verifyPublicKey.sass.allinpayPublicKey}
+          urlConfig:
+            request-url-prefix: ${channel.yunst2.request-url-prefix}
+            download-url-prefix: ${channel.yunst2.download-url-prefix}
+            upload-url-prefix: ${channel.yunst2.upload-url-prefix}

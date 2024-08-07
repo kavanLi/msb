@@ -9,9 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
-import com.bobo.mp.dataSource.annotation.ReportDB;
+import com.mashibing.internal.common.config.dataSource.annotation.ReportDB;
 import com.bobo.mp.service.DynaAmsOrganizationService;
-import com.mashibing.internal.common.domain.pojo.DynaAmsOrganization;
 import lombok.SneakyThrows;
 import org.json.JSONArray;
 import org.json.JSONObject;

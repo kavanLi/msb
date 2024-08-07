@@ -1,5 +1,6 @@
 package com.bobo.mp;
 
+import com.mashibing.internal.common.config.MyBatisPlusConfig;
 import com.mashibing.internal.common.config.TraceFilter;
 import com.mashibing.internal.common.interceptor.feigh.FeignInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -16,7 +17,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableWebMvc //for swagger solve Failed to start bean 'documentationPluginsBootstrapper' in spring data rest
-@Import({TraceFilter.class, FeignInterceptor.class})
+@Import({TraceFilter.class, FeignInterceptor.class, MyBatisPlusConfig.class})
+@MapperScan("com.bobo.mp.mapper")
 public class MyBatisPlusDemo21Application {
 
 

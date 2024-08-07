@@ -6,13 +6,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.annotation.Resource;
-
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mashibing.internal.common.constant.ItemManagermentConstants;
+import com.mashibing.internal.common.constant.ItemManagementConstants;
 import com.mashibing.internal.common.domain.model.YchItemManagermentResp;
 import com.mashibing.internal.common.domain.pojo.SaasyunstItemManagerment;
 import com.mashibing.internal.common.domain.request.ItemManagermentQueryReq;
@@ -72,12 +70,12 @@ public class SaasyunstItemManagermentServiceImpl extends ServiceImpl <SaasyunstI
             queryWrapper.eq(SaasyunstItemManagerment::getItemDesc, req.getItemDesc());
         }
         //科目层级不为空，添加限定条件
-        if (!Objects.isNull(req.getItemTier()) && ItemManagermentConstants.ItemTier.exists(req.getItemTier())) {
-            queryWrapper.eq(SaasyunstItemManagerment::getItemTier, ItemManagermentConstants.ItemTier.of(req.getItemTier()).getCode());
+        if (!Objects.isNull(req.getItemTier()) && ItemManagementConstants.ItemTier.exists(req.getItemTier())) {
+            queryWrapper.eq(SaasyunstItemManagerment::getItemTier, ItemManagementConstants.ItemTier.of(req.getItemTier()).getCode());
         }
         //应用场景不为空，添加限定条件
-        if (!Objects.isNull(req.getItemScene()) && ItemManagermentConstants.ItemScene.exists(req.getItemScene())) {
-            queryWrapper.eq(SaasyunstItemManagerment::getItemScene, ItemManagermentConstants.ItemScene.of(req.getItemScene()).getCode());
+        if (!Objects.isNull(req.getItemScene()) && ItemManagementConstants.ItemScene.exists(req.getItemScene())) {
+            queryWrapper.eq(SaasyunstItemManagerment::getItemScene, ItemManagementConstants.ItemScene.of(req.getItemScene()).getCode());
         }
         //顺序号不为空，添加限定条件
         if (!Objects.isNull(req.getSeqNo())) {
@@ -105,9 +103,9 @@ public class SaasyunstItemManagermentServiceImpl extends ServiceImpl <SaasyunstI
             queryWrapper.eq(SaasyunstItemManagerment::getReceiverName, req.getReceiverName());
         }
         //启用状态不为空，添加限定条件
-        if (!Objects.isNull(req.getStatus()) && ItemManagermentConstants.ItemStatus.exists(req.getStatus())) {
+        if (!Objects.isNull(req.getStatus()) && ItemManagementConstants.ItemStatus.exists(req.getStatus())) {
             queryWrapper.eq(SaasyunstItemManagerment::getStatus,
-                    ItemManagermentConstants.ItemStatus.of(req.getStatus()).getCode());
+                    ItemManagementConstants.ItemStatus.of(req.getStatus()).getCode());
         }
 
         if (StringUtils.isNotEmpty(req.getCreateUserName())) {
