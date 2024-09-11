@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+        <!-- 用于开发环境更明晰的日志 能直观的看到实际sql语句+执行时间 -->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>3.9.1</version>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>

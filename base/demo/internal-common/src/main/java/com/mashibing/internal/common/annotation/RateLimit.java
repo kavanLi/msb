@@ -16,4 +16,6 @@ import java.lang.annotation.Target;
 public @interface RateLimit {
     int permitsPerSecond() default 1; // 默认每秒限制1个请求
     int interval() default 3; // 默认每3秒允许一次请求
+    boolean throwErrorOnLimit() default true; // 是否在限流时抛出异常，默认为true
+    String message() default "接口限流，请稍后再试！"; // 默认错误消息
 }

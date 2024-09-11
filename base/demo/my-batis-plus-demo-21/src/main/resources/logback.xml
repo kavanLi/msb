@@ -60,7 +60,10 @@
     </root>
 
     <logger name="com.example.demo" level="DEBUG"></logger>
-
+    <logger name="p6spy" level="DEBUG" additivity="false">
+        <appender-ref ref="Stdout"/>
+        <appender-ref ref="RollingFile"/>
+    </logger>
     <!--日志异步到数据库 -->
     <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
             日志异步到数据库

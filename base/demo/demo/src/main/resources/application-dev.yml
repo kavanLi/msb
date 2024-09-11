@@ -1,5 +1,7 @@
 server:
   port: 8080
+  servlet:
+    context-path:
   shutdown: graceful
 
 # 设置 OkHttp 的日志级别为 DEBUG

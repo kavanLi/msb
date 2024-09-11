@@ -5,6 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.common.util.concurrent.RateLimiter;
 import com.mashibing.internal.common.annotation.RateLimit;
+import com.mashibing.internal.common.constant.ServerRespCode;
+import com.mashibing.internal.common.exception.SmartyunstException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -43,8 +45,13 @@ public class RateLimitInterceptor {
         if (rateLimiter.tryAcquire()) {
             return point.proceed();
         } else {
-            throw new RuntimeException("接口限流，请稍后再试！");
-            //throw new SmartyunstException(ServerRespCode.FAIL, "接口限流，请稍后再试！");
+            if (rateLimit.throwErrorOnLimit()) {
+                throw new SmartyunstException(ServerRespCode.FAIL, rateLimit.message());
+            } else {
+                //throw new RuntimeException("接口限流，请稍后再试！");
+                //throw new SmartyunstException(ServerRespCode.FAIL, "接口限流，请稍后再试！");
+                throw new SmartyunstException(ServerRespCode.SUCCESS, rateLimit.message());
+            }
         }
     }
 
